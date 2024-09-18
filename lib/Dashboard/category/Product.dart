@@ -9,7 +9,7 @@ import 'package:smailo/Dashboard/home/bloc/all_products/state_all_products.dart'
 import 'package:smailo/Dashboard/home/bloc/home_count/bloc_home_count.dart';
 import 'package:smailo/Dashboard/home/bloc/home_count/event_home_count.dart';
 import 'package:smailo/Dashboard/home/bloc/home_count/state_home_count.dart';
-import '../Profile Screen/Cart.dart';
+import '../home/Cart.dart';
 import '../home/Favourite Screen.dart';
 import 'Filterdailog Box.dart';
 

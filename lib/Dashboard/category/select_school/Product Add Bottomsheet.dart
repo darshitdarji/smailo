@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:smailo/Dashboard/Profile%20Screen/Cart.dart';
+import 'package:smailo/Dashboard/home/Cart.dart';
 import 'package:smailo/Dashboard/home/Detail%20Screen.dart';
 import 'package:smailo/Dashboard/home/Favourite%20Screen.dart';
 import 'package:smailo/Dashboard/home/bloc/add_to_cart/bloc_add_to_cart.dart';
@@ -14,11 +14,6 @@ import 'package:smailo/Dashboard/home/bloc/home_count/state_home_count.dart';
 import 'package:smailo/Dashboard/home/bloc/product_add/bloc_product_add.dart';
 import 'package:smailo/Dashboard/home/bloc/product_add/event_product_add.dart';
 import 'package:smailo/Dashboard/home/bloc/product_add/state_product_add.dart';
-
-//
-// import '../../Profile Screen/Cart.dart';
-// import '../../home/Detail Screen.dart';
-// import '../../home/Favourite Screen.dart';
 
 class ProductAddScreen extends StatefulWidget {
   final String standardId;
@@ -196,7 +191,8 @@ class _ProductAddPageState extends State<ProductAddPage> {
             if (state.productList.productData.isEmpty) {
               return Center(
                 child: Text(
-                  'No data Found..',
+                  'No Data Found..',style: TextStyle(fontWeight: FontWeight.bold,
+                color: Colors.black38,fontSize: 22),
                 ),
               );
             } else {

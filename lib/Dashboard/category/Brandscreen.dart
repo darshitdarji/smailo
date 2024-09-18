@@ -15,7 +15,7 @@ import 'package:smailo/Dashboard/home/bloc/home_count/event_home_count.dart';
 import 'package:smailo/Dashboard/home/bloc/home_count/state_home_count.dart';
 import 'package:smailo/model/home/brand/brand_modal.dart';
 
-import '../Profile Screen/Cart.dart';
+import '../home/Cart.dart';
 import '../home/Favourite Screen.dart';
 
 class BrandwiseScreen extends StatefulWidget {
@@ -44,7 +44,9 @@ class _BrandwiseScreenState extends State<BrandwiseScreen> {
         BlocProvider<AddToCartBloc>(
           create: (context) => AddToCartBloc(),
         ),
-        BlocProvider<HomeCountBloc>(create: (context) => HomeCountBloc(),)
+        BlocProvider<HomeCountBloc>(
+          create: (context) => HomeCountBloc(),
+        )
       ],
       child: Brandpage(
         brandId: widget.brandId,
@@ -131,7 +133,7 @@ class _BrandpageState extends State<Brandpage> {
                         ),
                         Visibility(
                           visible:
-                          state.homeCountlist.countData.favoriteCount != 0,
+                              state.homeCountlist.countData.favoriteCount != 0,
                           child: Positioned(
                             top: 6,
                             right: 8,
@@ -140,8 +142,8 @@ class _BrandpageState extends State<Brandpage> {
                                 width: mediaquery.size.width * 0.04,
                                 child: Center(
                                     child: Text(
-                                        state
-                                            .homeCountlist.countData.favoriteCount
+                                        state.homeCountlist.countData
+                                            .favoriteCount
                                             .toString(),
                                         style: TextStyle(
                                             color: Colors.black,
@@ -150,7 +152,7 @@ class _BrandpageState extends State<Brandpage> {
                                 decoration: BoxDecoration(
                                     color: Colors.yellow,
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(50)))),
+                                        BorderRadius.all(Radius.circular(50)))),
                           ),
                         )
                       ]),
@@ -169,25 +171,32 @@ class _BrandpageState extends State<Brandpage> {
                                 size: 25,
                               )),
                           Visibility(
-                            visible: state.homeCountlist.countData.cartCount != 0,
+                            visible:
+                                state.homeCountlist.countData.cartCount != 0,
                             child: Positioned(
                               top: 6,
                               right: 8,
                               child: Container(
-                                  height: mediaquery.size.height * 0.02,
-                                  width: mediaquery.size.width * 0.04,
-                                  child: Center(
-                                      child: Text(
-                                          state.homeCountlist.countData.cartCount
-                                              .toString(),
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 12))),
-                                  decoration: BoxDecoration(
-                                      color: Colors.yellow,
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(50)))),
+                                height: mediaquery.size.height * 0.02,
+                                width: mediaquery.size.width * 0.04,
+                                child: Center(
+                                  child: Text(
+                                    state.homeCountlist.countData.cartCount
+                                        .toString(),
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.yellow,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(50),
+                                  ),
+                                ),
+                              ),
                             ),
                           )
                         ],
@@ -202,7 +211,6 @@ class _BrandpageState extends State<Brandpage> {
                 return Container();
               },
             ),
-
           ],
           flexibleSpace: Container(
             decoration: BoxDecoration(
@@ -219,8 +227,6 @@ class _BrandpageState extends State<Brandpage> {
           children: [
             BlocBuilder<BrandBloc, BrandState>(
               builder: (context, state) {
-                print("--------->${widget.brandId}");
-
                 if (state is BrandLoadingState) {
                   return Center(
                     child: CircularProgressIndicator(),
@@ -237,26 +243,53 @@ class _BrandpageState extends State<Brandpage> {
                       shrinkWrap: true,
                       itemCount: state.brandList.branData.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          margin: EdgeInsets.all(5),
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                                color: Colors.blue.shade800, width: 1.5),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Padding(
-                              padding: const EdgeInsets.all(5),
-                              child: Text(
-                                state.brandList.branData[index].name,
-                                style: TextStyle(
-                                    color: widget.brandId ==
-                                            state.brandList.branData[index].name
-                                        ? Colors.black
-                                        : Colors.blue,
-                                    fontSize: 20),
+                        return InkWell(
+                          onTap: () {
+                            // setState(() {
+                            //   if (state.brandList.branData[index].isSelected ==
+                            //       false) {
+                            //     state.brandList.branData[index].isSelected =
+                            //     true;
+                            //     multipleId +=
+                            //     "${state.brandList.branData[index].id},";
+                            //   } else {
+                            //     state.brandList.branData[index].isSelected =
+                            //     false;
+                            //     multipleId = multipleId.replaceFirst(
+                            //         "${state.brandList.branData[index].id},",
+                            //         "");
+                            //   }
+                            // });
+
+                            // BlocProvider.of<BrandBloc>(context).add(
+                            //   FetchBrandEvent(
+                            //       brandProductId: multipleId.isNotEmpty
+                            //           ? multipleId
+                            //           : '0'),
+                            // );
+                          },
+                            child: Container(
+                            margin: EdgeInsets.all(5),
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                  color: Colors.blue.shade800, width: 1.5),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.all(5),
+                                child: Text(
+                                  state.brandList.branData[index].name,
+                                  style: TextStyle(
+                                      color: widget.brandId ==
+                                              state.brandList.branData[index]
+                                                  .name
+                                          ? Colors.black
+                                          : Colors.blue,
+                                      fontSize: 20),
+                                ),
                               ),
                             ),
                           ),
@@ -468,18 +501,14 @@ class _BrandpageState extends State<Brandpage> {
                                                   setState(() {
                                                     if (cart) {
                                                       state
-                                                              .brandWiseList
-                                                              .brandWiseData[
-                                                                  index]
-                                                              .isCart =
-                                                          '0';
+                                                          .brandWiseList
+                                                          .brandWiseData[index]
+                                                          .isCart = '0';
                                                     } else {
                                                       state
-                                                              .brandWiseList
-                                                              .brandWiseData[
-                                                                  index]
-                                                              .isCart =
-                                                          '1';
+                                                          .brandWiseList
+                                                          .brandWiseData[index]
+                                                          .isCart = '1';
                                                     }
                                                   });
                                                 },

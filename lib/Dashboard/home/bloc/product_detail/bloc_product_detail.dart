@@ -16,6 +16,7 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
 
 
           if (model.status == 200) {
+            print("Pending status ${model.status}");
 
             emit(
               ProductDetailLoadedState(
@@ -30,7 +31,7 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
             );
           }
         } catch (error) {
-
+print("Pendingorder ${error}");
           emit(
             ProductDetailErrorState(
               error: "An Error Occurred",
@@ -45,7 +46,7 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
     final ProductDetailListModel model;
     Map data = {
       'product_id':productId,
-      'user_id': '3',
+      'user_id': '610',
     };
     const apiurl = "${SchoolEcommBaseAppUrl.baseAppUrl}productDetail";
     final Uri url = Uri.parse(apiurl);

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Conformed extends StatefulWidget {
-  const Conformed({super.key});
+class ConformedPage extends StatefulWidget {
+  const ConformedPage({super.key});
 
   @override
-  State<Conformed> createState() => _ConformedState();
+  State<ConformedPage> createState() => _ConformedPageState();
 }
 
-class _ConformedState extends State<Conformed> {
+class _ConformedPageState extends State<ConformedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,9 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
-import 'package:smailo/Dashboard/Profile%20Screen/Cart.dart';
+import 'package:smailo/Dashboard/home/Cart.dart';
 import 'package:smailo/Dashboard/home/bloc/add_to_cart/bloc_add_to_cart.dart';
 import 'package:smailo/Dashboard/home/bloc/add_to_cart/event_add_to_cart.dart';
 import 'package:smailo/Dashboard/home/bloc/home_count/bloc_home_count.dart';
@@ -43,7 +42,9 @@ class _DetailScreenState extends State<DetailScreen> {
         BlocProvider(
           create: (context) => AddToCartBloc(),
         ),
-        BlocProvider(create: (context) => HomeCountBloc(),)
+        BlocProvider(
+          create: (context) => HomeCountBloc(),
+        )
       ],
       child: Detailpage(
         productId: widget.productId,
@@ -69,9 +70,9 @@ class _DetailpageState extends State<Detailpage> {
   bool isLike = false;
   int selectedPag = 0;
   bool isReadMore = false;
-int status = 0;
+  int status = 0;
 
-  CarouselController carouselController = CarouselController();
+  // CarouselController carouselController = CarouselController();
   ScrollController controller = ScrollController();
 
   @override
@@ -79,10 +80,11 @@ int status = 0;
     // TODO: implement initState
     super.initState();
     BlocProvider.of<ProductDetailBloc>(context).add(
-      FetchProductDetailEvent(productId: widget.productId),
+      FetchProductDetailEvent(
+        productId: widget.productId,
+      ),
     );
     BlocProvider.of<HomeCountBloc>(context).add(FetchHomeCountEvent());
-
   }
 
   @override
@@ -90,7 +92,7 @@ int status = 0;
     var mediaquery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Details",
+        title: const Text("Details",
             style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -110,7 +112,7 @@ int status = 0;
                             ),
                           );
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.favorite,
                           color: Colors.white,
                           size: 25,
@@ -118,7 +120,7 @@ int status = 0;
                       ),
                       Visibility(
                         visible:
-                        state.homeCountlist.countData.favoriteCount != 0,
+                            state.homeCountlist.countData.favoriteCount != 0,
                         child: Positioned(
                           top: 6,
                           right: 8,
@@ -137,7 +139,7 @@ int status = 0;
                               decoration: BoxDecoration(
                                   color: Colors.yellow,
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(50)))),
+                                      BorderRadius.all(Radius.circular(50)))),
                         ),
                       )
                     ]),
@@ -161,20 +163,26 @@ int status = 0;
                             top: 6,
                             right: 8,
                             child: Container(
-                                height: mediaquery.size.height * 0.02,
-                                width: mediaquery.size.width * 0.04,
-                                child: Center(
-                                    child: Text(
-                                        state.homeCountlist.countData.cartCount
-                                            .toString(),
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 12))),
-                                decoration: BoxDecoration(
-                                    color: Colors.yellow,
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(50)))),
+                              height: mediaquery.size.height * 0.02,
+                              width: mediaquery.size.width * 0.04,
+                              child: Center(
+                                child: Text(
+                                  state.homeCountlist.countData.cartCount
+                                      .toString(),
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.yellow,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(50),
+                                ),
+                              ),
+                            ),
                           ),
                         )
                       ],
@@ -221,52 +229,52 @@ int status = 0;
                   SizedBox(
                     height: 10,
                   ),
-
                   Stack(
                     children: [
                       if (state.productList.productDetailModelData
-                          .productListData.productImages.length >
+                              .productListData.productImages.length >
                           1)
                         CarouselSlider.builder(
-                          carouselController: carouselController,
+                          // carouselController: carouselController,
                           itemCount: state.productList.productDetailModelData
                               .productListData.productImages.length,
                           itemBuilder: (BuildContext context, int index,
-                              int realIndex) =>
+                                  int realIndex) =>
                               Center(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(5),
-                                  child: InteractiveViewer(
-                                    child: InkWell(
-                                      onTap: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            return Dailogscreen(
-                                                images: state
-                                                    .productList
-                                                    .productDetailModelData
-                                                    .productListData
-                                                    .productImages[index]
-                                                    .productImage);
-                                          },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: InteractiveViewer(
+                                child: InkWell(
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return Dailogscreen(
+                                            images: state
+                                                .productList
+                                                .productDetailModelData
+                                                .productListData
+                                                .productImages[index]
+                                                .productImage,
                                         );
                                       },
-                                      child: Image.network(
-                                        state
-                                            .productList
-                                            .productDetailModelData
-                                            .productListData
-                                            .productImages[index]
-                                            .productImage,
-                                        fit: BoxFit.fill,
-                                        width: mediaquery.size.width * 0.9,
-                                        height: 300,
-                                      ),
-                                    ),
+                                    );
+                                  },
+                                  child: Image.network(
+                                    state
+                                        .productList
+                                        .productDetailModelData
+                                        .productListData
+                                        .productImages[index]
+                                        .productImage,
+                                    fit: BoxFit.fill,
+                                    width: mediaquery.size.width * 0.9,
+                                    height: 300,
                                   ),
                                 ),
                               ),
+                            ),
+                          ),
                           options: CarouselOptions(
                             scrollDirection: Axis.horizontal,
                             autoPlay: false,
@@ -281,7 +289,7 @@ int status = 0;
                           ),
                         ),
                       if (state.productList.productDetailModelData
-                          .productListData.productImages.length <=
+                              .productListData.productImages.length <=
                           1)
                         Center(
                           child: ClipRRect(
@@ -303,13 +311,13 @@ int status = 0;
                                 },
                                 child: Image.network(
                                   state
-                                      .productList
-                                      .productDetailModelData
-                                      .productListData
-                                      .productImage
-                                      .isNotEmpty
+                                          .productList
+                                          .productDetailModelData
+                                          .productListData
+                                          .productImage
+                                          .isNotEmpty
                                       ? state.productList.productDetailModelData
-                                      .productListData.productImage
+                                          .productListData.productImage
                                       : 'default_image_url',
                                   fit: BoxFit.fill,
                                   width: mediaquery.size.width * 0.9,
@@ -320,19 +328,19 @@ int status = 0;
                           ),
                         ),
                       Padding(
-                        padding: EdgeInsets.only(right: 10,top: 290),
+                        padding: EdgeInsets.only(right: 10, top: 290),
                         child: state.productList.productDetailModelData
-                            .productListData.productImages.length >
-                            1
+                                    .productListData.productImages.length >
+                                1
                             ? PageViewDotIndicator(
-                          alignment: Alignment.bottomCenter,
-                          size: const Size.fromRadius(4),
-                          currentItem: selectedPag,
-                          count: state.productList.productDetailModelData
-                              .productListData.productImages.length,
-                          unselectedColor: Colors.grey,
-                          selectedColor: Colors.orangeAccent,
-                        )
+                                alignment: Alignment.bottomCenter,
+                                size: const Size.fromRadius(4),
+                                currentItem: selectedPag,
+                                count: state.productList.productDetailModelData
+                                    .productListData.productImages.length,
+                                unselectedColor: Colors.grey,
+                                selectedColor: Colors.orangeAccent,
+                              )
                             : Container(),
                       ),
                     ],
@@ -364,8 +372,11 @@ int status = 0;
                             Text(
                               state.productList.productDetailModelData
                                   .productListData.productName,
-                             overflow: TextOverflow.ellipsis, style:
-                              TextStyle(color: Colors.black, fontSize: 16,),
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                              ),
                             ),
                             Text(
                               state.productList.productDetailModelData
@@ -382,26 +393,25 @@ int status = 0;
                                     color: Colors.blue, size: 16),
                                 Text(
                                   state.productList.productDetailModelData
-                                      .productListData.discountPrice ==
-                                      '0'
+                                              .productListData.discountPrice ==
+                                          '0'
                                       ? state.productList.productDetailModelData
-                                      .productListData.price
+                                          .productListData.price
                                       : state.productList.productDetailModelData
-                                      .productListData.discountPrice,
+                                          .productListData.discountPrice,
                                   style: TextStyle(
-                                      color: Colors.blue,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17),
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                  ),
                                 ),
                                 SizedBox(width: mediaquery.size.width * 0.02),
                                 Text(
                                   state.productList.productDetailModelData
-                                      .productListData.discountPrice ==
-                                      '0'
+                                              .productListData.discountPrice ==
+                                          '0'
                                       ? ""
-                                      : ("₹${state.productList
-                                      .productDetailModelData.productListData
-                                      .price}"),
+                                      : ("₹${state.productList.productDetailModelData.productListData.price}"),
                                   style: TextStyle(
                                       decoration: TextDecoration.lineThrough,
                                       color: Colors.red),
@@ -409,12 +419,10 @@ int status = 0;
                                 SizedBox(width: mediaquery.size.width * 0.02),
                                 Text(
                                   state.productList.productDetailModelData
-                                      .productListData.discountPrice ==
-                                      '0'
+                                              .productListData.discountPrice ==
+                                          '0'
                                       ? ""
-                                      : "${state.productList
-                                      .productDetailModelData.productListData
-                                      .discount}% off",
+                                      : "${state.productList.productDetailModelData.productListData.discount}% off",
                                   style: TextStyle(
                                     color: Colors.green,
                                   ),
@@ -517,16 +525,16 @@ int status = 0;
                                 GestureDetector(
                                     onTap: () {
                                       final favourite = state
-                                          .productList
-                                          .productDetailModelData
-                                          .productListData
-                                          .isFavorite ==
+                                              .productList
+                                              .productDetailModelData
+                                              .productListData
+                                              .isFavorite ==
                                           '1';
 
                                       if (favourite) {
                                         print("remove");
                                         BlocProvider.of<SaveAndRemoveWishBloc>(
-                                            context)
+                                                context)
                                             .add(
                                           FetchRemoveWishEvent(
                                             wishListId: state
@@ -540,7 +548,7 @@ int status = 0;
                                       } else {
                                         print("add");
                                         BlocProvider.of<SaveAndRemoveWishBloc>(
-                                            context)
+                                                context)
                                             .add(
                                           FetchSaveWishEvent(
                                               productId: widget.productId),
@@ -552,16 +560,13 @@ int status = 0;
                                               .productList
                                               .productDetailModelData
                                               .productListData
-                                              .isFavorite
-                                              =
-                                              '0';
+                                              .isFavorite = '0';
                                         } else {
                                           state
                                               .productList
                                               .productDetailModelData
                                               .productListData
-                                              .isFavorite =
-                                              '1';
+                                              .isFavorite = '1';
                                         }
                                       });
                                     },
@@ -570,11 +575,11 @@ int status = 0;
                                       width: mediaquery.size.width * 0.12,
                                       decoration: BoxDecoration(
                                         color: state
-                                            .productList
-                                            .productDetailModelData
-                                            .productListData
-                                            .isFavorite ==
-                                            '1'
+                                                    .productList
+                                                    .productDetailModelData
+                                                    .productListData
+                                                    .isFavorite ==
+                                                '1'
                                             ? Colors.red.shade200
                                             : Colors.white,
                                         borderRadius: BorderRadius.only(
@@ -585,15 +590,15 @@ int status = 0;
                                       child: Center(
                                         child: Icon(
                                           state
-                                              .productList
-                                              .productDetailModelData
-                                              .productListData
-                                              .isFavorite ==
-                                              '1'
+                                                      .productList
+                                                      .productDetailModelData
+                                                      .productListData
+                                                      .isFavorite ==
+                                                  '1'
                                               ? Icons.favorite
                                               : Icons.favorite_border,
                                           color:
-                                          isLike ? Colors.red : Colors.red,
+                                              isLike ? Colors.red : Colors.red,
                                           size: 25,
                                         ),
                                       ),
@@ -603,12 +608,22 @@ int status = 0;
                             SizedBox(
                               height: 15,
                             ),
-                            Text(  isReadMore
-                                ? state.productList.productDetailModelData.productListData.description
-                                : state.productList.productDetailModelData.productListData.description.length > 22
-                            ? '${state.productList.productDetailModelData.productListData.description.substring(0, 22)}...'
-                          : state.productList.productDetailModelData.productListData.description,
-                              overflow: TextOverflow.ellipsis,maxLines: 10,
+                            Text(
+                              isReadMore
+                                  ? state.productList.productDetailModelData
+                                      .productListData.description
+                                  : state
+                                              .productList
+                                              .productDetailModelData
+                                              .productListData
+                                              .description
+                                              .length >
+                                          22
+                                      ? '${state.productList.productDetailModelData.productListData.description.substring(0, 22)}...'
+                                      : state.productList.productDetailModelData
+                                          .productListData.description,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 10,
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 14,
@@ -620,7 +635,7 @@ int status = 0;
                             GestureDetector(
                               onTap: () {
                                 setState(
-                                      () {
+                                  () {
                                     isReadMore = !isReadMore;
                                   },
                                 );
@@ -643,8 +658,8 @@ int status = 0;
                               height: 20,
                             ),
                             Container(
-                              height: mediaquery.size.height*0.06,
-                              width: mediaquery.size.width*0.3,
+                              height: mediaquery.size.height * 0.06,
+                              width: mediaquery.size.width * 0.3,
                               decoration: BoxDecoration(
                                 color: Colors.black12,
                                 border: Border.all(
@@ -659,7 +674,7 @@ int status = 0;
                                   ),
                                   Row(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                        MainAxisAlignment.spaceEvenly,
                                     children: [
                                       GestureDetector(
                                         onTap: () {
@@ -670,21 +685,22 @@ int status = 0;
                                           });
                                         },
                                         child: Container(
-                                          height: mediaquery.size.height*0.035,
-                                          width: mediaquery.size.width*0.075,
+                                          height:
+                                              mediaquery.size.height * 0.035,
+                                          width: mediaquery.size.width * 0.075,
                                           decoration: BoxDecoration(
                                             color: Colors.white,
                                             border: Border.all(
                                               color: Colors.black26,
                                             ),
                                             borderRadius:
-                                            BorderRadius.circular(30),
+                                                BorderRadius.circular(30),
                                           ),
                                           child: Center(
                                               child: Icon(
-                                                Icons.remove,
-                                                size: 15,
-                                              )),
+                                            Icons.remove,
+                                            size: 15,
+                                          )),
                                         ),
                                       ),
                                       Text(
@@ -700,14 +716,15 @@ int status = 0;
                                           counter++;
 
                                           setState(
-                                                () {
+                                            () {
                                               counter++;
                                             },
                                           );
                                         },
                                         child: Container(
-                                          height: mediaquery.size.height*0.035,
-                                          width: mediaquery.size.width*0.075,
+                                          height:
+                                              mediaquery.size.height * 0.035,
+                                          width: mediaquery.size.width * 0.075,
                                           decoration: BoxDecoration(
                                             color: Colors.white,
                                             border: Border.all(
@@ -796,7 +813,7 @@ int status = 0;
                           itemCount: state.productList.productDetailModelData
                               .productTopSellings.length,
                           gridDelegate:
-                          SliverGridDelegateWithFixedCrossAxisCount(
+                              SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             mainAxisSpacing: 0,
                             crossAxisSpacing: 5,
@@ -818,8 +835,7 @@ int status = 0;
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            DetailScreen(
+                                        builder: (context) => DetailScreen(
                                               productId: state
                                                   .productList
                                                   .productDetailModelData
@@ -847,7 +863,7 @@ int status = 0;
                                           ),
                                         ],
                                         borderRadius:
-                                        BorderRadius.circular(10)),
+                                            BorderRadius.circular(10)),
                                     child: Column(children: [
                                       ClipRRect(
                                         borderRadius: BorderRadius.only(
@@ -868,7 +884,7 @@ int status = 0;
                                         padding: const EdgeInsets.all(5),
                                         child: Column(
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               state
@@ -900,10 +916,7 @@ int status = 0;
                                             Text(
                                                 discount == '0'
                                                     ? " "
-                                                    : ("${state.productList
-                                                    .productDetailModelData
-                                                    .productTopSellings[index]
-                                                    .discount} %off"),
+                                                    : ("${state.productList.productDetailModelData.productTopSellings[index].discount} %off"),
                                                 style: TextStyle(
                                                     color: Colors.green)),
                                             SizedBox(
@@ -912,8 +925,8 @@ int status = 0;
                                             ),
                                             Row(
                                               mainAxisAlignment:
-                                              MainAxisAlignment
-                                                  .spaceBetween,
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               children: [
                                                 Row(
                                                   children: [
@@ -925,42 +938,42 @@ int status = 0;
                                                     Text(
                                                       discountprice == '0'
                                                           ? state
-                                                          .productList
-                                                          .productDetailModelData
-                                                          .productTopSellings[
-                                                      index]
-                                                          .price
+                                                              .productList
+                                                              .productDetailModelData
+                                                              .productTopSellings[
+                                                                  index]
+                                                              .price
                                                           : state
-                                                          .productList
-                                                          .productDetailModelData
-                                                          .productTopSellings[
-                                                      index]
-                                                          .discountPrice,
+                                                              .productList
+                                                              .productDetailModelData
+                                                              .productTopSellings[
+                                                                  index]
+                                                              .discountPrice,
                                                       style: TextStyle(
                                                         fontSize: 16,
                                                         color: Colors.blue,
                                                         fontWeight:
-                                                        FontWeight.bold,
+                                                            FontWeight.bold,
                                                       ),
                                                     ),
                                                     SizedBox(
                                                       width: mediaquery
-                                                          .size.width *
+                                                              .size.width *
                                                           0.01,
                                                     ),
                                                     Text(
                                                       discountprice == '0'
                                                           ? ""
                                                           : state
-                                                          .productList
-                                                          .productDetailModelData
-                                                          .productTopSellings[
-                                                      index]
-                                                          .price,
+                                                              .productList
+                                                              .productDetailModelData
+                                                              .productTopSellings[
+                                                                  index]
+                                                              .price,
                                                       style: TextStyle(
                                                         decoration:
-                                                        TextDecoration
-                                                            .lineThrough,
+                                                            TextDecoration
+                                                                .lineThrough,
                                                         color: Colors.red,
                                                       ),
                                                     )
@@ -994,69 +1007,74 @@ int status = 0;
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: status ==200? Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          InkWell(
-            onTap: () {
-                print("add");
-                BlocProvider.of<AddToCartBloc>(context).add(
-                  FetchAddToCartEvent(productId: widget.productId, quantity: counter.toString()),
-                );
-            },
-            child: Container(
-              height: mediaquery.size.height * 0.075,
-              width: mediaquery.size.width * 0.5,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10)),
-              ),
-              child: Center(
-                child: Text(
-                "Add To Cart",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
+      bottomNavigationBar: status == 200
+          ? Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                InkWell(
+                  onTap: () {
+                    print("add");
+                    BlocProvider.of<AddToCartBloc>(context).add(
+                      FetchAddToCartEvent(
+                          productId: widget.productId,
+                          quantity: counter.toString()),
+                    );
+                  },
+                  child: Container(
+                    height: mediaquery.size.height * 0.075,
+                    width: mediaquery.size.width * 0.5,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius:
+                          BorderRadius.only(bottomLeft: Radius.circular(10)),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Add To Cart",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CartScreen(),
-                  ));
-            },
-            child: Container(
-              height: mediaquery.size.height * 0.075,
-              width: mediaquery.size.width * 0.5,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(
-                    10,
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CartScreen(),
+                        ));
+                  },
+                  child: Container(
+                    height: mediaquery.size.height * 0.075,
+                    width: mediaquery.size.width * 0.5,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(
+                          10,
+                        ),
+                      ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Buy Now",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              child: Center(
-                child: Text(
-                  "Buy Now",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ):Text("Loading"),
+              ],
+            )
+          : Text("Loading"),
     );
   }
 }

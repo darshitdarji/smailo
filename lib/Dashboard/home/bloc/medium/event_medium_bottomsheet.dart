@@ -1,8 +1,8 @@
 abstract class MediumEvent {}
 
-class FetchMedium extends MediumEvent {
+class FetchMediumEvent extends MediumEvent {
   final String boardId;
 
-  FetchMedium({required this.boardId});
+  FetchMediumEvent({required this.boardId});
 
 }

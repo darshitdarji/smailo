@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smailo/Dashboard/Profile%20Screen/Cart.dart';
+import 'package:smailo/Dashboard/home/Cart.dart';
 import 'package:smailo/Dashboard/home/Detail%20Screen.dart';
 import 'package:smailo/Dashboard/home/Favourite%20Screen.dart';
 import 'package:smailo/Dashboard/home/bloc/add_to_cart/bloc_add_to_cart.dart';
@@ -196,7 +196,7 @@ class _TodayDealPageState extends State<TodayDealPage> {
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
-                                  childAspectRatio: 0.7,
+                                  childAspectRatio: 0.67,
                                   crossAxisSpacing: 15,
                                   mainAxisSpacing: 15),
                           itemBuilder: (context, index) {

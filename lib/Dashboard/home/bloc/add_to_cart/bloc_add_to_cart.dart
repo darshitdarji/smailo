@@ -55,7 +55,6 @@ class AddToCartBloc extends Bloc<AddToCartEvent, AddToCartState> {
             );
           }
         } catch (error) {
-          print("---ERROR IN REMOVE CART--${error}");
           emit(
             RemoveToCartErrorState(error: 'An error Occurred'),
           );
@@ -69,7 +68,7 @@ class AddToCartBloc extends Bloc<AddToCartEvent, AddToCartState> {
       {required String productId, required String quantity}) async {
     AddToCartListModel model;
     Map data = {
-      'user_id': '3',
+      'user_id': '610',
       'product_id': productId,
       'qty': quantity,
     };
@@ -90,7 +89,7 @@ class AddToCartBloc extends Bloc<AddToCartEvent, AddToCartState> {
   }) async {
     RemoveToCartListModel model;
     Map data = {
-      'user_id': '3',
+      'user_id': '610',
       'product_id': productId,
     };
 

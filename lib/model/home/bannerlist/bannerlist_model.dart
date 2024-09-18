@@ -6,7 +6,10 @@ class BannerListModel {
   BannerListModel.fromJsonMap(Map<String, dynamic> map)
       : status = map['status'],
         bannerListData = List<BannerListData>.from(
-            map['data'].map((x) => BannerListData.fromJsonMap(x))),
+          map['data'].map(
+            (x) => BannerListData.fromJsonMap(x),
+          ),
+        ),
         message = map['message'];
 }
 

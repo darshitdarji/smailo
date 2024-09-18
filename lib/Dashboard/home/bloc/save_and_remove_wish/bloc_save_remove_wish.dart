@@ -67,7 +67,7 @@ class SaveAndRemoveWishBloc
     SaveWishListModel model;
     Map data = {
       'product_id': productId,
-      'user_id': '3',
+      'user_id': '610',
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}saveWish";
     final Uri uri = Uri.parse(apiUrl);

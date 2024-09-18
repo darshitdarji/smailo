@@ -9,12 +9,14 @@ import 'package:http/http.dart' as http;
 class MediumBloc extends Bloc<MediumEvent, MediumState> {
   MediumBloc() : super(MediumInitialState()) {
 
-    on<FetchMedium>((event, emit) async {
+    on<FetchMediumEvent>((event, emit) async {
       emit(MediumLoadingState());
       try {
 
         MediumListModal model = await fetchDataFromApi(boardId: event.boardId);
         if (model.status == 200) {
+          print("medium${model.status}");
+
           emit(MediumLoadedState(mediumModel: model,),);
         } else {
 
@@ -22,6 +24,7 @@ class MediumBloc extends Bloc<MediumEvent, MediumState> {
               error: 'An error occurred while fetching data from API',),);
         }
       } catch (error) {
+        print("medium$error");
         emit(MediumErrorState(error: "An Error Occurred",),
         );
       }

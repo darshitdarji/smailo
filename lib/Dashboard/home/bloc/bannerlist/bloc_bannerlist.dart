@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smailo/Dashboard/home/bloc/bannerlist/event_bannerlist.dart';
 import 'package:smailo/Dashboard/home/bloc/bannerlist/state_bannerlist.dart';
 import 'package:smailo/model/home/bannerlist/bannerlist_model.dart';
-import 'package:smailo/server_url/base_app_url.dart';
 import 'package:http/http.dart' as http;
+import 'package:smailo/server_url/base_app_url.dart';
 
 class BannerBloc extends Bloc<BannerEvent, BannerState> {
   BannerBloc() : super(BannerInitialState()) {

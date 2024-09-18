@@ -38,7 +38,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     SearchListModel model;
     Map data = {
       'keyword': keyword,
-      'user_id': '3',
+      'user_id': '610',
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}search";
     final Uri url = Uri.parse(apiUrl);

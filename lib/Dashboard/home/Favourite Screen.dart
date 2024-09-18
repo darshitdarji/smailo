@@ -364,7 +364,14 @@ class _FavouritePageState extends State<FavouritePage> {
             }
           } else if (state is FavouriteErrorState) {
             return Center(
-              child: Text(state.error),
+              child: Text(
+                "Data Not Found",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black45,
+                ),
+              ),
             );
           }
           return Container();

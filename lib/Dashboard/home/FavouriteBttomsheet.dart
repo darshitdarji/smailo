@@ -60,7 +60,6 @@ class _FavouritebottomState extends State<Favouritebottom> {
     return BlocConsumer<SaveAndRemoveWishBloc, SaveAndRemoveWishState>(
       listener: (context, state) {
         if (state is RemoveToWishErrorState) {
-          print(state.error);
         }
         else if (state is RemoveToWishLoadedState) {
           Navigator.of(context).pop(true);

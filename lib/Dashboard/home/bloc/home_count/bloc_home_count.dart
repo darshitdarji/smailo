@@ -30,7 +30,7 @@ class HomeCountBloc extends Bloc<HomeCountEvent, HomeCountState> {
   FetchDataFromApi() async {
     HomeCountListModel model;
     Map data = {
-      'user_id': '3'
+      'user_id': '610'
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}homeCount";
     final Uri url  = Uri.parse(apiUrl);

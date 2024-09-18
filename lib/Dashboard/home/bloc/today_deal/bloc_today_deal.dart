@@ -28,7 +28,7 @@ class TodayDealBloc extends Bloc<TodayDealEvent, TodayDealState> {
   fetchDataFromApi() async {
     TodayDealModel model;
     Map data = {
-      'user_id': '3',
+      'user_id': '610',
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}todaysDeal";
     final Uri url = Uri.parse(apiUrl);

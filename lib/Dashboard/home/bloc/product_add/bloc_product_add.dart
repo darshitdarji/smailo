@@ -31,7 +31,7 @@ class ProductAddBloc extends Bloc<ProductAddEvent, ProductAddState> {
     ProductListModel model;
     Map data = {
       'standard_id': standardId,
-      'user_id': '3',
+      'user_id': '610',
     };
     const apiurl = "${SchoolEcommBaseAppUrl.baseAppUrl}categoryWiseProduct";
     final Uri url = Uri.parse(apiurl);

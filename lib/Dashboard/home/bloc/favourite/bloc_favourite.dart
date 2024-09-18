@@ -39,15 +39,13 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
   fetchDataFromApi() async {
     FavouriteListModel model;
     Map data = {
-      'user_id': '3'
+      'user_id': '610'
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}wishList";
     final Uri uri = Uri.parse(apiUrl);
     final response = await http.post(uri,body: data);
-    print("Response${response.body}");
 
     model = FavouriteListModel.fromJsonMap(jsonDecode(response.body),);
-    print("Response${response.body}");
     return model;
   }
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
-import 'package:smailo/Dashboard/Dashboard.dart';
-import 'package:smailo/Dashboard/Authantication/LoginScreen.dart';
-import 'package:smailo/Dashboard/Authantication/Signup%20Screen.dart';
+import 'package:smailo/Authantication/Signup%20Screen.dart';
+
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Pages extends StatefulWidget {
@@ -127,13 +125,13 @@ class _PagesState extends State<Pages> {
                     );
                   } else {
                     // Otherwise, navigate to the login screen
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Loginscreen(),
-                      ),
-                      (route) => false,
-                    );
+                    // Navigator.pushAndRemoveUntil(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => LogInScreen(),
+                    //   ),
+                    //   (route) => false,
+                    // );
                   }
                 },
                 child: Row(
@@ -167,11 +165,10 @@ class _PagesState extends State<Pages> {
             InkWell(
               onTap: () {
                 if (currentpage == data.length - 1) {
-                  // Navigate to the next screen when on the last page
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Loginscreen(),
+                      builder: (context) => SignUpScreen(),
                     ),
                     (route) => false,
                   );

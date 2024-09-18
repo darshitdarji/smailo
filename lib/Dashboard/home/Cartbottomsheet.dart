@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smailo/Dashboard/home/bloc/add_to_cart/bloc_add_to_cart.dart';
 import 'package:smailo/Dashboard/home/bloc/add_to_cart/event_add_to_cart.dart';
-import 'package:smailo/Dashboard/home/bloc/cartscreen/bloc_cart_sccreen.dart';
-import 'package:smailo/Dashboard/home/bloc/cartscreen/event_cart_screen.dart';
 import 'package:smailo/Dashboard/home/bloc/save_and_remove_wish/bloc_save_remove_wish.dart';
 import 'package:smailo/Dashboard/home/bloc/save_and_remove_wish/event_save_remove_wish.dart';
 
@@ -59,11 +57,11 @@ class CartBottom extends StatefulWidget {
 class _CartBottomState extends State<CartBottom> {
   @override
   Widget build(BuildContext context) {
-    var mediaquery = MediaQuery.of(context);
+    var mediaQuery = MediaQuery.of(context);
     return Padding(
       padding: const EdgeInsets.only(top: 5, right: 10, left: 10),
       child: Container(
-        height: mediaquery.size.height * 0.25,
+        height: mediaQuery.size.height * 0.25,
         width: double.infinity,
         color: Colors.white,
         child: Column(
@@ -93,7 +91,7 @@ class _CartBottomState extends State<CartBottom> {
                         ],
                       ),
                       SizedBox(
-                        width: mediaquery.size.width * 0.02,
+                        width: mediaQuery.size.width * 0.02,
                       ),
                       Expanded(
                         child: Column(

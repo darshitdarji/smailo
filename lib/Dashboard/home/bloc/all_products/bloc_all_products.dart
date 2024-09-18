@@ -38,7 +38,7 @@ class AllProductsBloc extends Bloc<AllProductsEvent, AllProductsState> {
     Map data = {
       "filter_sort_by":filterShortBy,
       "filter_price":filterPrice,
-      "user_id" : "3",
+      "user_id" : "610",
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}allProduct";
     final Uri url = Uri.parse(apiUrl);

@@ -29,7 +29,7 @@ class FlashDealBloc  extends Bloc<FlashDealEvent,FlashDealState>{
   FetchDatafromApi()async{
     FlashDealModel model;
     Map data = {
-      'user_id': '3',
+      'user_id': '610',
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}flashDeal";
   final Uri url  = Uri.parse(apiUrl);

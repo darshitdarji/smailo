@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smailo/Dashboard/Profile%20Screen/Cartbottomsheet.dart';
+import 'package:smailo/Dashboard/home/Cartbottomsheet.dart';
 import 'package:smailo/Dashboard/category/Product.dart';
 import 'package:smailo/Dashboard/home/Checkout%20Screen.dart';
 import 'package:smailo/Dashboard/home/Detail%20Screen.dart';
 import 'package:smailo/Dashboard/home/bloc/add_to_cart/bloc_add_to_cart.dart';
 import 'package:smailo/Dashboard/home/bloc/add_to_cart/event_add_to_cart.dart';
+import 'package:smailo/Dashboard/home/bloc/add_to_cart/state_add_to_cart.dart';
 import 'package:smailo/Dashboard/home/bloc/cartscreen/bloc_cart_sccreen.dart';
 import 'package:smailo/Dashboard/home/bloc/cartscreen/event_cart_screen.dart';
 import 'package:smailo/Dashboard/home/bloc/cartscreen/state_cart_screen.dart';
@@ -56,7 +57,7 @@ class _CartState extends State<Cart> {
 
   @override
   Widget build(BuildContext context) {
-    var mediaquery = MediaQuery.of(context);
+    var mediaQuery = MediaQuery.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -65,7 +66,7 @@ class _CartState extends State<Cart> {
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: <Color>[Colors.blue, Colors.blue.shade900])),
+                  colors: <Color>[Colors.blue, Colors.blue.shade900]),),
         ),
         title: const Text("Cart",
             style: TextStyle(
@@ -74,7 +75,12 @@ class _CartState extends State<Cart> {
                 fontSize: 20)),
       ),
       backgroundColor: Colors.white.withOpacity(0.95),
-      body: BlocBuilder<CartBloc, CartState>(
+      body: BlocConsumer<CartBloc, CartState>(
+        listener: (context, state) {
+          if(state is AddToCartLoadedState||state is RemoveToCartLoadedState){
+            BlocProvider.of<CartBloc>(context).add(FetchCartEvent());
+          }
+        },
         builder: (context, state) {
           if (state is CartLoadingState) {
             return const Center(
@@ -200,17 +206,19 @@ class _CartState extends State<Cart> {
                                                 children: [
                                                   Container(
                                                     margin: const EdgeInsets
-                                                        .symmetric(horizontal: 5),
+                                                        .symmetric(
+                                                        horizontal: 5),
                                                     decoration: BoxDecoration(),
                                                     height:
-                                                        mediaquery.size.height *
+                                                        mediaQuery.size.height *
                                                             0.13,
-                                                    width: mediaquery.size.width *
-                                                        0.22,
+                                                    width:
+                                                        mediaQuery.size.width *
+                                                            0.22,
                                                     child: ClipRRect(
                                                         borderRadius:
-                                                            BorderRadius.circular(
-                                                                5),
+                                                            BorderRadius
+                                                                .circular(5),
                                                         child: Image.network(
                                                           state
                                                               .cartList
@@ -223,28 +231,42 @@ class _CartState extends State<Cart> {
                                                         )),
                                                   ),
                                                   SizedBox(
-                                                    width: mediaquery.size.width *
-                                                        0.015,
+                                                    width:
+                                                        mediaQuery.size.width *
+                                                            0.015,
                                                   ),
                                                   Expanded(
                                                     child: Column(
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment.start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: <Widget>[
-
                                                         Text(
                                                           ('${state.cartList.cartDetail.cartDetailData[index].productData.productName}' +
-                                                              (state.cartList.cartDetail.cartDetailData[index].productData.productName.length > 20 ? '...' : '')),
-                                                          overflow: TextOverflow.ellipsis,
+                                                              (state
+                                                                          .cartList
+                                                                          .cartDetail
+                                                                          .cartDetailData[
+                                                                              index]
+                                                                          .productData
+                                                                          .productName
+                                                                          .length >
+                                                                      20
+                                                                  ? '...'
+                                                                  : '')),
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
                                                           style: TextStyle(
-                                                            fontWeight: FontWeight.w500,
+                                                            fontWeight:
+                                                                FontWeight.w500,
                                                           ),
                                                         ),
                                                         Text(
                                                           state
                                                               .cartList
                                                               .cartDetail
-                                                              .cartDetailData[index]
+                                                              .cartDetailData[
+                                                                  index]
                                                               .productData
                                                               .brandName,
                                                           style: TextStyle(
@@ -252,25 +274,27 @@ class _CartState extends State<Cart> {
                                                           ),
                                                         ),
                                                         SizedBox(
-                                                            height: mediaquery
-                                                                    .size.height *
+                                                            height: mediaQuery
+                                                                    .size
+                                                                    .height *
                                                                 0.008),
                                                         Row(
                                                           children: [
                                                             Icon(
-                                                              Icons.currency_rupee,
+                                                              Icons
+                                                                  .currency_rupee,
                                                               size: 15,
-                                                              color: Colors.blue,
+                                                              color:
+                                                                  Colors.blue,
                                                             ),
                                                             Text(
                                                               "${int.parse(state.cartList.cartDetail.cartDetailData[index].productData.discountPrice) * increment}",
-                                                              style:
-                                                                  const TextStyle(
-                                                                      color: Colors
-                                                                          .blue),
+                                                              style: const TextStyle(
+                                                                  color: Colors
+                                                                      .blue),
                                                             ),
                                                             SizedBox(
-                                                                width: mediaquery
+                                                                width: mediaQuery
                                                                         .size
                                                                         .width *
                                                                     0.02),
@@ -279,14 +303,15 @@ class _CartState extends State<Cart> {
                                                                   ? ""
                                                                   : "₹${int.parse(state.cartList.cartDetail.cartDetailData[index].productData.price) * increment}",
                                                               style: const TextStyle(
-                                                                  color: Colors.red,
+                                                                  color: Colors
+                                                                      .red,
                                                                   fontSize: 12,
                                                                   decoration:
                                                                       TextDecoration
                                                                           .lineThrough),
                                                             ),
                                                             SizedBox(
-                                                                width: mediaquery
+                                                                width: mediaQuery
                                                                         .size
                                                                         .width *
                                                                     0.02),
@@ -294,31 +319,32 @@ class _CartState extends State<Cart> {
                                                               discount == '0'
                                                                   ? ""
                                                                   : ("${state.cartList.cartDetail.cartDetailData[index].productData.discount}% off"),
-                                                              style:
-                                                                  const TextStyle(
-                                                                      color: Colors
-                                                                          .green,
-                                                                      fontSize: 13),
+                                                              style: const TextStyle(
+                                                                  color: Colors
+                                                                      .green,
+                                                                  fontSize: 13),
                                                             ),
                                                           ],
                                                         ),
                                                         SizedBox(
-                                                          height: mediaquery
+                                                          height: mediaQuery
                                                                   .size.height *
                                                               0.009,
                                                         ),
                                                         Container(
-                                                          width: mediaquery
+                                                          width: mediaQuery
                                                                   .size.width *
                                                               0.2,
-                                                          height: mediaquery
+                                                          height: mediaQuery
                                                                   .size.height *
                                                               0.05,
-                                                          decoration: BoxDecoration(
+                                                          decoration:
+                                                              BoxDecoration(
                                                             color: Colors.blue,
                                                             borderRadius:
                                                                 BorderRadius
-                                                                    .circular(8),
+                                                                    .circular(
+                                                                        8),
                                                           ),
                                                           child: Row(
                                                             mainAxisAlignment:
@@ -327,19 +353,18 @@ class _CartState extends State<Cart> {
                                                             children: [
                                                               InkWell(
                                                                   onTap: () {
-                                                                    setState(() {
-                                                                      BlocProvider.of<
-                                                                                  CartBloc>(
+                                                                    setState(
+                                                                        () {
+                                                                      BlocProvider.of<CartBloc>(
                                                                               context)
                                                                           .add(
                                                                               FetchCartEvent());
                                                                     });
-                                                    
+
                                                                     if (state
                                                                             .cartList
                                                                             .cartDetail
-                                                                            .cartDetailData[
-                                                                                index]
+                                                                            .cartDetailData[index]
                                                                             .qty ==
                                                                         '1') {
                                                                       showModalBottomSheet(
@@ -348,23 +373,11 @@ class _CartState extends State<Cart> {
                                                                         builder:
                                                                             (context) {
                                                                           return CartBottomSheet(
-                                                                            id: state
-                                                                                .cartList
-                                                                                .cartDetail
-                                                                                .cartDetailData[index]
-                                                                                .productId,
-                                                                            name: state
-                                                                                .cartList
-                                                                                .cartDetail
-                                                                                .cartDetailData[index]
-                                                                                .productData
-                                                                                .productName,
-                                                                            image: state
-                                                                                .cartList
-                                                                                .cartDetail
-                                                                                .cartDetailData[index]
-                                                                                .productData
-                                                                                .productImage,
+                                                                            id: state.cartList.cartDetail.cartDetailData[index].productId,
+                                                                            name:
+                                                                                state.cartList.cartDetail.cartDetailData[index].productData.productName,
+                                                                            image:
+                                                                                state.cartList.cartDetail.cartDetailData[index].productData.productImage,
                                                                           );
                                                                         },
                                                                       );
@@ -376,31 +389,23 @@ class _CartState extends State<Cart> {
                                                                               index]
                                                                           .qty);
                                                                       quntity--;
-                                                                      BlocProvider.of<
-                                                                                  AddToCartBloc>(
+                                                                      BlocProvider.of<AddToCartBloc>(
                                                                               context)
                                                                           .add(
                                                                         FetchAddToCartEvent(
                                                                           productId: state
                                                                               .cartList
                                                                               .cartDetail
-                                                                              .cartDetailData[
-                                                                                  index]
+                                                                              .cartDetailData[index]
                                                                               .productId,
                                                                           quantity:
-                                                                              quntity
-                                                                                  .toString(),
+                                                                              quntity.toString(),
                                                                         ),
                                                                       );
                                                                     }
                                                                   },
                                                                   child: Icon(
-                                                                    state
-                                                                                .cartList
-                                                                                .cartDetail
-                                                                                .cartDetailData[
-                                                                                    index]
-                                                                                .qty ==
+                                                                    state.cartList.cartDetail.cartDetailData[index].qty ==
                                                                             '1'
                                                                         ? Icons
                                                                             .delete_outline
@@ -411,11 +416,11 @@ class _CartState extends State<Cart> {
                                                                         .white,
                                                                   )),
                                                               Container(
-                                                                height: mediaquery
+                                                                height: mediaQuery
                                                                         .size
                                                                         .height *
                                                                     0.033,
-                                                                width: mediaquery
+                                                                width: mediaQuery
                                                                         .size
                                                                         .width *
                                                                     0.05,
@@ -423,16 +428,14 @@ class _CartState extends State<Cart> {
                                                                     color: Colors
                                                                         .white,
                                                                     borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                2)),
+                                                                        BorderRadius.circular(
+                                                                            2)),
                                                                 child: Center(
                                                                   child: Text(
                                                                     int.parse(state
                                                                             .cartList
                                                                             .cartDetail
-                                                                            .cartDetailData[
-                                                                                index]
+                                                                            .cartDetailData[index]
                                                                             .qty)
                                                                         .toString(),
                                                                     style: TextStyle(
@@ -444,20 +447,18 @@ class _CartState extends State<Cart> {
                                                               InkWell(
                                                                 onTap: () {
                                                                   setState(() {
-                                                                    BlocProvider.of<
-                                                                                CartBloc>(
+                                                                    BlocProvider.of<CartBloc>(
                                                                             context)
                                                                         .add(
                                                                             FetchCartEvent());
                                                                   });
-                                                    
-                                                                  int quentity = int
-                                                                      .parse(state
-                                                                          .cartList
-                                                                          .cartDetail
-                                                                          .cartDetailData[
-                                                                              index]
-                                                                          .qty);
+
+                                                                  int quentity = int.parse(state
+                                                                      .cartList
+                                                                      .cartDetail
+                                                                      .cartDetailData[
+                                                                          index]
+                                                                      .qty);
                                                                   quentity++;
                                                                   BlocProvider.of<
                                                                               AddToCartBloc>(
@@ -470,15 +471,16 @@ class _CartState extends State<Cart> {
                                                                           .cartDetailData[
                                                                               index]
                                                                           .productId,
-                                                                      quantity: quentity
-                                                                          .toString(),
+                                                                      quantity:
+                                                                          quentity
+                                                                              .toString(),
                                                                     ),
                                                                   );
                                                                 },
                                                                 child: Icon(
                                                                   Icons.add,
-                                                                  color:
-                                                                      Colors.white,
+                                                                  color: Colors
+                                                                      .white,
                                                                   size: 25,
                                                                 ),
                                                               )
@@ -553,8 +555,8 @@ class _CartState extends State<Cart> {
                     Padding(
                       padding: const EdgeInsets.only(left: 10, right: 5),
                       child: Container(
-                        height: mediaquery.size.height * 0.13,
-                        width: mediaquery.size.width * 0.92,
+                        height: mediaQuery.size.height * 0.13,
+                        width: mediaQuery.size.width * 0.92,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(15)),
@@ -564,8 +566,8 @@ class _CartState extends State<Cart> {
                               width: 18,
                             ),
                             Container(
-                              height: mediaquery.size.height * 0.065,
-                              width: mediaquery.size.width * 0.58,
+                              height: mediaQuery.size.height * 0.065,
+                              width: mediaQuery.size.width * 0.58,
                               decoration: BoxDecoration(
                                   color: Colors.black12,
                                   borderRadius: BorderRadius.circular(10)),
@@ -583,8 +585,8 @@ class _CartState extends State<Cart> {
                               width: 10,
                             ),
                             Container(
-                              height: mediaquery.size.height * 0.065,
-                              width: mediaquery.size.width * 0.21,
+                              height: mediaQuery.size.height * 0.065,
+                              width: mediaQuery.size.width * 0.21,
                               child: const Center(
                                   child: Text(
                                 "Apply",
@@ -619,8 +621,8 @@ class _CartState extends State<Cart> {
                       padding:
                           const EdgeInsets.only(left: 10, right: 5, bottom: 10),
                       child: Container(
-                        width: mediaquery.size.width * 0.92,
-                        height: mediaquery.size.width * 0.52,
+                        width: mediaQuery.size.width * 0.92,
+                        height: mediaQuery.size.width * 0.52,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10)),
@@ -732,7 +734,6 @@ class _CartState extends State<Cart> {
                                         size: 14,
                                       ),
                                       Text(
-                                        // widget.rupees
                                         state.cartList.cartDetail.cartSummary
                                             .orderTotal
                                             .toString(),
@@ -781,8 +782,8 @@ class _CartState extends State<Cart> {
                           ));
                     },
                     child: Container(
-                        height: mediaquery.size.height * 0.075,
-                        width: mediaquery.size.width * 0.5,
+                        height: mediaQuery.size.height * 0.075,
+                        width: mediaQuery.size.width * 0.5,
                         decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
@@ -794,27 +795,54 @@ class _CartState extends State<Cart> {
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15)))),
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Checkoutscreen(),
-                          ));
-                    },
-                    child: Container(
-                        height: mediaquery.size.height * 0.075,
-                        width: mediaquery.size.width * 0.5,
-                        decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.only(
-                                bottomRight: Radius.circular(10))),
-                        child: const Center(
-                            child: Text("Checkout",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15)))),
+                  SizedBox(
+                    height: mediaQuery.size.height * 0.075,
+                    width: mediaQuery.size.width * 0.5,
+                    child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      controller: controller,
+                      itemCount:
+                          state.cartList.cartDetail.cartDetailData.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CheckoutScreen(
+                                    totalMrp: state.cartList.cartDetail
+                                        .cartSummary.subTotal
+                                        .toString(),
+                                    coupon: state.cartList.cartDetail
+                                        .cartSummary.couponDiscount
+                                        .toString(),
+                                    discountMrp: state.cartList.cartDetail
+                                        .cartSummary.discountTotal
+                                        .toString(),
+                                    orderTotal: state.cartList.cartDetail
+                                        .cartSummary.orderTotal
+                                        .toString(),
+                                  ),
+                                ));
+                          },
+                          child: Container(
+                              height: mediaQuery.size.height * 0.075,
+                              width: mediaQuery.size.width * 0.5,
+                              decoration: const BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.only(
+                                      bottomRight: Radius.circular(10))),
+                              child: const Center(
+                                  child: Text("Checkout",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15)))),
+                        );
+                      },
+                    ),
                   ),
                 ],
               );
@@ -822,7 +850,7 @@ class _CartState extends State<Cart> {
               return SizedBox();
             }
           } else if (state is CartErrorState) {
-            return Text("No Data");
+            return Text("No Data Found");
           }
           return Container();
         },

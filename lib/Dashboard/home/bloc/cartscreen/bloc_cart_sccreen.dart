@@ -42,7 +42,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   fetchDataFromApi() async {
     CartListModel model;
     Map data = {
-      'user_id': '3',
+      'user_id': '610',
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}cartList";
     final Uri url = Uri.parse(apiUrl);

@@ -1,4 +1,3 @@
-
 class ProductDetailListModel {
   final int status;
   final ProductDetailModelData productDetailModelData;
@@ -9,33 +8,30 @@ class ProductDetailListModel {
   final bool hasPreviousPage;
   final String message;
 
-  ProductDetailListModel.fromJsonMap(Map<String, dynamic>map)
+  ProductDetailListModel.fromJsonMap(Map<String, dynamic> map)
       : status = map['status'],
-        productDetailModelData = ProductDetailModelData.fromJsonMap(
-            map['data']),
+        productDetailModelData =
+            ProductDetailModelData.fromJsonMap(map['data']),
         totalPages = map['totalPages'],
         totalCount = map['totalCount'],
         pageNumber = map['pageNumber'],
         hasNextPage = map['hasNextPage'],
         hasPreviousPage = map['hasPreviousPage'],
         message = map['message'];
-
 }
 
 class ProductDetailModelData {
-
   final ProductListData productListData;
-  List<ProductTopSelling>productTopSellings;
+  List<ProductTopSelling> productTopSellings;
 
-  ProductDetailModelData.fromJsonMap(Map<String, dynamic>map)
+  ProductDetailModelData.fromJsonMap(Map<String, dynamic> map)
       : productListData = ProductListData.fromJsonMap(map['productData']),
         productTopSellings = List<ProductTopSelling>.from(
-          map['topSellingProductList'].map((x) =>
-              ProductTopSelling.fromJsonMap(x),),);
-
-
+          map['topSellingProductList'].map(
+            (x) => ProductTopSelling.fromJsonMap(x),
+          ),
+        );
 }
-
 
 class ProductListData {
   final int id;
@@ -57,8 +53,8 @@ class ProductListData {
   final String createdAt;
   final String updatedAt;
   final String deletedAt;
-   String isCart;
-   String isFavorite;
+  String isCart;
+  String isFavorite;
   final int wishlistId;
   final String brandName;
   final String schoolName;
@@ -67,8 +63,8 @@ class ProductListData {
   final String standardName;
   final List<ProductImage> productImages;
 
-  ProductListData.fromJsonMap(Map<String, dynamic>map)
-      :id = map['id'],
+  ProductListData.fromJsonMap(Map<String, dynamic> map)
+      : id = map['id'],
         productName = map['product_name'],
         superCatId = map['super_cat_id'],
         superSubCatId = map['super_sub_cat_id'],
@@ -107,8 +103,8 @@ class ProductImage {
   final String updatedAt;
   final String deletedAt;
 
-  ProductImage.fromJsonMap(Map<String, dynamic>map)
-      :id = map['id'],
+  ProductImage.fromJsonMap(Map<String, dynamic> map)
+      : id = map['id'],
         productId = map['product_id'],
         productImage = map['product_image'],
         createdAt = map['created_at'],
@@ -117,7 +113,6 @@ class ProductImage {
 }
 
 class ProductTopSelling {
-
   final int id;
   final String productName;
   final String superCatId;
@@ -137,13 +132,13 @@ class ProductTopSelling {
   final String createdAt;
   final String updatedAt;
   final String deletedAt;
-   String isCart;
+  String isCart;
   final String isFavorite;
   final String brandName;
 
-  ProductTopSelling.fromJsonMap(Map<String, dynamic>map)
+  ProductTopSelling.fromJsonMap(Map<String, dynamic> map)
       : id = map['id'],
-        productName= map['product_name'],
+        productName = map['product_name'],
         superCatId = map['super_cat_id'],
         superSubCatId = map['super_sub_cat_id'],
         categoryId = map['category_id'],

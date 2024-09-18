@@ -35,7 +35,7 @@ class BrandWiseBloc extends Bloc<BrandWiseEvent, BrandWiseState> {
 
     Map data = {
       'brand_id': brandId,
-      'user_id': '3',
+      'user_id': '610',
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}brandWiseProduct";
     final Uri url = Uri.parse(apiUrl);

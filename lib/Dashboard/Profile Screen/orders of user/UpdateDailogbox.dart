@@ -1,38 +1,116 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:smailo/Dashboard/Profile%20Screen/bloc/address_of_users/edit_address/bloc_edit_address.dart';
+import 'package:smailo/Dashboard/Profile%20Screen/bloc/address_of_users/edit_address/event_edit_address.dart';
 
-class Upadatedailogbpox extends StatefulWidget {
+class UpdateDailogBox extends StatefulWidget {
+  final String addressId;
+  final String address;
+  final String country;
+  final String states;
+  final String city;
+  final String pinCode;
+  final String isDefault;
+  final String mobileNo;
 
-
-
-
-  const Upadatedailogbpox({super.key,  });
+  const UpdateDailogBox(
+      {super.key,
+      required this.addressId,
+      required this.address,
+      required this.country,
+      required this.states,
+      required this.city,
+      required this.pinCode,
+      required this.isDefault,
+      required this.mobileNo});
 
   @override
-  State<Upadatedailogbpox> createState() => _UpadatedailogbpoxState();
+  State<UpdateDailogBox> createState() => _UpdateDailogBoxState();
 }
 
-class _UpadatedailogbpoxState extends State<Upadatedailogbpox> {
-  final _formKey = GlobalKey<FormState>();
-  ScrollController scrollController = ScrollController();
-  TextEditingController address = TextEditingController();
-  TextEditingController country = TextEditingController();
-  TextEditingController state = TextEditingController();
-  TextEditingController city = TextEditingController();
-  TextEditingController phone = TextEditingController();
-  TextEditingController postalcode = TextEditingController();
-  ScrollController controller = ScrollController();
- 
-    // Close the dialog or perform other actions if needed
+class _UpdateDailogBoxState extends State<UpdateDailogBox> {
   @override
   Widget build(BuildContext context) {
-    var mediaquery = MediaQuery.of(context);
+    return BlocProvider<EditAddressBloc>(
+      create: (context) => EditAddressBloc(),
+      child: UpdateDailogBoxPage(
+        addressId: widget.addressId,
+        address: widget.address,
+        country: widget.country,
+        states: widget.states,
+        city: widget.city,
+        pinCode: widget.pinCode,
+        isDefault: widget.isDefault,
+        mobileNo: widget.mobileNo,
+      ),
+    );
+  }
+}
+
+class UpdateDailogBoxPage extends StatefulWidget {
+  final String addressId;
+  final String address;
+  final String country;
+  final String states;
+  final String city;
+  final String pinCode;
+  final String isDefault;
+  final String mobileNo;
+
+  const UpdateDailogBoxPage({
+    super.key,
+    required this.addressId,
+    required this.address,
+    required this.country,
+    required this.states,
+    required this.city,
+    required this.pinCode,
+    required this.isDefault,
+    required this.mobileNo,
+  });
+
+  @override
+  State<UpdateDailogBoxPage> createState() => _UpdateDailogBoxPageState();
+}
+
+class _UpdateDailogBoxPageState extends State<UpdateDailogBoxPage> {
+  final _formKey = GlobalKey<FormState>();
+  ScrollController scrollController = ScrollController();
+  late TextEditingController address ;
+  late TextEditingController country;
+  late TextEditingController state ;
+  late TextEditingController city ;
+  late  TextEditingController phone ;
+  late TextEditingController postalcode ;
+  late TextEditingController isDefault ;
+
+  late ScrollController controller ;
+
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    address = TextEditingController(text: widget.address);
+    country = TextEditingController(text: widget.country);
+    state =TextEditingController(text: widget.states);
+    city = TextEditingController(text: widget.city);
+    phone = TextEditingController(text: widget.mobileNo);
+    postalcode = TextEditingController(text: widget.pinCode);
+    isDefault = TextEditingController(text: widget.isDefault);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var mediaQuery = MediaQuery.of(context);
     return SingleChildScrollView(
       child: AlertDialog(
         // buttonPadding: EdgeInsets.all(10),
         insetPadding: EdgeInsets.all(20),
-        actionsPadding: EdgeInsets.symmetric(horizontal: 25,vertical: 10),
+        actionsPadding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5),
@@ -50,10 +128,10 @@ class _UpadatedailogbpoxState extends State<Upadatedailogbpox> {
                 Text("Adreess*",
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold)),
-                SizedBox(height: mediaquery.size.height * 0.013),
+                SizedBox(height: mediaQuery.size.height * 0.013),
                 Container(
-                  height: mediaquery.size.height * 0.06,
-                  width: mediaquery.size.width * 0.9,
+                  height: mediaQuery.size.height * 0.06,
+                  width: mediaQuery.size.width * 0.9,
                   decoration: BoxDecoration(
                       color: Colors.black12,
                       borderRadius: BorderRadius.circular(5)),
@@ -74,10 +152,10 @@ class _UpadatedailogbpoxState extends State<Upadatedailogbpox> {
                 Text("Country*",
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold)),
-                SizedBox(height: mediaquery.size.height * 0.013),
+                SizedBox(height: mediaQuery.size.height * 0.013),
                 Container(
-                  height: mediaquery.size.height * 0.06,
-                  width: mediaquery.size.width * 0.9,
+                  height: mediaQuery.size.height * 0.06,
+                  width: mediaQuery.size.width * 0.9,
                   decoration: BoxDecoration(
                       color: Colors.black12,
                       borderRadius: BorderRadius.circular(5)),
@@ -98,10 +176,10 @@ class _UpadatedailogbpoxState extends State<Upadatedailogbpox> {
                 Text("State*",
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold)),
-                SizedBox(height: mediaquery.size.height * 0.013),
+                SizedBox(height: mediaQuery.size.height * 0.013),
                 Container(
-                  height: mediaquery.size.height * 0.06,
-                  width: mediaquery.size.width * 0.9,
+                  height: mediaQuery.size.height * 0.06,
+                  width: mediaQuery.size.width * 0.9,
                   decoration: BoxDecoration(
                       color: Colors.black12,
                       borderRadius: BorderRadius.circular(5)),
@@ -122,10 +200,10 @@ class _UpadatedailogbpoxState extends State<Upadatedailogbpox> {
                 Text("City*",
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold)),
-                SizedBox(height: mediaquery.size.height * 0.013),
+                SizedBox(height: mediaQuery.size.height * 0.013),
                 Container(
-                  height: mediaquery.size.height * 0.06,
-                  width: mediaquery.size.width * 0.9,
+                  height: mediaQuery.size.height * 0.06,
+                  width: mediaQuery.size.width * 0.9,
                   decoration: BoxDecoration(
                       color: Colors.black12,
                       borderRadius: BorderRadius.circular(5)),
@@ -146,10 +224,10 @@ class _UpadatedailogbpoxState extends State<Upadatedailogbpox> {
                 Text("Postal Code*",
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold)),
-                SizedBox(height: mediaquery.size.height * 0.013),
+                SizedBox(height: mediaQuery.size.height * 0.013),
                 Container(
-                  height: mediaquery.size.height * 0.06,
-                  width: mediaquery.size.width * 0.9,
+                  height: mediaQuery.size.height * 0.06,
+                  width: mediaQuery.size.width * 0.9,
                   decoration: BoxDecoration(
                       color: Colors.black12,
                       borderRadius: BorderRadius.circular(3)),
@@ -165,14 +243,14 @@ class _UpadatedailogbpoxState extends State<Upadatedailogbpox> {
                         hintStyle: TextStyle(color: Colors.black26)),
                   ),
                 ),
-                SizedBox(height: mediaquery.size.height * 0.013),
+                SizedBox(height: mediaQuery.size.height * 0.013),
                 Text("Phone*",
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold)),
-                SizedBox(height: mediaquery.size.height * 0.013),
+                SizedBox(height: mediaQuery.size.height * 0.013),
                 Container(
-                  height: mediaquery.size.height * 0.06,
-                  width: mediaquery.size.width * 0.9,
+                  height: mediaQuery.size.height * 0.06,
+                  width: mediaQuery.size.width * 0.9,
                   decoration: BoxDecoration(
                       color: Colors.black12,
                       borderRadius: BorderRadius.circular(3)),
@@ -189,7 +267,7 @@ class _UpadatedailogbpoxState extends State<Upadatedailogbpox> {
                   ),
                 ),
                 SizedBox(
-                  height: mediaquery.size.height * 0.03,
+                  height: mediaQuery.size.height * 0.03,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -218,7 +296,7 @@ class _UpadatedailogbpoxState extends State<Upadatedailogbpox> {
                       )),
                     ),
                     SizedBox(
-                      width: mediaquery.size.width * 0.03,
+                      width: mediaQuery.size.width * 0.03,
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -235,36 +313,46 @@ class _UpadatedailogbpoxState extends State<Upadatedailogbpox> {
                         ),
                       ),
                       onPressed: () {
-
-                        setState(() {
-                          if (address.text.isEmpty ||
-                              country.text.isEmpty ||
-                              state.text.isEmpty ||
-                              city.text.isEmpty ||
-                              postalcode.text.isEmpty ||
-                              phone.text.isEmpty) {
-                            Fluttertoast.showToast(
-                              msg: "Please enter all field ",
-                              // gravity: ToastGravity.BOTTOM,
-                              fontSize: 15,
-                              backgroundColor: Colors.black26,
-                              textColor: Colors.white,
-                              toastLength: Toast.LENGTH_LONG,
-                            );
-
-                          } else {
-                            Exception("not null");
-                            Fluttertoast.showToast(
-                              msg: "Address Update Successfully..! ",
-                              // gravity: ToastGravity.BOTTOM,
-                              fontSize: 15,
-                              backgroundColor: Colors.black26,
-                              textColor: Colors.white,
-                              toastLength: Toast.LENGTH_LONG,
-                            );
-                            Navigator.of(context).pop(address.text);
-                         }
-                        });
+                        Navigator.of(context).pop(address.text);
+                        BlocProvider.of<EditAddressBloc>(context).add(
+                          FetchEditAddressEvent(
+                            addressId: widget.addressId,
+                            address: address.text,
+                            country: country.text,
+                            states: state.text,
+                            city: city.text,
+                            pinCode:postalcode.text,
+                            isDefault:isDefault.text,
+                            mobileNo: phone.text,),
+                        );
+                        // setState(() {
+                        //   if (address.text.isEmpty ||
+                        //       country.text.isEmpty ||
+                        //       state.text.isEmpty ||
+                        //       city.text.isEmpty ||
+                        //       postalcode.text.isEmpty ||
+                        //       phone.text.isEmpty) {
+                        //     Fluttertoast.showToast(
+                        //       msg: "Please enter all field ",
+                        //       // gravity: ToastGravity.BOTTOM,
+                        //       fontSize: 15,
+                        //       backgroundColor: Colors.black26,
+                        //       textColor: Colors.white,
+                        //       toastLength: Toast.LENGTH_LONG,
+                        //     );
+                        //   } else {
+                        //     Exception("not null");
+                        //     Fluttertoast.showToast(
+                        //       msg: "Address Update Successfully..! ",
+                        //       // gravity: ToastGravity.BOTTOM,
+                        //       fontSize: 15,
+                        //       backgroundColor: Colors.black26,
+                        //       textColor: Colors.white,
+                        //       toastLength: Toast.LENGTH_LONG,
+                        //     );
+                        //     Navigator.of(context).pop(_controller.text);
+                        //   }
+                        // });
                       },
                       child: Center(
                           child: Text(
@@ -281,4 +369,5 @@ class _UpadatedailogbpoxState extends State<Upadatedailogbpox> {
       ),
     );
   }
+
 }

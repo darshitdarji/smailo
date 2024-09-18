@@ -35,7 +35,7 @@ class OfferBloc extends Bloc<OfferEvent, OfferState> {
   fetchDataFromApi() async {
     OfferListModel model;
     Map data = {
-      'user_id': '3',
+      'user_id': '610',
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}offerList";
     final Uri url = Uri.parse(apiUrl);

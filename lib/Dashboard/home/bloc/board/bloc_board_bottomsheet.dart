@@ -19,7 +19,6 @@ class BoardBLoc extends Bloc<BoardEvent, BoardState> {
 
           emit(BoardLoadedState(boardList: model));
         } else {
-
           emit(BoardErrorState(
               error: 'An error occurred while fetching data from API'));
         }

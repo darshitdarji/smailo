@@ -12,7 +12,7 @@ import 'package:smailo/Dashboard/home/bloc/serach_screen/bloc_search_screen.dart
 import 'package:smailo/Dashboard/home/bloc/serach_screen/event_search_screen.dart';
 import 'package:smailo/Dashboard/home/bloc/serach_screen/state_search_screen.dart';
 
-import '../Profile Screen/Cart.dart';
+import 'Cart.dart';
 import 'Favourite Screen.dart';
 
 class SearchScreeen extends StatefulWidget {

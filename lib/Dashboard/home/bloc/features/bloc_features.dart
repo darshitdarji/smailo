@@ -27,7 +27,7 @@ class FeaturesBloc extends Bloc<FeaturesEvent, FeaturesState> {
 
   FeatchDataFromApi() async {
     FeaturesListModal model;
-    Map data = {'user_id': '3'};
+    Map data = {'user_id': '610'};
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}features";
     final Uri url = Uri.parse(apiUrl);
     final response = await http.post(url, body: data);

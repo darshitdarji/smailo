@@ -35,7 +35,7 @@ class _SchoolState extends State<School> {
   final List<String> Standard = [
     '1',
     '2',
-    '3',
+    '610',
     '4',
     '5',
     '6',
@@ -142,30 +142,6 @@ class _SchoolState extends State<School> {
                             ],
                           ),
                         );
-                        //   Padding(
-                        //   padding: EdgeInsets.all(5),
-                        //   child: Container(
-                        //     height: 40,
-                        //     width: 350,
-                        //     decoration: BoxDecoration(
-                        //         boxShadow: [
-                        //           BoxShadow(
-                        //             color: Colors.black12,
-                        //             offset: Offset(
-                        //               1,
-                        //               4,
-                        //             ),
-                        //             blurRadius: 5,
-                        //             spreadRadius: 0.5,
-                        //           ), //BoxShadow
-                        //         ],
-                        //         borderRadius: BorderRadius.circular(5), color: Colors.white),
-                        //     child: Padding(
-                        //       padding: const EdgeInsets.only(left: 10, top: 10),
-                        //       child: Text(Standard[index]),
-                        //     ),
-                        //   ),
-                        // );
                       },
                     ),
                   ],

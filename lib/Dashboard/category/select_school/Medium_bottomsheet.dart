@@ -39,14 +39,13 @@ class Medium extends StatefulWidget {
 
 class _MediumState extends State<Medium> {
   ScrollController controller = ScrollController();
-  final List<String> Selectmedium = ["GUJARATI", "ENGLISH", "HINDI"];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     BlocProvider.of<MediumBloc>(context).add(
-      FetchMedium(
+      FetchMediumEvent(
         boardId: widget.boardId,
       ),
     );

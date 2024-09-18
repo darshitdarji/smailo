@@ -21,7 +21,6 @@ class StandardBloc extends Bloc<StandardEvent, StandardState> {
           );
         }
       } catch (error) {
-
         emit(StandardErrorState(error: 'An Error Occurred'));
       }
     });

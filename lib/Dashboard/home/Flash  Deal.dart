@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smailo/Dashboard/Profile%20Screen/Cart.dart';
+import 'package:smailo/Dashboard/home/Cart.dart';
 import 'package:smailo/Dashboard/home/Favourite%20Screen.dart';
 import 'package:smailo/Dashboard/home/bloc/add_to_cart/bloc_add_to_cart.dart';
 import 'package:smailo/Dashboard/home/bloc/add_to_cart/event_add_to_cart.dart';
