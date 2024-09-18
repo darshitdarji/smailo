@@ -1,0 +1,25 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "smailo-a832b",
+          "appId": "1:1006895620015:android:2367792f24da7326a7195a",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "smailo-a832b",
+          "configurations": {
+            "android": "1:1006895620015:android:2367792f24da7326a7195a",
+            "ios": "1:1006895620015:ios:a2a9f72ca0f9dbf3a7195a",
+            "macos": "1:1006895620015:ios:a2a9f72ca0f9dbf3a7195a",
+            "web": "1:1006895620015:web:76ba6ae92ec27aeca7195a",
+            "windows": "1:1006895620015:web:243cf3e805afcfaea7195a"
+          }
+        }
+      }
+    }
+  }
+}

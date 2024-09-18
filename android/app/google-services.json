@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1006895620015",
+    "project_id": "smailo-a832b",
+    "storage_bucket": "smailo-a832b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006895620015:android:2367792f24da7326a7195a",
+        "android_client_info": {
+          "package_name": "com.example.smailo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC72SSuvk55O6mTjHKKXZkZIMWYzubO9Z4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
