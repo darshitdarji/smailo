@@ -401,7 +401,7 @@ import '../Pageview Builder/Pageview builder.dart';
                                     // mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       const SizedBox(
-                                        width: 25,
+                                        width: 30,
                                       ),
                                       InkWell(
                                         onTap: () {

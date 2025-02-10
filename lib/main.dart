@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:smailo/Dashboard/Dashboard.dart';
+import 'Authantication/Splace Screen.dart';
 import 'notification/firebase_options.dart';
 import 'notification/firebse.dart';
 
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: false,
       ),
-      home: Dashboard(),
+      home: SplashScreen(),
     );
   }
 }

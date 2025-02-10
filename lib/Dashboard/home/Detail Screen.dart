@@ -345,13 +345,13 @@ class _DetailpageState extends State<Detailpage> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               offset: Offset(
@@ -373,7 +373,7 @@ class _DetailpageState extends State<Detailpage> {
                               state.productList.productDetailModelData
                                   .productListData.productName,
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
                               ),
@@ -381,7 +381,7 @@ class _DetailpageState extends State<Detailpage> {
                             Text(
                               state.productList.productDetailModelData
                                   .productListData.brandName,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.black45, fontSize: 14),
                             ),
                             SizedBox(
@@ -389,7 +389,7 @@ class _DetailpageState extends State<Detailpage> {
                             ),
                             Row(
                               children: [
-                                Icon(Icons.currency_rupee,
+                                const Icon(Icons.currency_rupee,
                                     color: Colors.blue, size: 16),
                                 Text(
                                   state.productList.productDetailModelData
@@ -624,7 +624,7 @@ class _DetailpageState extends State<Detailpage> {
                                           .productListData.description,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 10,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 14,
                               ),
@@ -647,14 +647,14 @@ class _DetailpageState extends State<Detailpage> {
                                 textAlign: TextAlign.center,
                                 maxLines: isReadMore ? 10 : 2,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 13,
                                   color: Colors.blue,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             Container(
@@ -696,7 +696,7 @@ class _DetailpageState extends State<Detailpage> {
                                             borderRadius:
                                                 BorderRadius.circular(30),
                                           ),
-                                          child: Center(
+                                          child: const Center(
                                               child: Icon(
                                             Icons.remove,
                                             size: 15,
@@ -734,7 +734,7 @@ class _DetailpageState extends State<Detailpage> {
                                               30,
                                             ),
                                           ),
-                                          child: Center(
+                                          child: const Center(
                                             child: Icon(
                                               Icons.add,
                                               size: 15,
@@ -754,8 +754,8 @@ class _DetailpageState extends State<Detailpage> {
                   SizedBox(
                     height: 10,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
+                  const Padding(
+                    padding: EdgeInsets.symmetric(
                         horizontal: 10, vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -793,7 +793,7 @@ class _DetailpageState extends State<Detailpage> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(30),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               offset: Offset(
@@ -949,7 +949,7 @@ class _DetailpageState extends State<Detailpage> {
                                                               .productTopSellings[
                                                                   index]
                                                               .discountPrice,
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                         fontSize: 16,
                                                         color: Colors.blue,
                                                         fontWeight:
@@ -970,7 +970,7 @@ class _DetailpageState extends State<Detailpage> {
                                                               .productTopSellings[
                                                                   index]
                                                               .price,
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                         decoration:
                                                             TextDecoration
                                                                 .lineThrough,

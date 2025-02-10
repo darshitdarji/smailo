@@ -322,7 +322,8 @@ class _HomePageState extends State<HomePage> {
                       suffixIcon: Icon(
                         Icons.search_sharp,
                         color: Colors.black26,
-                      )),
+                      ),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -355,7 +356,7 @@ class _HomePageState extends State<HomePage> {
                                 Radius.circular(
                                   10,
                                 ),
-                              ), // shape: BoxShape.circle,
+                              ),
                             ),
                           ),
                           options: CarouselOptions(
@@ -429,7 +430,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Text(
                             "Today's Deal",
-                          )
+                          ),
                         ],
                       ),
                       decoration: BoxDecoration(
@@ -563,7 +564,9 @@ class _HomePageState extends State<HomePage> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     "Featured categories",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -571,7 +574,7 @@ class _HomePageState extends State<HomePage> {
                 height: 15,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.only(left: 20, right: 20,),
                 child: GridView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
@@ -601,13 +604,14 @@ class _HomePageState extends State<HomePage> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => const FeaturesScreen(),
-                              ));
+                              ),);
                         } else if (openType == 'product') {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => ProductScreen(),
-                              ));
+                              ),
+                          );
                         } else if (openType == 'brand') {
                           showModalBottomSheet(
                             showDragHandle: true,
@@ -633,7 +637,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               blurRadius: 2,
                               spreadRadius: 1,
-                            ), //BoxShadow
+                            ),
                           ],
                         ),
                         child: Padding(

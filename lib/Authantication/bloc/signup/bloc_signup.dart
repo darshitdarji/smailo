@@ -11,7 +11,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   SignUpBloc() : super(SignUpInitialState()) {
     on<FetchSignUpEvent>((event, emit) async {
       emit(SignUpLoadingState());
-       SignUpListModel model = await fetchDataFromApi(
+      SignUpListModel model = await fetchDataFromApi(
         name: event.name,
         conformPassword: event.conformPassword,
         email: event.email,
@@ -27,7 +27,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
             SignUpLoadedState(signUpList: model),
           );
         } else {
-
           emit(
             SignUpErrorState(
                 error: 'An error While The Fetching Data From Api'),
@@ -64,10 +63,9 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}signup";
     final Uri uri = Uri.parse(apiUrl);
     final response = await http.post(uri, body: data);
-    print("response_signup${response.body}");
-
-    model = SignUpListModel.fromJsonMap(jsonDecode(response.body,
-    ),
+    print("response_signupData${response.body}");
+    model = SignUpListModel.fromJsonMap(
+      jsonDecode(response.body),
     );
     return model;
   }
