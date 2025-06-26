@@ -61,6 +61,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       'device_type': '1',
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}signup";
+    // const apiUrl = "http://localhost:6000/users";
     final Uri uri = Uri.parse(apiUrl);
     final response = await http.post(uri, body: data);
     print("response_signupData${response.body}");

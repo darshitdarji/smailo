@@ -4,6 +4,12 @@ import 'package:smailo/Dashboard/Orders%20Screen/bloc/pending/bloc_pending.dart'
 import 'package:smailo/Dashboard/Orders%20Screen/bloc/pending/event_pending.dart';
 import 'package:smailo/Dashboard/Orders%20Screen/bloc/pending/state_pending.dart';
 import 'package:smailo/Dashboard/Orders%20Screen/pending_orderdetail_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smailo/Dashboard/Orders%20Screen/bloc/pending/bloc_pending.dart';
+import 'package:smailo/Dashboard/Orders%20Screen/bloc/pending/event_pending.dart';
+import 'package:smailo/Dashboard/Orders%20Screen/bloc/pending/state_pending.dart';
+import 'package:smailo/Dashboard/Orders%20Screen/pending_orderdetail_screen.dart';
 
 class Pending extends StatefulWidget {
   const Pending({
@@ -93,8 +99,7 @@ class _PendingPageState extends State<PendingPage> {
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             child: Column(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
@@ -176,40 +181,50 @@ class _PendingPageState extends State<PendingPage> {
                                     InkWell(
                                       onTap: () {
                                         Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  PendingOrderDetail(orderId: state.pendingList.pendingData[index].id.toString(), orderIdEncrypt: state.pendingList.pendingData[index].orderIdEncrypt,),
-                                            ));
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                PendingOrderDetail(
+                                              orderId: state.pendingList
+                                                  .pendingData[index].id
+                                                  .toString(),
+                                              orderIdEncrypt: state
+                                                  .pendingList
+                                                  .pendingData[index]
+                                                  .orderIdEncrypt,
+                                            ),
+                                          ),
+                                        );
                                       },
                                       child: Container(
-                                          height:
-                                              mediaQuery.size.height * 0.04,
-                                          width: mediaQuery.size.width * 0.25,
-                                          decoration: BoxDecoration(
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.black12,
-                                                offset: Offset(
-                                                  0.5,
-                                                  4,
-                                                ),
-                                                blurRadius: 2,
-                                                spreadRadius: 1,
+                                        height: mediaQuery.size.height * 0.04,
+                                        width: mediaQuery.size.width * 0.25,
+                                        decoration: BoxDecoration(
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black12,
+                                              offset: Offset(
+                                                0.5,
+                                                4,
                                               ),
-                                            ],
-                                            color: Colors.white
-                                                .withOpacity(0.95),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: Center(
-                                              child: Text(
+                                              blurRadius: 2,
+                                              spreadRadius: 1,
+                                            ),
+                                          ],
+                                          color: Colors.white.withOpacity(0.95),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Center(
+                                          child: Text(
                                             "Details",
                                             style: TextStyle(
-                                                color: Colors.blue,
-                                                fontWeight: FontWeight.bold),
-                                          ))),
+                                              color: Colors.blue,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                     // SizedBox(width: 150,),
                                     Text(

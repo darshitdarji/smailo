@@ -8,10 +8,10 @@ import 'package:smailo/model/authantication/log_in/login_model.dart';
 import 'package:smailo/server_url/base_app_url.dart';
 import 'package:http/http.dart' as http;
 
-class LogInBloc extends Bloc<LogInEvent, LogInState> {
-  LogInBloc() : super(LogInInitialState()) {
+class LogInBloc extends Bloc<LogInEvent, UiState> {
+  LogInBloc() : super(UiInitialState()) {
     on<FetchLogInEvent>((event, emit) async {
-      emit(LogInLoadingState());
+      emit(UiLoadingState());
       final LogInListModel model = await fetchDataFromApi(
         mobile: event.mobile,
         password: event.password,
@@ -20,7 +20,7 @@ class LogInBloc extends Bloc<LogInEvent, LogInState> {
         if (model.status == 200) {
 
           emit(
-            LogInLoadedState(logInList: model),
+            UiLoadedState(logInList: model),
           );
         } else {
           emit(
@@ -38,13 +38,13 @@ class LogInBloc extends Bloc<LogInEvent, LogInState> {
 
   fetchDataFromApi({required String mobile, required String password,}) async {
     LogInListModel model;
-    Map data = {
-      'mobile_and_email': mobile,
-      'password': password,
-    };
-    const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}login";
+    // Map data = {
+    //   'mobile_and_email': mobile,
+    //   'password': password,
+    // };
+    const apiUrl = "https://theaura.pythonanywhere.com/category/";
     final Uri uri = Uri.parse(apiUrl);
-    final response = await http.post(uri, body: data);
+    final response = await http.post(uri);
 
     model = LogInListModel.fromJsonMap(
       jsonDecode(response.body),

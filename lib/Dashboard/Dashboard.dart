@@ -6,8 +6,9 @@ import 'package:smailo/Dashboard/Profile%20Screen/Profile%20screen.dart';
 import 'package:smailo/Dashboard/Orders%20Screen/Order%20Screen.dart';
 
 class Dashboard extends StatefulWidget {
-
-  Dashboard({ Key? key, }) : super(key: key);
+  Dashboard({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<Dashboard> createState() => _DashboardState();
@@ -19,13 +20,12 @@ class _DashboardState extends State<Dashboard> {
   List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     Category(),
-      OfferScreen(),
+    OfferScreen(),
     OrderScreen(),
     ProfileScreen(),
   ];
 
   @override
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,17 +61,16 @@ class _DashboardState extends State<Dashboard> {
             label: "Profile",
           ),
         ],
-
       ),
     );
   }
 
+  void _onItemTap(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
-    void _onItemTap(int index) {
-      setState(() {
-        _selectedIndex = index;
-      });
-    }
   Widget _buildBody() {
     if (_selectedIndex != 3) {
       return Center(

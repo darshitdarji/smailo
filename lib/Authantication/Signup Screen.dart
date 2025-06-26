@@ -31,7 +31,7 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-   TextEditingController name = TextEditingController();
+  TextEditingController name = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -73,6 +73,7 @@ class _SignupPageState extends State<SignupPage> {
               ),
               TextFormField(
                 controller: name,
+
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.people_outline,
                       size: 25, color: Colors.black26),
@@ -80,13 +81,14 @@ class _SignupPageState extends State<SignupPage> {
                       EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   alignLabelWithHint: true,
                   hintText: "Name",
+                  isDense: true,
+
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.black26),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.blue),
-                    // Change the color when focused
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
@@ -96,14 +98,16 @@ class _SignupPageState extends State<SignupPage> {
               ),
               TextFormField(
                 controller: phone,
-                keyboardType: TextInputType.phone,
+
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.phone_outlined,
+                  prefixIcon: Icon(Icons.people_outline,
                       size: 25, color: Colors.black26),
-                  hintText: "Phone number",
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   alignLabelWithHint: true,
+                  hintText: "Phone Number",
+                  isDense: true,
+
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.black26),
                     borderRadius: BorderRadius.circular(20),
@@ -219,16 +223,15 @@ class _SignupPageState extends State<SignupPage> {
               ),
               InkWell(
                 onTap: () {
-
-                  BlocProvider.of<SignUpBloc>(context).add(
-                    FetchSignUpEvent(
-                      email: email.text,
-                      name: name.text,
-                      conformPassword: conformPassword.text,
-                      mobile: phone.text,
-                      password: password.text,
-                    ),
-                  );
+                    BlocProvider.of<SignUpBloc>(context).add(
+                      FetchSignUpEvent(
+                        email: email.text,
+                        name: name.text,
+                        conformPassword: conformPassword.text,
+                        mobile: phone.text,
+                        password: password.text,
+                      ),
+                    );
 
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => OtpPage()));
@@ -237,16 +240,18 @@ class _SignupPageState extends State<SignupPage> {
                   height: mediaQuery.size.height * 0.065,
                   width: mediaQuery.size.width * 0.83,
                   child: Center(
-                      child: Text(
-                    "REGISTER",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  )),
+                    child: Text(
+                      "REGISTER",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15),
+                    ),
+                  ),
                   decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(30)),
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
                 ),
               ),
               SizedBox(
@@ -263,17 +268,22 @@ class _SignupPageState extends State<SignupPage> {
                     width: mediaQuery.size.width * 0.023,
                   ),
                   InkWell(
-                      onTap: () {
-
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => LogInScreen(phone: email.text, password: password.text,),
-                        ));
-                      },
-                      child: const Text(
-                        "Log In",
-                        style: TextStyle(
-                            color: Colors.blue, fontWeight: FontWeight.bold),
-                      ),)
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => LogInScreen(
+                          phone: email.text,
+                          password: password.text,
+                        ),
+                      ));
+                    },
+                    child: const Text(
+                      "Log In",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                        ),
+                    ),
+                  )
                 ],
               ),
             ],

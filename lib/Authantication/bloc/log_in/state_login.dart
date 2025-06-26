@@ -1,18 +1,18 @@
 import 'package:smailo/model/authantication/log_in/login_model.dart';
 
-abstract class LogInState {}
+abstract class UiState {}
 
-class LogInInitialState extends LogInState {}
+class UiInitialState extends UiState {}
 
-class LogInLoadingState extends LogInState {}
+class UiLoadingState extends UiState {}
 
-class LogInLoadedState extends LogInState {
+class UiLoadedState extends UiState {
   final LogInListModel logInList;
 
-  LogInLoadedState({required this.logInList});
+  UiLoadedState({required this.logInList});
 }
 
-class LogInErrorState extends LogInState {
+class LogInErrorState extends UiState {
   final String error;
 
   LogInErrorState({required this.error});

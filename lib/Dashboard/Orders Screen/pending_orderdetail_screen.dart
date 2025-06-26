@@ -6,8 +6,8 @@ import 'package:smailo/Dashboard/Orders%20Screen/bloc/Pending_OrderDetail/bloc_p
 import 'package:smailo/Dashboard/Orders%20Screen/bloc/Pending_OrderDetail/event_pending_orderdetail.dart';
 import 'package:smailo/Dashboard/Orders%20Screen/bloc/Pending_OrderDetail/state_pending_orderdetail.dart';
 
-
 import 'package:smailo/Dashboard/Orders%20Screen/reason_cancel_order.dart';
+import 'package:smailo/Dashboard/category/Product.dart';
 import 'package:smailo/Dashboard/home/Detail%20Screen.dart';
 
 class PendingOrderDetail extends StatefulWidget {
@@ -67,7 +67,6 @@ class _PendingOrderDetailPageState extends State<PendingOrderDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-
     var mediaquery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
@@ -78,10 +77,15 @@ class _PendingOrderDetailPageState extends State<PendingOrderDetailPage> {
                 fontSize: 20)),
         flexibleSpace: Container(
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[Colors.blue, Colors.blue.shade900])),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[
+                Colors.blue,
+                Colors.blue.shade900,
+              ],
+            ),
+          ),
         ),
         backgroundColor: Colors.white.withOpacity(0.95),
       ),
@@ -97,11 +101,14 @@ class _PendingOrderDetailPageState extends State<PendingOrderDetailPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Center(
-                    child: Text("Pending",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue,
-                            fontSize: 20)),
+                    child: Text(
+                      "Pending",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: 10,
@@ -171,132 +178,126 @@ class _PendingOrderDetailPageState extends State<PendingOrderDetailPage> {
                         ],
                       ),
                       child: SizedBox(
-                          height: 50,
-                          width: 50,
-                          child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: Column(
+                        height: 50,
+                        width: 50,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Row(
-                                        children: [
-                                          const Text("Order:"),
-                                          Text(
-                                            state
-                                                .pendingOrderDetailList
-                                                .orderDetailData
-                                                .orderDetail
-                                                .orderNo,
-                                            style: const TextStyle(
-                                                color: Colors.black45),
-                                          ),
-                                        ],
-                                      ),
+                                      const Text("Order:"),
                                       Text(
                                         state
                                             .pendingOrderDetailList
                                             .orderDetailData
                                             .orderDetail
-                                            .orderDate,
-                                        style: const TextStyle(
-                                            color: Colors.red,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      const Text("Payment type: "),
-                                      Text(
-                                        state
-                                            .pendingOrderDetailList
-                                            .orderDetailData
-                                            .orderDetail
-                                            .paymentType,
+                                            .orderNo,
                                         style: const TextStyle(
                                             color: Colors.black45),
-                                      )
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          const Text("Pick up Date:"),
-                                          Text(
-                                            state
-                                                .pendingOrderDetailList
-                                                .orderDetailData
-                                                .orderDetail
-                                                .pickupDate,
-                                            style: const TextStyle(
-                                                color: Colors.black45),
-                                          ),
-                                        ],
                                       ),
-                                      GestureDetector(
-                                        onTap: () {},
-                                        child: Container(
-                                          height: 30,
-                                          width: 70,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            boxShadow: const [
-                                              BoxShadow(
-                                                color: Colors.black12,
-                                                offset: Offset(
-                                                  1,
-                                                  6,
-                                                ),
-                                                blurRadius: 2,
-                                                spreadRadius: 2,
-                                              ),
-                                            ],
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                          ),
-                                          child: const Center(
-                                              child: Text("Invoice",
-                                                  style: TextStyle(
-                                                      color: Colors.blue,
-                                                      fontWeight:
-                                                          FontWeight.bold))),
-                                        ),
-                                      )
                                     ],
                                   ),
-                                  Row(
-                                    children: [
-                                      const Text("Total Amount :"),
-                                      Text(
-                                          state
-                                              .pendingOrderDetailList
-                                              .orderDetailData
-                                              .orderDetail
-                                              .totalAmount,
-                                          style: const TextStyle(
-                                              color: Colors.blue,
-                                              fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                  const Text("Pick up Location :"),
                                   Text(
                                     state.pendingOrderDetailList.orderDetailData
-                                        .orderDetail.userAddressId,
+                                        .orderDetail.orderDate,
+                                    style: const TextStyle(
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  const Text("Payment type: "),
+                                  Text(
+                                    state.pendingOrderDetailList.orderDetailData
+                                        .orderDetail.paymentType,
                                     style:
                                         const TextStyle(color: Colors.black45),
                                   )
                                 ],
-                              ))),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      const Text("Pick up Date:"),
+                                      Text(
+                                        state
+                                            .pendingOrderDetailList
+                                            .orderDetailData
+                                            .orderDetail
+                                            .pickupDate,
+                                        style: const TextStyle(
+                                            color: Colors.black45),
+                                      ),
+                                    ],
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {},
+                                    child: Container(
+                                      height: 30,
+                                      width: 70,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            color: Colors.black12,
+                                            offset: Offset(
+                                              1,
+                                              6,
+                                            ),
+                                            blurRadius: 2,
+                                            spreadRadius: 2,
+                                          ),
+                                        ],
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      child: const Center(
+                                        child: Text(
+                                          "Invoice",
+                                          style: TextStyle(
+                                            color: Colors.blue,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  const Text("Total Amount :"),
+                                  Text(
+                                    state.pendingOrderDetailList.orderDetailData
+                                        .orderDetail.totalAmount,
+                                    style: const TextStyle(
+                                      color: Colors.blue,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const Text("Pick up Location :"),
+                              Text(
+                                state.pendingOrderDetailList.orderDetailData
+                                    .orderDetail.userAddressId,
+                                style: const TextStyle(color: Colors.black45),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                   //     },
@@ -466,7 +467,8 @@ class _PendingOrderDetailPageState extends State<PendingOrderDetailPage> {
                                                   .orderDetail
                                                   .orderItem[index]
                                                   .quantity,
-                                              style: const TextStyle(fontSize: 15),
+                                              style:
+                                                  const TextStyle(fontSize: 15),
                                             ),
                                           ],
                                         )
@@ -639,7 +641,8 @@ class _PendingOrderDetailPageState extends State<PendingOrderDetailPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>   CancelOrderReason(orderId: widget.orderId),
+                  builder: (context) =>
+                      CancelOrderReason(orderId: widget.orderId),
                 ),
               );
             },
@@ -666,12 +669,12 @@ class _PendingOrderDetailPageState extends State<PendingOrderDetailPage> {
           ),
           InkWell(
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => Pr(),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductScreen(),
+                ),
+              );
             },
             child: Container(
               height: mediaquery.size.height * 0.075,

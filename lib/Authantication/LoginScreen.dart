@@ -204,12 +204,12 @@ class _LoginPageState extends State<LoginPage> {
 
                     });
 
-                    BlocProvider.of<LogInBloc>(context).add(
-                      FetchLogInEvent(
-                        mobile: phone.text,
-                        password: password.text,
-                      ),
-                    );
+                    // BlocProvider.of<LogInBloc>(context).add(
+                    //   FetchLogInEvent(
+                    //     mobile: phone.text,
+                    //     password: password.text,
+                    //   ),
+                    // );
                     // setState(() {
                     //   if (phone.text.isNotEmpty && password.text.isNotEmpty) {
                     //     Navigator.pushAndRemoveUntil(
@@ -275,7 +275,8 @@ class _LoginPageState extends State<LoginPage> {
                           "Sign up",
                           style: TextStyle(
                               color: Colors.blue, fontWeight: FontWeight.bold),
-                        ))
+                        ),
+                    )
                   ],
                 ),
               ],

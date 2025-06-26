@@ -312,17 +312,17 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                   decoration: const InputDecoration(
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 7, horizontal: 10),
-                      alignLabelWithHint: true,
-                      hintText: "Search anything",
-                      hintStyle: TextStyle(
-                          color: Colors.black26, fontWeight: FontWeight.w300),
-                      border: InputBorder.none,
-                      suffixIcon: Icon(
-                        Icons.search_sharp,
-                        color: Colors.black26,
-                      ),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+                    alignLabelWithHint: true,
+                    hintText: "Search anything",
+                    hintStyle: TextStyle(
+                        color: Colors.black26, fontWeight: FontWeight.w300),
+                    border: InputBorder.none,
+                    suffixIcon: Icon(
+                      Icons.search_sharp,
+                      color: Colors.black26,
+                    ),
                   ),
                 ),
               ),
@@ -429,7 +429,7 @@ class _HomePageState extends State<HomePage> {
                             height: 10,
                           ),
                           Text(
-                            "Today's Deal",
+                              "Today's Deal",
                           ),
                         ],
                       ),
@@ -565,7 +565,8 @@ class _HomePageState extends State<HomePage> {
                   child: Text(
                     "Featured categories",
                     style: TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -574,7 +575,10 @@ class _HomePageState extends State<HomePage> {
                 height: 15,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20,),
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                ),
                 child: GridView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
@@ -601,16 +605,17 @@ class _HomePageState extends State<HomePage> {
                           );
                         } else if (openType == 'featured') {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const FeaturesScreen(),
-                              ),);
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const FeaturesScreen(),
+                            ),
+                          );
                         } else if (openType == 'product') {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ProductScreen(),
-                              ),
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProductScreen(),
+                            ),
                           );
                         } else if (openType == 'brand') {
                           showModalBottomSheet(
@@ -779,7 +784,6 @@ class _HomePageState extends State<HomePage> {
                                                 .productName,
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
-                                            style: const TextStyle(),
                                           ),
                                           Text(
                                             state
@@ -804,7 +808,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           ),
                                           SizedBox(
-                                            height:
+                                             height:
                                                 mediaQuery.size.height * 0.008,
                                           ),
                                           Row(

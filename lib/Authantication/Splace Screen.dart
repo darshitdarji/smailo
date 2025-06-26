@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
       nextScreen: Pages(),
       splashTransition: SplashTransition.fadeTransition,
-  duration: 3000, // Adjust the duration here (in milliseconds)
+  duration: 3000,
 
       backgroundColor: Colors.white.withOpacity(0.95),
     );

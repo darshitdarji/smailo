@@ -1,25 +1,25 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'Authantication/Splace Screen.dart';
 import 'notification/firebase_options.dart';
 import 'notification/firebse.dart';
 
 
-Future _firebaseBackgroundMessage(RemoteMessage message) async {
-  if (message.notification != null) {
-    print("SOME NOTIFICATION RECEIVE================");
-  }
-}
+// Future _firebaseBackgroundMessage(RemoteMessage message) async {
+//   if (message.notification != null) {
+//     print("SOME NOTIFICATION RECEIVE================");
+//   }
+// }
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // await Firebase.initializeApp(
+  //   // options: DefaultFirebaseOptions.currentPlatform,
+  // );
   // await FirebaseApi().initNotification();
-  FirebaseApi.intt();
-  FirebaseMessaging.onBackgroundMessage(_firebaseBackgroundMessage);
+  // FirebaseApi.intt();
+  // FirebaseMessaging.onBackgroundMessage(_firebaseBackgroundMessage);
   runApp(MyApp());
 }
 
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: false,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }
