@@ -78,17 +78,20 @@ class UpdateDailogBoxPage extends StatefulWidget {
 class _UpdateDailogBoxPageState extends State<UpdateDailogBoxPage> {
   final _formKey = GlobalKey<FormState>();
   ScrollController scrollController = ScrollController();
-  late TextEditingController address ;
+  late TextEditingController address;
+
   late TextEditingController country;
-  late TextEditingController state ;
-  late TextEditingController city ;
-  late  TextEditingController phone ;
-  late TextEditingController postalcode ;
-  late TextEditingController isDefault ;
+  late TextEditingController state;
 
-  late ScrollController controller ;
+  late TextEditingController city;
 
+  late TextEditingController phone;
 
+  late TextEditingController postalcode;
+
+  late TextEditingController isDefault;
+
+  late ScrollController controller;
 
   @override
   void initState() {
@@ -96,7 +99,7 @@ class _UpdateDailogBoxPageState extends State<UpdateDailogBoxPage> {
     super.initState();
     address = TextEditingController(text: widget.address);
     country = TextEditingController(text: widget.country);
-    state =TextEditingController(text: widget.states);
+    state = TextEditingController(text: widget.states);
     city = TextEditingController(text: widget.city);
     phone = TextEditingController(text: widget.mobileNo);
     postalcode = TextEditingController(text: widget.pinCode);
@@ -321,9 +324,10 @@ class _UpdateDailogBoxPageState extends State<UpdateDailogBoxPage> {
                             country: country.text,
                             states: state.text,
                             city: city.text,
-                            pinCode:postalcode.text,
-                            isDefault:isDefault.text,
-                            mobileNo: phone.text,),
+                            pinCode: postalcode.text,
+                            isDefault: isDefault.text,
+                            mobileNo: phone.text,
+                          ),
                         );
                         // setState(() {
                         //   if (address.text.isEmpty ||
@@ -369,5 +373,4 @@ class _UpdateDailogBoxPageState extends State<UpdateDailogBoxPage> {
       ),
     );
   }
-
 }

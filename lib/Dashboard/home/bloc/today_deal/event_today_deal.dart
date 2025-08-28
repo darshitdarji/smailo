@@ -1,3 +1,3 @@
-abstract class TodayDealEvent{}
+abstract class TodayDealEvent {}
 
-class FetchTodayDealEvent extends TodayDealEvent{}
+class FetchTodayDealEvent extends TodayDealEvent {}

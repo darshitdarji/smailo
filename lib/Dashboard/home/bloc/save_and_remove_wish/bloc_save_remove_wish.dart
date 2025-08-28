@@ -67,7 +67,7 @@ class SaveAndRemoveWishBloc
     SaveWishListModel model;
     Map data = {
       'product_id': productId,
-      'user_id': '610',
+      'user_id': '1760',
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}saveWish";
     final Uri uri = Uri.parse(apiUrl);
@@ -86,7 +86,9 @@ class SaveAndRemoveWishBloc
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}removeWish";
     final Uri uri = Uri.parse(apiUrl);
     final response = await http.post(uri, body: data);
-    model = RemoveWishListModel.fromJsonMap(jsonDecode(response.body),);
+    model = RemoveWishListModel.fromJsonMap(
+      jsonDecode(response.body),
+    );
     print("Success");
     return model;
   }

@@ -185,17 +185,17 @@ class _OfferPageState extends State<OfferPage> {
             );
           } else if (state is OfferLoadedState) {
             if (state.offerList.offerData.isEmpty) {
-              return
-              Center(
-                child:
-                Text(
+              return Center(
+                child: Text(
                   "Offer Are  Not Available",
-                  style: TextStyle(color: Colors.black38,fontWeight: FontWeight.bold,fontSize: 25),
+                  style: TextStyle(
+                      color: Colors.black38,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25),
                 ),
               );
             } else {
-              return
-              Padding(
+              return Padding(
                 padding: EdgeInsets.all(10),
                 child: Center(
                   child: Column(

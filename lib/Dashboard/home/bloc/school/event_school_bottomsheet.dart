@@ -1,2 +1,3 @@
-abstract class SchoolEvent{}
-class FetchSchoolEvent extends SchoolEvent{}
+abstract class SchoolEvent {}
+
+class FetchSchoolEvent extends SchoolEvent {}

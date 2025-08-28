@@ -70,13 +70,13 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: mediaQuery.size.height * 0.06,
                 ),
-                  SizedBox(
-                    height: mediaQuery.size.height * 0.3,
-                    width: mediaQuery.size.width,
-                    child: Image(
-                        image: AssetImage("assets/img_31.png"),
-                        fit: BoxFit.cover),
-                  ),
+                SizedBox(
+                  height: mediaQuery.size.height * 0.3,
+                  width: mediaQuery.size.width,
+                  child: Image(
+                      image: AssetImage("assets/img_31.png"),
+                      fit: BoxFit.cover),
+                ),
                 SizedBox(
                   height: 10,
                 ),
@@ -104,8 +104,10 @@ class _LoginPageState extends State<LoginPage> {
                         prefixIcon:
                             Icon(Icons.phone, size: 25, color: Colors.black26),
                         hintText: "Phone number",
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 10,
+                        ),
                         alignLabelWithHint: true,
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black26),
@@ -113,8 +115,8 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                              color:
-                                  Colors.blue), // Change the color when focused
+                            color: Colors.blue,
+                          ), // Change the color when focused
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
@@ -130,14 +132,19 @@ class _LoginPageState extends State<LoginPage> {
                     obscureText: obscurePassword,
                     controller: password,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock_outline,
-                          size: 25, color: Colors.black26),
+                      prefixIcon: Icon(
+                        Icons.lock_outline,
+                        size: 25,
+                        color: Colors.black26,
+                      ),
                       hintText: "Password",
                       suffixIcon: GestureDetector(
                         onTap: () {
-                          setState(() {
-                            obscurePassword = !obscurePassword;
-                          });
+                          setState(
+                            () {
+                              obscurePassword = !obscurePassword;
+                            },
+                          );
                         },
                         child: Icon(
                           obscurePassword
@@ -146,8 +153,10 @@ class _LoginPageState extends State<LoginPage> {
                           size: 20,
                         ),
                       ),
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 10.0,
+                        horizontal: 10,
+                      ),
                       alignLabelWithHint: true,
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black26),
@@ -155,8 +164,8 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                            color:
-                                Colors.blue), // Change the color when focused
+                          color: Colors.blue,
+                        ), // Change the color when focused
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
@@ -192,17 +201,18 @@ class _LoginPageState extends State<LoginPage> {
                   height: 30,
                 ),
                 InkWell(
-
                   onTap: () {
-                    setState(() {
-                      // if(widget.password.toString() == password.text && widget.phone.toString() == phone.text){
-                      Navigator.push(
+                    setState(
+                      () {
+                        // if(widget.password.toString() == password.text && widget.phone.toString() == phone.text){
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => SignUpScreen(),
-                          ));
-
-                    });
+                          ),
+                        );
+                      },
+                    );
 
                     // BlocProvider.of<LogInBloc>(context).add(
                     //   FetchLogInEvent(
@@ -234,16 +244,18 @@ class _LoginPageState extends State<LoginPage> {
                     height: mediaQuery.size.height * 0.06,
                     width: mediaQuery.size.width * 0.83,
                     child: Center(
-                        child: Text(
-                      "Log In",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15),
-                    )),
+                      child: Text(
+                        "Log In",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15),
+                      ),
+                    ),
                     decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(30)),
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                   ),
                 ),
                 SizedBox(height: 10),
@@ -255,27 +267,27 @@ class _LoginPageState extends State<LoginPage> {
                       width: 4,
                     ),
                     InkWell(
-                        onTap: () {
-                          setState(() {
-                            // if(widget.password == password && widget.phone == phone){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => SignUpScreen(),
-                                ));
-                            // }else{
-                            //    const Center(
-                            //     child: Text("No Data"),
-                            //   );
-                          }
-                              // }
-                              );
-                        },
-                        child: Text(
-                          "Sign up",
-                          style: TextStyle(
-                              color: Colors.blue, fontWeight: FontWeight.bold),
-                        ),
+                      onTap: () {
+                        setState(() {
+                          // if(widget.password == password && widget.phone == phone){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignUpScreen(),
+                              ));
+                          // }else{
+                          //    const Center(
+                          //     child: Text("No Data"),
+                          //   );
+                        }
+                            // }
+                            );
+                      },
+                      child: Text(
+                        "Sign up",
+                        style: TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold,),
+                      ),
                     )
                   ],
                 ),

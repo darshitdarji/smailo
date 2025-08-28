@@ -42,7 +42,11 @@ class SecondBannerBloc extends Bloc<SecondBannerEvent, SecondBannerState> {
     final Uri url = Uri.parse(apiUrl);
     final response = await http.post(url);
 
-    model = SecondBannerListModel.fromJsonMap(jsonDecode(response.body,),);
+    model = SecondBannerListModel.fromJsonMap(
+      jsonDecode(
+        response.body,
+      ),
+    );
     return model;
   }
 }

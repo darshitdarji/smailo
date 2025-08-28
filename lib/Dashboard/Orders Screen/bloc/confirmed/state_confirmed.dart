@@ -9,6 +9,7 @@ class ConfirmedLoadingState extends ConfirmedState {}
 
 class ConfirmedLoadedState extends ConfirmedState {
   final PendingListModel pendingList;
+
   ConfirmedLoadedState({required this.pendingList});
 }
 

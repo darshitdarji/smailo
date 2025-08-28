@@ -50,7 +50,7 @@ class SearchDataList {
   final String createdAt;
   final String updatedAt;
   final String deletedAt;
-   String isCart;
+  String isCart;
   final String brandName;
 
   SearchDataList.fromJsonMap(Map<String, dynamic> map)

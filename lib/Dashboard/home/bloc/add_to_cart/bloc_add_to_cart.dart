@@ -37,7 +37,7 @@ class AddToCartBloc extends Bloc<AddToCartEvent, AddToCartState> {
       },
     );
     on<FetchRemoveToCartEvent>(
-          (event, emit) async {
+      (event, emit) async {
         emit(AddToCartLoadingState());
         try {
           final RemoveToCartListModel model = await FetchRemoveDataFromApi(
@@ -61,14 +61,13 @@ class AddToCartBloc extends Bloc<AddToCartEvent, AddToCartState> {
         }
       },
     );
-
   }
 
   FetchDataFromApi(
       {required String productId, required String quantity}) async {
     AddToCartListModel model;
     Map data = {
-      'user_id': '610',
+      'user_id': '1760',
       'product_id': productId,
       'qty': quantity,
     };
@@ -89,7 +88,7 @@ class AddToCartBloc extends Bloc<AddToCartEvent, AddToCartState> {
   }) async {
     RemoveToCartListModel model;
     Map data = {
-      'user_id': '610',
+      'user_id': '1760',
       'product_id': productId,
     };
 

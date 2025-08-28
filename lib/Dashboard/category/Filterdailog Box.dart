@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class filterdailogbox extends StatefulWidget {
-
   const filterdailogbox({super.key});
 
   @override
@@ -12,14 +11,14 @@ class _filterdailogboxState extends State<filterdailogbox> {
   int select = -1;
   int sortselect = 0;
 
-String filtershortby = '';
-String filterprice  = '';
+  String filtershortby = '';
+  String filterprice = '';
+
   @override
   Widget build(BuildContext context) {
     var mediaquery = MediaQuery.of(context);
     return AlertDialog(
       contentPadding: EdgeInsets.all(10),
-
       insetPadding: EdgeInsets.all(20),
       content: Container(
         height: mediaquery.size.height * 0.52,
@@ -125,8 +124,6 @@ String filterprice  = '';
               ),
               leading: Radio(
                 value: '4',
-
-
                 groupValue: filterprice,
                 onChanged: (value) {
                   setState(() {
@@ -153,7 +150,7 @@ String filterprice  = '';
               ),
               leading: Radio(
                 value: '1',
-                groupValue:filtershortby ,
+                groupValue: filtershortby,
                 onChanged: (values) {
                   setState(() {
                     filtershortby = values.toString();
@@ -192,7 +189,7 @@ String filterprice  = '';
                 groupValue: filtershortby,
                 onChanged: (values) {
                   setState(() {
-                   filtershortby = values.toString();
+                    filtershortby = values.toString();
                   });
                 },
               ),
@@ -234,10 +231,8 @@ String filterprice  = '';
               ),
             ),
             onPressed: () {
-
               setState(() {
-                Navigator.of(context).pop([filterprice,filtershortby] );
-
+                Navigator.of(context).pop([filterprice, filtershortby]);
               });
             },
             child: Text(

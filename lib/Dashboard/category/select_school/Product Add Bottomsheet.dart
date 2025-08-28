@@ -35,7 +35,9 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
           BlocProvider<AddToCartBloc>(
             create: (context) => AddToCartBloc(),
           ),
-          BlocProvider(create: (context) => HomeCountBloc(),),
+          BlocProvider(
+            create: (context) => HomeCountBloc(),
+          ),
         ],
         child: ProductAddPage(
           standardId: widget.standardId,
@@ -99,7 +101,7 @@ class _ProductAddPageState extends State<ProductAddPage> {
                       ),
                       Visibility(
                         visible:
-                        state.homeCountlist.countData.favoriteCount != 0,
+                            state.homeCountlist.countData.favoriteCount != 0,
                         child: Positioned(
                           top: 6,
                           right: 8,
@@ -118,7 +120,7 @@ class _ProductAddPageState extends State<ProductAddPage> {
                               decoration: BoxDecoration(
                                   color: Colors.yellow,
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(50)))),
+                                      BorderRadius.all(Radius.circular(50)))),
                         ),
                       )
                     ]),
@@ -155,7 +157,7 @@ class _ProductAddPageState extends State<ProductAddPage> {
                                 decoration: BoxDecoration(
                                     color: Colors.yellow,
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(50)))),
+                                        BorderRadius.all(Radius.circular(50)))),
                           ),
                         )
                       ],
@@ -170,7 +172,6 @@ class _ProductAddPageState extends State<ProductAddPage> {
               return Container();
             },
           ),
-
         ],
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -191,8 +192,11 @@ class _ProductAddPageState extends State<ProductAddPage> {
             if (state.productList.productData.isEmpty) {
               return Center(
                 child: Text(
-                  'No Data Found..',style: TextStyle(fontWeight: FontWeight.bold,
-                color: Colors.black38,fontSize: 22),
+                  'No Data Found..',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black38,
+                      fontSize: 22),
                 ),
               );
             } else {
@@ -420,18 +424,14 @@ class _ProductAddPageState extends State<ProductAddPage> {
                                                   setState(() {
                                                     if (cart) {
                                                       state
-                                                              .productList
-                                                              .productData[
-                                                                  index]
-                                                              .isCart =
-                                                          '0';
+                                                          .productList
+                                                          .productData[index]
+                                                          .isCart = '0';
                                                     } else {
                                                       state
-                                                              .productList
-                                                              .productData[
-                                                                  index]
-                                                              .isCart =
-                                                          '1';
+                                                          .productList
+                                                          .productData[index]
+                                                          .isCart = '1';
                                                     }
                                                   });
                                                 },

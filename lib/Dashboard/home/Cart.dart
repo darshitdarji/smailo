@@ -63,21 +63,27 @@ class _CartState extends State<Cart> {
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[Colors.blue, Colors.blue.shade900]),),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[Colors.blue, Colors.blue.shade900],
+            ),
+          ),
         ),
-        title: const Text("Cart",
-            style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 20)),
+        title: const Text(
+          "Cart",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
       ),
       backgroundColor: Colors.white.withOpacity(0.95),
       body: BlocConsumer<CartBloc, CartState>(
         listener: (context, state) {
-          if(state is AddToCartLoadedState||state is RemoveToCartLoadedState){
+          if (state is AddToCartLoadedState ||
+              state is RemoveToCartLoadedState) {
             BlocProvider.of<CartBloc>(context).add(FetchCartEvent());
           }
         },
@@ -89,11 +95,14 @@ class _CartState extends State<Cart> {
           } else if (state is CartLoadedState) {
             if (state.cartList.cartDetail.cartDetailData.isEmpty) {
               return Center(
-                child: Text("Please Enter Product to Cart",
-                    style: TextStyle(
-                        color: Colors.black45,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold)),
+                child: Text(
+                  "Please Enter Product to Cart",
+                  style: TextStyle(
+                    color: Colors.black45,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               );
             } else {
               return SingleChildScrollView(
@@ -120,30 +129,32 @@ class _CartState extends State<Cart> {
                           return Dismissible(
                             confirmDismiss: (direction) async {
                               return showModalBottomSheet(
-                                  context: context,
-                                  builder: (context) {
-                                    return CartBottomSheet(
-                                      name: state
-                                          .cartList
-                                          .cartDetail
-                                          .cartDetailData[index]
-                                          .productData
-                                          .productName,
-                                      image: state
-                                          .cartList
-                                          .cartDetail
-                                          .cartDetailData[index]
-                                          .productData
-                                          .productImage,
-                                      id: state.cartList.cartDetail
-                                          .cartDetailData[index].productId,
-                                    );
-                                  });
+                                context: context,
+                                builder: (context) {
+                                  return CartBottomSheet(
+                                    name: state
+                                        .cartList
+                                        .cartDetail
+                                        .cartDetailData[index]
+                                        .productData
+                                        .productName,
+                                    image: state
+                                        .cartList
+                                        .cartDetail
+                                        .cartDetailData[index]
+                                        .productData
+                                        .productImage,
+                                    id: state.cartList.cartDetail
+                                        .cartDetailData[index].productId,
+                                  );
+                                },
+                              );
                             },
                             background: Container(
                               decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(10)),
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
                               alignment: Alignment.centerLeft,
                               child: const Icon(
                                 Icons.delete,
@@ -152,12 +163,14 @@ class _CartState extends State<Cart> {
                             ),
                             direction: DismissDirection.startToEnd,
                             onDismissed: (direction) {
-                              BlocProvider.of<CartBloc>(context)
-                                  .add(FetchCartEvent());
+                              BlocProvider.of<CartBloc>(context).add(
+                                FetchCartEvent(),
+                              );
                             },
-                            key: Key(state
-                                .cartList.cartDetail.cartDetailData[index]
-                                .toString()),
+                            key: Key(
+                              state.cartList.cartDetail.cartDetailData[index]
+                                  .toString(),
+                            ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(
@@ -174,19 +187,20 @@ class _CartState extends State<Cart> {
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      boxShadow: [
-                                        const BoxShadow(
-                                          color: Colors.black12,
-                                          offset: Offset(
-                                            1,
-                                            6,
-                                          ),
-                                          blurRadius: 2,
-                                          spreadRadius: 2,
+                                    boxShadow: [
+                                      const BoxShadow(
+                                        color: Colors.black12,
+                                        offset: Offset(
+                                          1,
+                                          6,
                                         ),
-                                      ],
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10)),
+                                        blurRadius: 2,
+                                        spreadRadius: 2,
+                                      ),
+                                    ],
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -216,19 +230,20 @@ class _CartState extends State<Cart> {
                                                         mediaQuery.size.width *
                                                             0.22,
                                                     child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        child: Image.network(
-                                                          state
-                                                              .cartList
-                                                              .cartDetail
-                                                              .cartDetailData[
-                                                                  index]
-                                                              .productData
-                                                              .productImage,
-                                                          fit: BoxFit.cover,
-                                                        )),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                      child: Image.network(
+                                                        state
+                                                            .cartList
+                                                            .cartDetail
+                                                            .cartDetailData[
+                                                                index]
+                                                            .productData
+                                                            .productImage,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
                                                   ),
                                                   SizedBox(
                                                     width:
@@ -274,10 +289,10 @@ class _CartState extends State<Cart> {
                                                           ),
                                                         ),
                                                         SizedBox(
-                                                            height: mediaQuery
-                                                                    .size
-                                                                    .height *
-                                                                0.008),
+                                                          height: mediaQuery
+                                                                  .size.height *
+                                                              0.008,
+                                                        ),
                                                         Row(
                                                           children: [
                                                             Icon(
@@ -302,13 +317,15 @@ class _CartState extends State<Cart> {
                                                               discount == '0'
                                                                   ? ""
                                                                   : "₹${int.parse(state.cartList.cartDetail.cartDetailData[index].productData.price) * increment}",
-                                                              style: const TextStyle(
-                                                                  color: Colors
-                                                                      .red,
-                                                                  fontSize: 12,
-                                                                  decoration:
-                                                                      TextDecoration
-                                                                          .lineThrough),
+                                                              style:
+                                                                  const TextStyle(
+                                                                color:
+                                                                    Colors.red,
+                                                                fontSize: 12,
+                                                                decoration:
+                                                                    TextDecoration
+                                                                        .lineThrough,
+                                                              ),
                                                             ),
                                                             SizedBox(
                                                                 width: mediaQuery
@@ -352,69 +369,82 @@ class _CartState extends State<Cart> {
                                                                     .spaceEvenly,
                                                             children: [
                                                               InkWell(
-                                                                  onTap: () {
-                                                                    setState(
-                                                                        () {
-                                                                      BlocProvider.of<CartBloc>(
-                                                                              context)
-                                                                          .add(
-                                                                              FetchCartEvent());
-                                                                    });
+                                                                onTap: () {
+                                                                  setState(() {
+                                                                    BlocProvider.of<CartBloc>(
+                                                                            context)
+                                                                        .add(
+                                                                            FetchCartEvent());
+                                                                  });
 
-                                                                    if (state
-                                                                            .cartList
-                                                                            .cartDetail
-                                                                            .cartDetailData[index]
-                                                                            .qty ==
-                                                                        '1') {
-                                                                      showModalBottomSheet(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (context) {
-                                                                          return CartBottomSheet(
-                                                                            id: state.cartList.cartDetail.cartDetailData[index].productId,
-                                                                            name:
-                                                                                state.cartList.cartDetail.cartDetailData[index].productData.productName,
-                                                                            image:
-                                                                                state.cartList.cartDetail.cartDetailData[index].productData.productImage,
-                                                                          );
-                                                                        },
-                                                                      );
-                                                                    } else {
-                                                                      int quntity = int.parse(state
+                                                                  if (state
                                                                           .cartList
                                                                           .cartDetail
                                                                           .cartDetailData[
                                                                               index]
-                                                                          .qty);
-                                                                      quntity--;
-                                                                      BlocProvider.of<AddToCartBloc>(
-                                                                              context)
-                                                                          .add(
-                                                                        FetchAddToCartEvent(
-                                                                          productId: state
+                                                                          .qty ==
+                                                                      '1') {
+                                                                    showModalBottomSheet(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (context) {
+                                                                        return CartBottomSheet(
+                                                                          id: state
                                                                               .cartList
                                                                               .cartDetail
                                                                               .cartDetailData[index]
                                                                               .productId,
-                                                                          quantity:
-                                                                              quntity.toString(),
-                                                                        ),
-                                                                      );
-                                                                    }
-                                                                  },
-                                                                  child: Icon(
-                                                                    state.cartList.cartDetail.cartDetailData[index].qty ==
-                                                                            '1'
-                                                                        ? Icons
-                                                                            .delete_outline
-                                                                        : Icons
-                                                                            .remove,
-                                                                    size: 25,
-                                                                    color: Colors
-                                                                        .white,
-                                                                  )),
+                                                                          name: state
+                                                                              .cartList
+                                                                              .cartDetail
+                                                                              .cartDetailData[index]
+                                                                              .productData
+                                                                              .productName,
+                                                                          image: state
+                                                                              .cartList
+                                                                              .cartDetail
+                                                                              .cartDetailData[index]
+                                                                              .productData
+                                                                              .productImage,
+                                                                        );
+                                                                      },
+                                                                    );
+                                                                  } else {
+                                                                    int quntity = int.parse(state
+                                                                        .cartList
+                                                                        .cartDetail
+                                                                        .cartDetailData[
+                                                                            index]
+                                                                        .qty);
+                                                                    quntity--;
+                                                                    BlocProvider.of<AddToCartBloc>(
+                                                                            context)
+                                                                        .add(
+                                                                      FetchAddToCartEvent(
+                                                                        productId: state
+                                                                            .cartList
+                                                                            .cartDetail
+                                                                            .cartDetailData[index]
+                                                                            .productId,
+                                                                        quantity:
+                                                                            quntity.toString(),
+                                                                      ),
+                                                                    );
+                                                                  }
+                                                                },
+                                                                child: Icon(
+                                                                  state.cartList.cartDetail.cartDetailData[index].qty ==
+                                                                          '1'
+                                                                      ? Icons
+                                                                          .delete_outline
+                                                                      : Icons
+                                                                          .remove,
+                                                                  size: 25,
+                                                                  color: Colors
+                                                                      .white,
+                                                                ),
+                                                              ),
                                                               Container(
                                                                 height: mediaQuery
                                                                         .size
@@ -424,12 +454,16 @@ class _CartState extends State<Cart> {
                                                                         .size
                                                                         .width *
                                                                     0.05,
-                                                                decoration: BoxDecoration(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            2)),
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                    2,
+                                                                  ),
+                                                                ),
                                                                 child: Center(
                                                                   child: Text(
                                                                     int.parse(state
@@ -438,9 +472,11 @@ class _CartState extends State<Cart> {
                                                                             .cartDetailData[index]
                                                                             .qty)
                                                                         .toString(),
-                                                                    style: TextStyle(
-                                                                        fontSize:
-                                                                            18),
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
@@ -546,7 +582,9 @@ class _CartState extends State<Cart> {
                       child: Text(
                         "Coupons and Discounts",
                         style: TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.bold),
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -558,8 +596,9 @@ class _CartState extends State<Cart> {
                         height: mediaQuery.size.height * 0.13,
                         width: mediaQuery.size.width * 0.92,
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15)),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
                         child: Row(
                           children: [
                             const SizedBox(
@@ -569,16 +608,20 @@ class _CartState extends State<Cart> {
                               height: mediaQuery.size.height * 0.065,
                               width: mediaQuery.size.width * 0.58,
                               decoration: BoxDecoration(
-                                  color: Colors.black12,
-                                  borderRadius: BorderRadius.circular(10)),
+                                color: Colors.black12,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
                               child: TextFormField(
                                 decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    contentPadding:
-                                        EdgeInsets.symmetric(horizontal: 10),
-                                    hintText: "Apply the coupon Code here",
-                                    hintStyle: TextStyle(
-                                        color: Colors.black26, fontSize: 15)),
+                                  border: InputBorder.none,
+                                  contentPadding:
+                                      EdgeInsets.symmetric(horizontal: 10),
+                                  hintText: "Apply the coupon Code here",
+                                  hintStyle: TextStyle(
+                                    color: Colors.black26,
+                                    fontSize: 15,
+                                  ),
+                                ),
                               ),
                             ),
                             const SizedBox(
@@ -588,16 +631,19 @@ class _CartState extends State<Cart> {
                               height: mediaQuery.size.height * 0.065,
                               width: mediaQuery.size.width * 0.21,
                               child: const Center(
-                                  child: Text(
-                                "Apply",
-                                style: TextStyle(
+                                child: Text(
+                                  "Apply",
+                                  style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 20,
-                                    color: Colors.white),
-                              )),
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
                               decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.circular(10)),
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
                             )
                           ],
                         ),
@@ -624,8 +670,9 @@ class _CartState extends State<Cart> {
                         width: mediaQuery.size.width * 0.92,
                         height: mediaQuery.size.width * 0.52,
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(10),
                           child: Column(
@@ -644,9 +691,11 @@ class _CartState extends State<Cart> {
                                         Icons.currency_rupee,
                                         size: 15,
                                       ),
-                                      Text(state.cartList.cartDetail.cartSummary
-                                          .subTotal
-                                          .toString())
+                                      Text(
+                                        state.cartList.cartDetail.cartSummary
+                                            .subTotal
+                                            .toString(),
+                                      )
                                     ],
                                   ),
                                 ],
@@ -658,28 +707,32 @@ class _CartState extends State<Cart> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  const Text("Discount on MRP",
-                                      style: TextStyle(fontSize: 16)),
+                                  const Text(
+                                    "Discount on MRP",
+                                    style: TextStyle(fontSize: 16),
+                                  ),
                                   Row(
                                     children: [
                                       GestureDetector(
-                                          child: const Icon(
-                                        Icons.remove,
-                                        size: 10,
-                                        color: Colors.green,
-                                      )),
+                                        child: const Icon(
+                                          Icons.remove,
+                                          size: 10,
+                                          color: Colors.green,
+                                        ),
+                                      ),
                                       const Icon(
                                         Icons.currency_rupee,
                                         size: 15,
                                         color: Colors.green,
                                       ),
                                       Text(
-                                          state.cartList.cartDetail.cartSummary
-                                              .discountTotal
-                                              .toString(),
-                                          style: TextStyle(
-                                            color: Colors.green,
-                                          ))
+                                        state.cartList.cartDetail.cartSummary
+                                            .discountTotal
+                                            .toString(),
+                                        style: TextStyle(
+                                          color: Colors.green,
+                                        ),
+                                      )
                                     ],
                                   ),
                                 ],
@@ -706,11 +759,13 @@ class _CartState extends State<Cart> {
                                         color: Colors.green,
                                       ),
                                       Text(
-                                          state.cartList.cartDetail.cartSummary
-                                              .couponDiscount
-                                              .toString(),
-                                          style:
-                                              TextStyle(color: Colors.green)),
+                                        state.cartList.cartDetail.cartSummary
+                                            .couponDiscount
+                                            .toString(),
+                                        style: TextStyle(
+                                          color: Colors.green,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ],
@@ -738,7 +793,8 @@ class _CartState extends State<Cart> {
                                             .orderTotal
                                             .toString(),
                                         style: TextStyle(
-                                            fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       )
                                     ],
                                   ),
@@ -782,18 +838,25 @@ class _CartState extends State<Cart> {
                           ));
                     },
                     child: Container(
-                        height: mediaQuery.size.height * 0.075,
-                        width: mediaQuery.size.width * 0.5,
-                        decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(10))),
-                        child: const Center(
-                            child: Text("Add More",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15)))),
+                      height: mediaQuery.size.height * 0.075,
+                      width: mediaQuery.size.width * 0.5,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(10),
+                        ),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "Add More",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                   SizedBox(
                     height: mediaQuery.size.height * 0.075,
@@ -809,37 +872,45 @@ class _CartState extends State<Cart> {
                         return InkWell(
                           onTap: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => CheckoutScreen(
-                                    totalMrp: state.cartList.cartDetail
-                                        .cartSummary.subTotal
-                                        .toString(),
-                                    coupon: state.cartList.cartDetail
-                                        .cartSummary.couponDiscount
-                                        .toString(),
-                                    discountMrp: state.cartList.cartDetail
-                                        .cartSummary.discountTotal
-                                        .toString(),
-                                    orderTotal: state.cartList.cartDetail
-                                        .cartSummary.orderTotal
-                                        .toString(),
-                                  ),
-                                ));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CheckoutScreen(
+                                  totalMrp: state
+                                      .cartList.cartDetail.cartSummary.subTotal
+                                      .toString(),
+                                  coupon: state.cartList.cartDetail.cartSummary
+                                      .couponDiscount
+                                      .toString(),
+                                  discountMrp: state.cartList.cartDetail
+                                      .cartSummary.discountTotal
+                                      .toString(),
+                                  orderTotal: state.cartList.cartDetail
+                                      .cartSummary.orderTotal
+                                      .toString(),
+                                ),
+                              ),
+                            );
                           },
                           child: Container(
-                              height: mediaQuery.size.height * 0.075,
-                              width: mediaQuery.size.width * 0.5,
-                              decoration: const BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.only(
-                                      bottomRight: Radius.circular(10))),
-                              child: const Center(
-                                  child: Text("Checkout",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15)))),
+                            height: mediaQuery.size.height * 0.075,
+                            width: mediaQuery.size.width * 0.5,
+                            decoration: const BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(10),
+                              ),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                "Checkout",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
                         );
                       },
                     ),

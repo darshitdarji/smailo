@@ -1,14 +1,13 @@
 class StandardListModel {
   final int status;
-  List<StandardData>standardData;
+  List<StandardData> standardData;
   final String message;
 
-  StandardListModel.fromJsonMap(Map<String, dynamic>map)
+  StandardListModel.fromJsonMap(Map<String, dynamic> map)
       : status = map['status'],
         standardData = List<StandardData>.from(
             map['data'].map((x) => StandardData.fromJsonMap(x))),
         message = map['message'];
-
 }
 
 class StandardData {
@@ -23,7 +22,7 @@ class StandardData {
   final String updatedAt;
   final String deletedAt;
 
-  StandardData.fromJsonMap(Map<String, dynamic>map)
+  StandardData.fromJsonMap(Map<String, dynamic> map)
       : id = map['id'],
         categoryId = map['category_id'],
         superCategoryId = map['super_category_id'],

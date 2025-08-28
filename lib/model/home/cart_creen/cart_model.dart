@@ -8,6 +8,7 @@ class CartListModel {
   final bool hasPreviousPage;
   final String message;
 
+
   CartListModel.fromJsonMap(Map<String, dynamic> map)
       : status = map['status'],
         cartDetail = CartDetail.fromJsonMap(map['data']),
@@ -20,18 +21,16 @@ class CartListModel {
 }
 
 class CartDetail {
-
   List<CartDetailData> cartDetailData;
   CartSummary cartSummary;
 
   CartDetail.fromJsonMap(Map<String, dynamic> map)
-      :
-        cartDetailData = List<CartDetailData>.from(
+      : cartDetailData = List<CartDetailData>.from(
           map['cartDetail'].map(
-            (x) =>  CartDetailData.fromJsonMap(x),
+            (x) => CartDetailData.fromJsonMap(x),
           ),
         ),
-  cartSummary = CartSummary.fromJsonMap(map['cart_summary']);
+        cartSummary = CartSummary.fromJsonMap(map['cart_summary']);
 }
 
 class CartSummary {

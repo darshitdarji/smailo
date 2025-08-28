@@ -30,7 +30,7 @@ class ProductData {
   final String createdAt;
   final String updatedAt;
   final String deletedAt;
-   String isCart;
+  String isCart;
   final String brandName;
 
   ProductData.fromJsonMap(Map<String, dynamic> map)

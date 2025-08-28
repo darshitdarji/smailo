@@ -45,7 +45,6 @@ class ForgotPasswordBloc
     final response = await http.post(uri, body: data);
     print("forgotpassword${response.body}");
 
-
     model = ForgotPasswordListModel.fromJsonMap(
       jsonDecode(response.body),
     );

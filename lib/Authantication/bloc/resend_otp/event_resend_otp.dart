@@ -1,3 +1,3 @@
 abstract class ResendOtpEvent {}
 
-class FetchResendOtpEvent extends ResendOtpEvent{}
+class FetchResendOtpEvent extends ResendOtpEvent {}

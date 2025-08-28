@@ -11,7 +11,7 @@ class FetchSignUpEvent extends SignUpEvent {
     required this.email,
     required this.name,
     required this.conformPassword,
-   required this.mobile,
+    required this.mobile,
     required this.password,
   });
 }

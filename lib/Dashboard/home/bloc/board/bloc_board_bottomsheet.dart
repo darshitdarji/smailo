@@ -8,15 +8,12 @@ import 'package:smailo/server_url/base_app_url.dart';
 
 class BoardBLoc extends Bloc<BoardEvent, BoardState> {
   BoardBLoc() : super(BoardInitialState()) {
-
     on<FetchBoardEvent>((event, emit) async {
-
       emit(BoardLoadingState());
       try {
         BoardListModel model = await FetchdataFromApi(schoolId: event.schoolId);
 
         if (model.status == 200) {
-
           emit(BoardLoadedState(boardList: model));
         } else {
           emit(BoardErrorState(
@@ -24,13 +21,11 @@ class BoardBLoc extends Bloc<BoardEvent, BoardState> {
         }
       } catch (error) {
         emit(BoardErrorState(error: "An error Occurred"));
-
       }
     });
   }
 
   FetchdataFromApi({required String schoolId}) async {
-
     BoardListModel model;
     Map data = {
       'school_id': schoolId,

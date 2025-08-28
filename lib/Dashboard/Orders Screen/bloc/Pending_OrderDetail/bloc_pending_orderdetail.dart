@@ -33,7 +33,7 @@ class PendingOrderDetailBloc
       {required String orderId, required String orderIDEncrypt}) async {
     PendingOrderDetailListModel model;
     Map data = {
-      'user_id': '610',
+      'user_id': '1760',
       'order_id': orderId,
       'orderIDEncrypt': orderIDEncrypt
     };

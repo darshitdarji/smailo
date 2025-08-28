@@ -13,7 +13,8 @@ class AllProductsBloc extends Bloc<AllProductsEvent, AllProductsState> {
         AllProductsLoadingState(),
       );
       try {
-        AllProductsListModel model = await fetchDataFromApi(filterPrice: event.filterPrice, filterShortBy: event.filterShortBy);
+        AllProductsListModel model = await fetchDataFromApi(
+            filterPrice: event.filterPrice, filterShortBy: event.filterShortBy);
         if (model.status == 200) {
           emit(AllProductsLoadedState(allProductsList: model));
         } else {
@@ -33,12 +34,13 @@ class AllProductsBloc extends Bloc<AllProductsEvent, AllProductsState> {
     });
   }
 
-  fetchDataFromApi({required String filterPrice, required String filterShortBy}) async {
+  fetchDataFromApi(
+      {required String filterPrice, required String filterShortBy}) async {
     AllProductsListModel model;
     Map data = {
-      "filter_sort_by":filterShortBy,
-      "filter_price":filterPrice,
-      "user_id" : "610",
+      "filter_sort_by": filterShortBy,
+      "filter_price": filterPrice,
+      "user_id": "610",
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}allProduct";
     final Uri url = Uri.parse(apiUrl);

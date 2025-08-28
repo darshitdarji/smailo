@@ -11,7 +11,10 @@ class CancelledListModel {
   CancelledListModel.fromJsonMap(Map<String, dynamic> map)
       : status = map['status'],
         cancelledData = List<CancelledData>.from(
-            map['data'].map((x) => CancelledData.fromJsonMap(x),),),
+          map['data'].map(
+            (x) => CancelledData.fromJsonMap(x),
+          ),
+        ),
         totalPages = map['totalPages'],
         totalCount = map['totalCount'],
         pageNumber = map['pageNumber'],
@@ -43,9 +46,8 @@ class CancelledData {
   final String orderDate;
   final int totalQuantity;
 
-
-  CancelledData.fromJsonMap(Map<String,dynamic>map)
-  :id = map['id'],
+  CancelledData.fromJsonMap(Map<String, dynamic> map)
+      : id = map['id'],
         orderNo = map['order_no'],
         userId = map['user_id'],
         transactionId = map['transaction_id'],
@@ -54,7 +56,7 @@ class CancelledData {
         paymentType = map['payment_type'],
         totalDiscount = map['total_discount'],
         discount = map['discount'],
-        pickupDate  = map['pickup_date'],
+        pickupDate = map['pickup_date'],
         subTotal = map['sub_total'],
         shippingCharge = map['shipping_charge'],
         totalAmount = map['total_amount'],
@@ -66,5 +68,4 @@ class CancelledData {
         orderIdEncrypt = map['orderIDEncrypt'],
         orderDate = map['order_date'],
         totalQuantity = map['total_quantity'];
-
 }

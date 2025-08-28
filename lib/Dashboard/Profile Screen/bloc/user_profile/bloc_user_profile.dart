@@ -35,11 +35,11 @@ class EditUserProfileBloc extends Bloc<UserProfileEvent, EditUserProfileState> {
   fetchDataFromApi() async {
     UserListModel model;
     Map data = {
-      'user_id':'610',
+      'user_id': '1760',
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}userProfile";
     final Uri uri = Uri.parse(apiUrl);
-    final response = await http.post(uri, body:  data);
+    final response = await http.post(uri, body: data);
     model = UserListModel.fromSjonMap(
       jsonDecode(response.body),
     );

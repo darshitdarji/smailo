@@ -1,4 +1,3 @@
-
 import 'package:smailo/model/order/cancelled/cancelled-model.dart';
 
 abstract class CancelledState {}

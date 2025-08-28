@@ -20,9 +20,9 @@ class AddToCartErrorState extends AddToCartState {
 }
 
 class RemoveToCartLoadedState extends AddToCartState {
-final RemoveToCartListModel removeToCartList;
+  final RemoveToCartListModel removeToCartList;
 
-RemoveToCartLoadedState({required this.removeToCartList});
+  RemoveToCartLoadedState({required this.removeToCartList});
 }
 
 class RemoveToCartErrorState extends AddToCartState {
@@ -30,4 +30,3 @@ class RemoveToCartErrorState extends AddToCartState {
 
   RemoveToCartErrorState({required this.error});
 }
-

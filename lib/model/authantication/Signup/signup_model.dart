@@ -25,9 +25,8 @@ class SignUpData {
   final String createdAt;
   final String updatedAt;
 
-
-  SignUpData.fromJsonMap(Map<String,dynamic> map)
-      :  id = map['id'],
+  SignUpData.fromJsonMap(Map<String, dynamic> map)
+      : id = map['id'],
         roleId = map['role_id'],
         name = map['name'],
         profileImage = map['profile_image'],
@@ -41,5 +40,4 @@ class SignUpData {
         deletedAt = map['deleted_at'],
         createdAt = map['created_at'],
         updatedAt = map['updated_at'];
-
 }

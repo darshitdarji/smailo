@@ -12,9 +12,12 @@ class _ConformedPageState extends State<ConformedPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("Confirmed Order Are Not avilable",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.black45)),
+        child: Text("Confirmed Order Are Not avilable",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.black45)),
       ),
-
     );
   }
 }

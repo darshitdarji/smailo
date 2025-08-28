@@ -16,7 +16,8 @@ class UpdateUserProfileBloc
       final UpdateProfileListModel model = await fetchDataFromApi(
         name: event.name,
         email: event.email,
-        mobileNo: event.mobileNo, image: event.image,
+        mobileNo: event.mobileNo,
+        image: event.image,
       );
       try {
         if (model.status == 200) {
@@ -30,7 +31,6 @@ class UpdateUserProfileBloc
           );
         }
       } catch (error) {
-
         print("error in Update${error}");
         emit(
           UpdateUserProfileErrorState(error: 'An error Occurred'),
@@ -46,7 +46,7 @@ class UpdateUserProfileBloc
       required String mobileNo}) async {
     UpdateProfileListModel model;
     Map data = {
-      'user_id': '610',
+      'user_id': '1760',
       'name': name,
       'mobile_no': mobileNo,
       'email': email,

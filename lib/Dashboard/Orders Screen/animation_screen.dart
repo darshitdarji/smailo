@@ -13,8 +13,13 @@ class AnimationScreen extends StatefulWidget {
   final String coupon;
   final String discountMrp;
   final String orderTotal;
+
   const AnimationScreen({
-    super.key, required this.totalMrp, required this.coupon, required this.discountMrp, required this.orderTotal,
+    super.key,
+    required this.totalMrp,
+    required this.coupon,
+    required this.discountMrp,
+    required this.orderTotal,
   });
 
   @override
@@ -28,7 +33,12 @@ class _AnimationScreenState extends State<AnimationScreen> {
       providers: [
         BlocProvider<CheckoutBloc>(create: (context) => CheckoutBloc()),
       ],
-      child: AnimationPage(totalMrp: widget.totalMrp, coupon: widget.coupon, discountMrp: widget.discountMrp, orderTotal:widget.orderTotal,),
+      child: AnimationPage(
+        totalMrp: widget.totalMrp,
+        coupon: widget.coupon,
+        discountMrp: widget.discountMrp,
+        orderTotal: widget.orderTotal,
+      ),
     );
   }
 }
@@ -38,8 +48,13 @@ class AnimationPage extends StatefulWidget {
   final String coupon;
   final String discountMrp;
   final String orderTotal;
+
   const AnimationPage({
-    Key? key, required this.totalMrp, required this.coupon, required this.discountMrp, required this.orderTotal,
+    Key? key,
+    required this.totalMrp,
+    required this.coupon,
+    required this.discountMrp,
+    required this.orderTotal,
   });
 
   @override
@@ -74,13 +89,14 @@ class _AnimationPageState extends State<AnimationPage>
       if (status == AnimationStatus.completed) {
         final state = BlocProvider.of<CheckoutBloc>(context).state;
         if (state is CheckoutLoadedState) {
-          timer = Timer(Duration(seconds:2), () {
+          timer = Timer(Duration(seconds: 2), () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                 builder: (context) => PendingOrderDetail(
                   orderId: state.checkoutList.checkoutData.id.toString(),
-                  orderIdEncrypt: state.checkoutList.checkoutData.orderIdEncrypt,
+                  orderIdEncrypt:
+                      state.checkoutList.checkoutData.orderIdEncrypt,
                 ),
               ),
             );

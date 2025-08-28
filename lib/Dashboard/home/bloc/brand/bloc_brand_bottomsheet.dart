@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:http/http.dart'as http;
+import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smailo/Dashboard/home/bloc/brand/event_barnd_bottomsheet.dart';
 import 'package:smailo/Dashboard/home/bloc/brand/state_brand_bottomsheet.dart';
@@ -23,10 +23,10 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
       }
     });
   }
-  fetchDataFromApi()async{
+
+  fetchDataFromApi() async {
     BrandListModel model;
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}brands";
-
 
     final Uri url = Uri.parse(apiUrl);
     final response = await http.post(url);

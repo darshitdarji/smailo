@@ -429,7 +429,7 @@ class _HomePageState extends State<HomePage> {
                             height: 10,
                           ),
                           Text(
-                              "Today's Deal",
+                            "Today's Deal",
                           ),
                         ],
                       ),
@@ -808,7 +808,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           ),
                                           SizedBox(
-                                             height:
+                                            height:
                                                 mediaQuery.size.height * 0.008,
                                           ),
                                           Row(

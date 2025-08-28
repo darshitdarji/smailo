@@ -19,12 +19,12 @@ class SchoolData {
   final String updatedAt;
   final String deletedAt;
 
-  SchoolData.fromJsonMap(Map<String , dynamic>map)
-  :id = map['id'],
-  name = map['name'],
-  image =  map['image'],
-  status = map['status'],
-  createdAt = map['created_at'],
-  updatedAt = map['updated_at'],
-  deletedAt = map['deleted_at'];
+  SchoolData.fromJsonMap(Map<String, dynamic> map)
+      : id = map['id'],
+        name = map['name'],
+        image = map['image'],
+        status = map['status'],
+        createdAt = map['created_at'],
+        updatedAt = map['updated_at'],
+        deletedAt = map['deleted_at'];
 }

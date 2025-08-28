@@ -9,43 +9,44 @@ import 'package:http/http.dart' as http;
 
 class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
   FavouriteBloc() : super(FavouriteInitialState()) {
-    on<FavouriteEvent>((event, emit) async {
-      emit(FavouriteLoadingState());
-      try {
-         FavouriteListModel model = await fetchDataFromApi();
-        if (model.status == 200) {
-          print("status${model.status}");
+    on<FavouriteEvent>(
+      (event, emit) async {
+        emit(FavouriteLoadingState());
+        try {
+          FavouriteListModel model = await fetchDataFromApi();
+          if (model.status == 200) {
+            print("status${model.status}");
 
+            emit(
+              FavouriteLoadedState(favouriteList: model),
+            );
+          } else {
+            emit(
+              FavouriteErrorState(
+                error: 'An error occurred while fetching data from API',
+              ),
+            );
+          }
+        } catch (error) {
+          print("error in favourite ${error}");
           emit(
-            FavouriteLoadedState(favouriteList: model),
-          );
-        } else {
-          emit(
-            FavouriteErrorState(
-              error: 'An error occurred while fetching data from API',
-            ),
+            FavouriteErrorState(error: 'an error Occurred'),
           );
         }
-      } catch (error) {
-        print("error in favourite ${error}");
-        emit(
-          FavouriteErrorState(error: 'an error Occurred'),
-        );
-      }
-    },
+      },
     );
   }
 
   fetchDataFromApi() async {
     FavouriteListModel model;
-    Map data = {
-      'user_id': '610'
-    };
+    Map data = {'user_id': '610'};
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}wishList";
     final Uri uri = Uri.parse(apiUrl);
-    final response = await http.post(uri,body: data);
+    final response = await http.post(uri, body: data);
 
-    model = FavouriteListModel.fromJsonMap(jsonDecode(response.body),);
+    model = FavouriteListModel.fromJsonMap(
+      jsonDecode(response.body),
+    );
     return model;
   }
 }

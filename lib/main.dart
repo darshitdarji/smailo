@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
+
 // import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'Authantication/Splace Screen.dart';
 import 'notification/firebase_options.dart';
 import 'notification/firebse.dart';
-
 
 // Future _firebaseBackgroundMessage(RemoteMessage message) async {
 //   if (message.notification != null) {

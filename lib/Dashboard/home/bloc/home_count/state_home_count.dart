@@ -14,5 +14,6 @@ class HomeCountLoadedState extends HomeCountState {
 
 class HomeCountErrorState extends HomeCountState {
   final String error;
+
   HomeCountErrorState({required this.error});
 }

@@ -26,7 +26,8 @@ class _CartBottomSheetState extends State<CartBottomSheet> {
         BlocProvider(
           create: (context) => AddToCartBloc(),
         ),
-        BlocProvider(create: (context) => SaveAndRemoveWishBloc(),
+        BlocProvider(
+          create: (context) => SaveAndRemoveWishBloc(),
         )
       ],
       child: CartBottom(
@@ -103,7 +104,9 @@ class _CartBottomState extends State<CartBottom> {
                             Text(
                               widget.name,
                               maxLines: widget.name.length > 20 ? 3 : null,
-                              overflow: widget.name.length > 20 ? TextOverflow.ellipsis : null,
+                              overflow: widget.name.length > 20
+                                  ? TextOverflow.ellipsis
+                                  : null,
                             ),
                             SizedBox(
                               height: 10,
@@ -111,12 +114,12 @@ class _CartBottomState extends State<CartBottom> {
                             Text(
                               "Are you wants to move this\n item from bag?",
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(color: Colors.black26, fontSize: 13),
+                              style: TextStyle(
+                                  color: Colors.black26, fontSize: 13),
                             ),
                             SizedBox(
                               height: 30,
                             ),
-
                           ],
                         ),
                       ),
@@ -159,8 +162,12 @@ class _CartBottomState extends State<CartBottom> {
                   VerticalDivider(),
                   TextButton(
                     onPressed: () {
-BlocProvider.of<AddToCartBloc>(context).add(FetchRemoveToCartEvent(productId: widget.id),);
-BlocProvider.of<SaveAndRemoveWishBloc>(context).add(FetchSaveWishEvent(productId: widget.id),);
+                      BlocProvider.of<AddToCartBloc>(context).add(
+                        FetchRemoveToCartEvent(productId: widget.id),
+                      );
+                      BlocProvider.of<SaveAndRemoveWishBloc>(context).add(
+                        FetchSaveWishEvent(productId: widget.id),
+                      );
                       Navigator.of(context).pop(true);
                     },
                     child: const Text(

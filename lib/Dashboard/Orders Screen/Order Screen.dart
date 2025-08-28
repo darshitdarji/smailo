@@ -20,14 +20,17 @@ class OrderScreen extends StatefulWidget {
 class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [
-    BlocProvider<HomeCountBloc>(
-    create: (context) => HomeCountBloc(),
-    ),
-      BlocProvider<HomeCountBloc>(
-        create: (context) => HomeCountBloc(),
-      )
-    ],child: OrderPage(),);
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<HomeCountBloc>(
+          create: (context) => HomeCountBloc(),
+        ),
+        BlocProvider<HomeCountBloc>(
+          create: (context) => HomeCountBloc(),
+        )
+      ],
+      child: OrderPage(),
+    );
   }
 }
 
@@ -56,8 +59,8 @@ class _OrderPageState extends State<OrderPage> {
     // TODO: implement initState
     super.initState();
     BlocProvider.of<HomeCountBloc>(context).add(FetchHomeCountEvent());
-
   }
+
   @override
   Widget build(BuildContext context) {
     var mediaquery = MediaQuery.of(context);
@@ -106,7 +109,7 @@ class _OrderPageState extends State<OrderPage> {
                       ),
                       Visibility(
                         visible:
-                        state.homeCountlist.countData.favoriteCount != 0,
+                            state.homeCountlist.countData.favoriteCount != 0,
                         child: Positioned(
                           top: 6,
                           right: 8,
@@ -125,7 +128,7 @@ class _OrderPageState extends State<OrderPage> {
                               decoration: BoxDecoration(
                                   color: Colors.yellow,
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(50)))),
+                                      BorderRadius.all(Radius.circular(50)))),
                         ),
                       )
                     ]),
@@ -162,7 +165,7 @@ class _OrderPageState extends State<OrderPage> {
                                 decoration: BoxDecoration(
                                     color: Colors.yellow,
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(50)))),
+                                        BorderRadius.all(Radius.circular(50)))),
                           ),
                         )
                       ],

@@ -17,10 +17,13 @@ class _RemoveDaiLogBoxState extends State<RemoveDaiLogBox> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<RemoveAddressBloc>(
-      create: (context) => RemoveAddressBloc(), child: RemoveDaiLogBoxPage(addressId: widget.addressId,),);
+      create: (context) => RemoveAddressBloc(),
+      child: RemoveDaiLogBoxPage(
+        addressId: widget.addressId,
+      ),
+    );
   }
 }
-
 
 class RemoveDaiLogBoxPage extends StatefulWidget {
   final String addressId;
@@ -37,8 +40,7 @@ class _RemoveDaiLogBoxPageState extends State<RemoveDaiLogBoxPage> {
     return AlertDialog(
       titlePadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       insetPadding: EdgeInsets.all(0),
-      shape:
-      RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       actionsPadding: EdgeInsets.symmetric(horizontal: 10),
       title: Text("Confirm"),
       content: Text("Are you sure you wish to delete \nthis address?"),
@@ -53,13 +55,14 @@ class _RemoveDaiLogBoxPageState extends State<RemoveDaiLogBoxPage> {
             ),
             onPressed: () {
               BlocProvider.of<RemoveAddressBloc>(context).add(
-                FetchRemoveAddressEvent(addressId: widget.addressId),);
+                FetchRemoveAddressEvent(addressId: widget.addressId),
+              );
               Navigator.pop(context);
             },
             child: Text(
               "DELETE",
-              style: TextStyle(
-                  color: Colors.white, fontWeight: FontWeight.bold),
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             )),
         ElevatedButton(
             style: ElevatedButton.styleFrom(

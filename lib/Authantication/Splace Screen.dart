@@ -38,30 +38,17 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
       nextScreen: Pages(),
       splashTransition: SplashTransition.fadeTransition,
-  duration: 3000,
-
+      duration: 3000,
       backgroundColor: Colors.white.withOpacity(0.95),
     );
-    //   Scaffold(
-    //   backgroundColor: Colors.white.withOpacity(0.94),
-    //   body: Center(
-    //     child: SizedBox(
-    //       child: Image(
-    //         image: AssetImage("assets/img_2.png"),
-    //         fit: BoxFit.cover,
-    //       ),
-    //       height: 250,
-    //       width: 250,
-    //     ),
-    //   ),
-    // );
   }
 
   void wheretogo() async {
     Timer(
       Duration(seconds: 3),
       () {
-        if (mounted) { // Check if the widget is still mounted before navigating
+        if (mounted) {
+          // Check if the widget is still mounted before navigating
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
@@ -72,5 +59,4 @@ class _SplashScreenState extends State<SplashScreen> {
       },
     );
   }
-  }
-
+}

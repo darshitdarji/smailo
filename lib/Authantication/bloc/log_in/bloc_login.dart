@@ -18,7 +18,6 @@ class LogInBloc extends Bloc<LogInEvent, UiState> {
       );
       try {
         if (model.status == 200) {
-
           emit(
             UiLoadedState(logInList: model),
           );
@@ -36,7 +35,10 @@ class LogInBloc extends Bloc<LogInEvent, UiState> {
     });
   }
 
-  fetchDataFromApi({required String mobile, required String password,}) async {
+  fetchDataFromApi({
+    required String mobile,
+    required String password,
+  }) async {
     LogInListModel model;
     // Map data = {
     //   'mobile_and_email': mobile,

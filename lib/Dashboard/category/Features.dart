@@ -31,7 +31,9 @@ class _FeaturesScreenState extends State<FeaturesScreen> {
         BlocProvider<AddToCartBloc>(
           create: (context) => AddToCartBloc(),
         ),
-        BlocProvider<HomeCountBloc>(create: (context) => HomeCountBloc(),)
+        BlocProvider<HomeCountBloc>(
+          create: (context) => HomeCountBloc(),
+        )
       ],
       child: const Features(),
     );
@@ -89,7 +91,7 @@ class _FeaturesState extends State<Features> {
                       ),
                       Visibility(
                         visible:
-                        state.homeCountlist.countData.favoriteCount != 0,
+                            state.homeCountlist.countData.favoriteCount != 0,
                         child: Positioned(
                           top: 6,
                           right: 8,
@@ -108,7 +110,7 @@ class _FeaturesState extends State<Features> {
                               decoration: BoxDecoration(
                                   color: Colors.yellow,
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(50)))),
+                                      BorderRadius.all(Radius.circular(50)))),
                         ),
                       )
                     ]),
@@ -145,7 +147,7 @@ class _FeaturesState extends State<Features> {
                                 decoration: BoxDecoration(
                                     color: Colors.yellow,
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(50)))),
+                                        BorderRadius.all(Radius.circular(50)))),
                           ),
                         )
                       ],
@@ -160,7 +162,6 @@ class _FeaturesState extends State<Features> {
               return Container();
             },
           ),
-
         ],
         leading: InkWell(
             onTap: () {
@@ -181,7 +182,7 @@ class _FeaturesState extends State<Features> {
       ),
       body: BlocBuilder<FeaturesBloc, FeaturesState>(builder: (context, state) {
         if (state is FeaturesLoadingState) {
-          return  Center(
+          return Center(
             child: CircularProgressIndicator(),
           );
         } else if (state is FeaturesLoadedState) {
@@ -334,37 +335,36 @@ class _FeaturesState extends State<Features> {
                                             onTap: () {
                                               setState(() {
                                                 final cart = state
-                                                    .featuresList
-                                                    .featuresListdata[
-                                                index]
-                                                    .isCart ==
+                                                        .featuresList
+                                                        .featuresListdata[index]
+                                                        .isCart ==
                                                     '1';
 
                                                 if (cart) {
                                                   print("remove");
                                                   BlocProvider.of<
-                                                      AddToCartBloc>(
-                                                      context)
+                                                              AddToCartBloc>(
+                                                          context)
                                                       .add(
                                                     FetchRemoveToCartEvent(
                                                         productId: state
                                                             .featuresList
                                                             .featuresListdata[
-                                                        index]
+                                                                index]
                                                             .id
                                                             .toString()),
                                                   );
                                                 } else {
                                                   print("add");
                                                   BlocProvider.of<
-                                                      AddToCartBloc>(
-                                                      context)
+                                                              AddToCartBloc>(
+                                                          context)
                                                       .add(
                                                     FetchAddToCartEvent(
                                                       productId: state
                                                           .featuresList
                                                           .featuresListdata[
-                                                      index]
+                                                              index]
                                                           .id
                                                           .toString(),
                                                       quantity: '1',
@@ -375,14 +375,12 @@ class _FeaturesState extends State<Features> {
                                                   if (cart) {
                                                     state
                                                         .featuresList
-                                                        .featuresListdata[
-                                                    index]
+                                                        .featuresListdata[index]
                                                         .isCart = '0';
                                                   } else {
                                                     state
                                                         .featuresList
-                                                        .featuresListdata[
-                                                    index]
+                                                        .featuresListdata[index]
                                                         .isCart = '1';
                                                   }
                                                 });
@@ -391,11 +389,11 @@ class _FeaturesState extends State<Features> {
                                             child: Icon(
                                               Icons.shopping_cart,
                                               color: state
-                                                  .featuresList
-                                                  .featuresListdata[
-                                              index]
-                                                  .isCart ==
-                                                  '1'
+                                                          .featuresList
+                                                          .featuresListdata[
+                                                              index]
+                                                          .isCart ==
+                                                      '1'
                                                   ? Colors.blue
                                                   : Colors.black45,
                                               size: 25,

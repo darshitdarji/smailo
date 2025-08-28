@@ -1,4 +1,3 @@
 abstract class BrandEvent {}
 
-class FetchBrandEvent extends BrandEvent {
-}
+class FetchBrandEvent extends BrandEvent {}

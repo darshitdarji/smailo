@@ -33,7 +33,9 @@ class _ProductScreenState extends State<ProductScreen> {
         BlocProvider<AddToCartBloc>(
           create: (context) => AddToCartBloc(),
         ),
-        BlocProvider<HomeCountBloc>(create:  (context) => HomeCountBloc(),)
+        BlocProvider<HomeCountBloc>(
+          create: (context) => HomeCountBloc(),
+        )
       ],
       child: Product(),
     );
@@ -103,7 +105,7 @@ class _ProductState extends State<Product> {
                       ),
                       Visibility(
                         visible:
-                        state.homeCountlist.countData.favoriteCount != 0,
+                            state.homeCountlist.countData.favoriteCount != 0,
                         child: Positioned(
                           top: 6,
                           right: 8,
@@ -122,7 +124,7 @@ class _ProductState extends State<Product> {
                               decoration: BoxDecoration(
                                   color: Colors.yellow,
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(50)))),
+                                      BorderRadius.all(Radius.circular(50)))),
                         ),
                       )
                     ]),
@@ -159,7 +161,7 @@ class _ProductState extends State<Product> {
                                 decoration: BoxDecoration(
                                     color: Colors.yellow,
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(50)))),
+                                        BorderRadius.all(Radius.circular(50)))),
                           ),
                         )
                       ],
@@ -174,7 +176,6 @@ class _ProductState extends State<Product> {
               return Container();
             },
           ),
-
         ],
         leading: InkWell(
             onTap: () {
@@ -265,7 +266,6 @@ class _ProductState extends State<Product> {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-
                       childAspectRatio: 0.72,
                     ),
                     itemBuilder: (BuildContext context, int index) {
@@ -436,18 +436,14 @@ class _ProductState extends State<Product> {
                                               setState(() {
                                                 if (cart) {
                                                   state
-                                                          .allProductsList
-                                                          .allProductsData[
-                                                              index]
-                                                          .isCart =
-                                                      '0';
+                                                      .allProductsList
+                                                      .allProductsData[index]
+                                                      .isCart = '0';
                                                 } else {
                                                   state
-                                                          .allProductsList
-                                                          .allProductsData[
-                                                              index]
-                                                          .isCart =
-                                                      '1';
+                                                      .allProductsList
+                                                      .allProductsData[index]
+                                                      .isCart = '1';
                                                 }
                                               });
                                             },

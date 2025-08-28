@@ -10,7 +10,8 @@ class FavouriteListModel {
 
   FavouriteListModel.fromJsonMap(Map<String, dynamic> map)
       : status = map['status'],
-        favouriteData = List<FavouriteData>.from(map['data'].map((x) => FavouriteData.fromJsonMap(x))),
+        favouriteData = List<FavouriteData>.from(
+            map['data'].map((x) => FavouriteData.fromJsonMap(x))),
         totalPages = map['totalPages'],
         totalCount = map['totalCount'],
         pageNumber = map['pageNumber'],

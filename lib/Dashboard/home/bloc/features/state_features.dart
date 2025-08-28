@@ -13,7 +13,7 @@ class FeaturesLoadedState extends FeaturesState {
 }
 
 class FeaturesErrorState extends FeaturesState {
- final String error;
+  final String error;
 
- FeaturesErrorState({required this.error});
+  FeaturesErrorState({required this.error});
 }

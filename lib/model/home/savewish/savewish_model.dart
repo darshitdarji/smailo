@@ -1,4 +1,3 @@
-
 class SaveWishListModel {
   final int status;
   final SaveWishData saveWishData;

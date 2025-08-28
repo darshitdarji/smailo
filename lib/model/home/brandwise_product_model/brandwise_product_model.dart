@@ -30,10 +30,10 @@ class BrandWiseData {
   final String createdAt;
   final String updatedAt;
   final String deletedAt;
-   String isCart;
+  String isCart;
   final String brandName;
 
-  BrandWiseData.fromJsonMap(Map<String,dynamic> map)
+  BrandWiseData.fromJsonMap(Map<String, dynamic> map)
       : id = map['id'],
         productName = map['product_name'],
         superCatId = map['super_cat_id'],

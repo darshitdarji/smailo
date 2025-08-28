@@ -30,7 +30,7 @@ class TodayDealData {
   final String createdAt;
   final String updatedAt;
   final String deletedAt;
-   String isCart;
+  String isCart;
   final String brandName;
 
   TodayDealData.fromJsonMap(Map<String, dynamic> map)

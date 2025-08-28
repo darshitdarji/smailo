@@ -8,8 +8,9 @@ import 'package:smailo/Dashboard/Profile%20Screen/orders%20of%20user/removeDailo
 import 'Orderdailogbox.dart';
 
 class AddressScreen extends StatefulWidget {
-
-  const AddressScreen({super.key, });
+  const AddressScreen({
+    super.key,
+  });
 
   @override
   State<AddressScreen> createState() => _AddressScreenState();
@@ -240,7 +241,11 @@ class _AddressState extends State<Address> {
                                           showDialog(
                                               context: context,
                                               builder: (context) {
-                                                return RemoveDaiLogBox(addressId: state.addressList.addressListData[index].id.toString(),);
+                                                return RemoveDaiLogBox(
+                                                  addressId: state.addressList
+                                                      .addressListData[index].id
+                                                      .toString(),
+                                                );
                                               });
                                         }
                                       });

@@ -12,11 +12,11 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
     on<FetchCheckoutEvent>((event, emit) async {
       emit(CheckoutLoadingState());
       final CheckoutListModel model = await fetchDataFromApi(
-          userAddressId: event.UserAddressId,
-          couponId: event.couPonId,
-          offerDiscount: event.offerDiscount,
-          totalAmount: event.totalAmount,
-          totalDiscount: event.totalDiscount,
+        userAddressId: event.UserAddressId,
+        couponId: event.couPonId,
+        offerDiscount: event.offerDiscount,
+        totalAmount: event.totalAmount,
+        totalDiscount: event.totalDiscount,
       );
       try {
         if (model.status == 200) {
@@ -47,7 +47,7 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
   }) async {
     CheckoutListModel model;
     Map data = {
-      'user_id': '610',
+      'user_id': '1760',
       'user_address_id': userAddressId,
       'coupon_id': couponId,
       'payment_type': '1',

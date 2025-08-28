@@ -23,13 +23,10 @@ class _NewadressState extends State<Newadress> {
   ScrollController controller = ScrollController();
   late String defaultAddress;
 
-
-
   @override
   Widget build(BuildContext context) {
     var mediaquery = MediaQuery.of(context);
-    return
-      SingleChildScrollView(
+    return SingleChildScrollView(
       child: AlertDialog(
         buttonPadding: EdgeInsets.all(10),
         insetPadding: EdgeInsets.all(20),

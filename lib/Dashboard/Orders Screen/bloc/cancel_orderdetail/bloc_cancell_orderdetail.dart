@@ -12,7 +12,8 @@ class CancelledOrderDetailsBloc
     on<FetchCancelOrderDetailEvent>(
       (event, emit) async {
         emit(CancelOrderDetailLoadingState());
-        CancelOrderDetailModel model = await fetchDataFromApi(cancelReason: event.cancelReason, orderId: event.orderId);
+        CancelOrderDetailModel model = await fetchDataFromApi(
+            cancelReason: event.cancelReason, orderId: event.orderId);
         try {
           if (model.status == 200) {
             print("Cancelled_orderDetail_response${model.status}");
@@ -40,7 +41,7 @@ class CancelledOrderDetailsBloc
       {required String cancelReason, required String orderId}) async {
     CancelOrderDetailModel model;
     Map data = {
-      'user_id': '610',
+      'user_id': '1760',
       'cancel_reason': cancelReason,
       'order_id': orderId,
     };

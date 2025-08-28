@@ -11,7 +11,6 @@ class ProductDetailLoadedState extends ProductDetailState {
   final ProductDetailListModel productList;
 
   ProductDetailLoadedState({required this.productList});
-
 }
 
 class ProductDetailErrorState extends ProductDetailState {

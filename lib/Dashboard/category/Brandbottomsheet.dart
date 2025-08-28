@@ -39,7 +39,6 @@ class _BrandState extends State<Brand> {
     BlocProvider.of<BrandBloc>(context).add(FetchBrandEvent());
   }
 
-
   bool isselected = false;
 
   @override
@@ -51,7 +50,7 @@ class _BrandState extends State<Brand> {
       minChildSize: 0.4,
       expand: false,
       builder: (context, scrollController) {
-        return BlocBuilder<BrandBloc,BrandState>(
+        return BlocBuilder<BrandBloc, BrandState>(
           builder: (context, state) {
             if (state is BrandLoadingState) {
               return Center(
@@ -72,13 +71,14 @@ class _BrandState extends State<Brand> {
                       padding: EdgeInsets.all(5),
                       child: InkWell(
                         onTap: () {
-
                           Navigator.of(context).popUntil(
                             (route) => route.isFirst,
                           );
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => BrandwiseScreen( brandId:state.brandList.branData[index].id.toString()),
+                              builder: (context) => BrandwiseScreen(
+                                  brandId: state.brandList.branData[index].id
+                                      .toString()),
                             ),
                           );
                         },

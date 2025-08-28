@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:http/http.dart'as http;
+import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smailo/Dashboard/home/bloc/home_count/event_home_count.dart';
 import 'package:smailo/Dashboard/home/bloc/home_count/state_home_count.dart';
@@ -18,7 +18,8 @@ class HomeCountBloc extends Bloc<HomeCountEvent, HomeCountState> {
           );
         } else {
           emit(
-            HomeCountErrorState(error: 'An error occurred while fetching data from API'),
+            HomeCountErrorState(
+                error: 'An error occurred while fetching data from API'),
           );
         }
       } catch (error) {
@@ -29,12 +30,10 @@ class HomeCountBloc extends Bloc<HomeCountEvent, HomeCountState> {
 
   FetchDataFromApi() async {
     HomeCountListModel model;
-    Map data = {
-      'user_id': '610'
-    };
+    Map data = {'user_id': '610'};
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}homeCount";
-    final Uri url  = Uri.parse(apiUrl);
-    final response = await http.post(url , body: data);
+    final Uri url = Uri.parse(apiUrl);
+    final response = await http.post(url, body: data);
     model = HomeCountListModel.fromJsonMap(jsonDecode(response.body));
     return model;
   }

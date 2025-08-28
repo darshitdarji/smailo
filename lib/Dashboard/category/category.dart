@@ -227,12 +227,10 @@ class _CategoryPageState extends State<CategoryPage> {
             ),
           ],
         ),
-        body:
-        SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               BlocBuilder<SchoolBloc, SchoolState>(
                 builder: (BuildContext context, state) {
                   if (state is SchoolLoadingState) {
@@ -243,91 +241,93 @@ class _CategoryPageState extends State<CategoryPage> {
                       ),
                     );
                   } else if (state is SchoolLoadedState) {
-                    return
-                   Column(
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                     children: [
-                       SizedBox(
-                         height: mediaquery.size.height * 0.025,
-                       ),
-                       const Padding(
-                         padding: EdgeInsets.only(left: 25),
-                         child: Text(
-                           'School',
-                           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
-                         ),
-                       ),
-                       SizedBox(
-                         height: mediaquery.size.height * 0.015,
-                       ),
-                       Center(
-                         child: Container(
-                              padding: const EdgeInsets.all(10),
-                              height: mediaquery.size.height * 0.3,
-                              width: mediaquery.size.width * 0.5,
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
-                                border: Border.all(color: Colors.black38, width: 0.2),
-                                color: educationBoard
-                                    ? Colors.blue.shade400
-                                    : Colors.white,
-                              ),
-                              child: ListView.builder(
-                                itemCount: state.schoolModel.schoolData.length,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (BuildContext context, int index) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      schoolId =
-                                          state.schoolModel.schoolData[index].id;
-
-                                      setState(() {
-                                        educationBoard = !educationBoard;
-                                        language = false;
-                                        standard = false;
-                                        done = false;
-                                        selectedLanguage = -1;
-                                        selectedStandard = -1;
-                                      });
-
-                                      BlocProvider.of<BoardBLoc>(context).add(
-                                          FetchBoardEvent(
-                                              schoolId: schoolId.toString()));
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        children: [
-                                          Image.network(
-                                            state.schoolModel.schoolData[index].image,
-                                            fit: BoxFit.cover,
-                                            height: 150,
-                                            width: 150,
-                                          ),
-                                          SizedBox(
-                                            height: mediaquery.size.height * 0.01,
-                                          ),
-                                          Text(
-                                            state.schoolModel.schoolData[index].name,
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              color: educationBoard
-                                                  ? Colors.white
-                                                  : Colors.black,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: mediaquery.size.height * 0.025,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 25),
+                          child: Text(
+                            'School',
+                            style: TextStyle(
+                                fontSize: 24, fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                        SizedBox(
+                          height: mediaquery.size.height * 0.015,
+                        ),
+                        Center(
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            height: mediaquery.size.height * 0.3,
+                            width: mediaquery.size.width * 0.5,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              border:
+                                  Border.all(color: Colors.black38, width: 0.2),
+                              color: educationBoard
+                                  ? Colors.blue.shade400
+                                  : Colors.white,
                             ),
-                       ),
-                     ],
-                   );
+                            child: ListView.builder(
+                              itemCount: state.schoolModel.schoolData.length,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (BuildContext context, int index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    schoolId =
+                                        state.schoolModel.schoolData[index].id;
 
+                                    setState(() {
+                                      educationBoard = !educationBoard;
+                                      language = false;
+                                      standard = false;
+                                      done = false;
+                                      selectedLanguage = -1;
+                                      selectedStandard = -1;
+                                    });
+
+                                    BlocProvider.of<BoardBLoc>(context).add(
+                                        FetchBoardEvent(
+                                            schoolId: schoolId.toString()));
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      children: [
+                                        Image.network(
+                                          state.schoolModel.schoolData[index]
+                                              .image,
+                                          fit: BoxFit.cover,
+                                          height: 150,
+                                          width: 150,
+                                        ),
+                                        SizedBox(
+                                          height: mediaquery.size.height * 0.01,
+                                        ),
+                                        Text(
+                                          state.schoolModel.schoolData[index]
+                                              .name,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: educationBoard
+                                                ? Colors.white
+                                                : Colors.black,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
                   } else if (state is SchoolErrorState) {
                     return Center(
                       child: Text(state.error),
@@ -552,7 +552,6 @@ class _CategoryPageState extends State<CategoryPage> {
                                 // print("BoardId:$selectedMedium");
                                 return GestureDetector(
                                   onTap: () {
-
                                     standardId = state
                                         .standardList.standardData[index].id;
                                     setState(() {
@@ -696,8 +695,8 @@ class _CategoryPageState extends State<CategoryPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                               ProductAddScreen(standardId: standardId.toString()),
+                          builder: (context) => ProductAddScreen(
+                              standardId: standardId.toString()),
                         ),
                       ).then((result) {
                         setState(() {

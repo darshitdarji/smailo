@@ -250,12 +250,12 @@ class _DetailpageState extends State<Detailpage> {
                                       context: context,
                                       builder: (context) {
                                         return Dailogscreen(
-                                            images: state
-                                                .productList
-                                                .productDetailModelData
-                                                .productListData
-                                                .productImages[index]
-                                                .productImage,
+                                          images: state
+                                              .productList
+                                              .productDetailModelData
+                                              .productListData
+                                              .productImages[index]
+                                              .productImage,
                                         );
                                       },
                                     );
@@ -755,8 +755,7 @@ class _DetailpageState extends State<Detailpage> {
                     height: 10,
                   ),
                   const Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

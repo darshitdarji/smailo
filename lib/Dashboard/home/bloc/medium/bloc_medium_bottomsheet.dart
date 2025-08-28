@@ -8,31 +8,40 @@ import 'package:http/http.dart' as http;
 
 class MediumBloc extends Bloc<MediumEvent, MediumState> {
   MediumBloc() : super(MediumInitialState()) {
+    on<FetchMediumEvent>(
+      (event, emit) async {
+        emit(MediumLoadingState());
+        try {
+          MediumListModal model =
+              await fetchDataFromApi(boardId: event.boardId);
+          if (model.status == 200) {
+            print("medium${model.status}");
 
-    on<FetchMediumEvent>((event, emit) async {
-      emit(MediumLoadingState());
-      try {
-
-        MediumListModal model = await fetchDataFromApi(boardId: event.boardId);
-        if (model.status == 200) {
-          print("medium${model.status}");
-
-          emit(MediumLoadedState(mediumModel: model,),);
-        } else {
-
-          emit(MediumErrorState(
-              error: 'An error occurred while fetching data from API',),);
+            emit(
+              MediumLoadedState(
+                mediumModel: model,
+              ),
+            );
+          } else {
+            emit(
+              MediumErrorState(
+                error: 'An error occurred while fetching data from API',
+              ),
+            );
+          }
+        } catch (error) {
+          print("medium$error");
+          emit(
+            MediumErrorState(
+              error: "An Error Occurred",
+            ),
+          );
         }
-      } catch (error) {
-        print("medium$error");
-        emit(MediumErrorState(error: "An Error Occurred",),
-        );
-      }
-    },);
+      },
+    );
   }
 
   fetchDataFromApi({required String boardId}) async {
-
     MediumListModal model;
     Map data = {
       'board_id': boardId,
@@ -42,7 +51,7 @@ class MediumBloc extends Bloc<MediumEvent, MediumState> {
 
     final Uri url = Uri.parse(apiUrl);
     final response = await http.post(url, body: data);
-      model = MediumListModal.fromJsonMap(jsonDecode(response.body));
+    model = MediumListModal.fromJsonMap(jsonDecode(response.body));
     return model;
   }
 }

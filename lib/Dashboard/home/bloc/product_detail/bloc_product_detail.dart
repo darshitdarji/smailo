@@ -12,8 +12,8 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
       (event, emit) async {
         emit(ProductDetailLoadingState());
         try {
-          ProductDetailListModel model = await FetchDataFromAPi(productId: event.productId);
-
+          ProductDetailListModel model =
+              await FetchDataFromAPi(productId: event.productId);
 
           if (model.status == 200) {
             print("Pending status ${model.status}");
@@ -31,7 +31,7 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
             );
           }
         } catch (error) {
-print("Pendingorder ${error}");
+          print("Pendingorder ${error}");
           emit(
             ProductDetailErrorState(
               error: "An Error Occurred",
@@ -45,12 +45,12 @@ print("Pendingorder ${error}");
   FetchDataFromAPi({required String productId}) async {
     final ProductDetailListModel model;
     Map data = {
-      'product_id':productId,
-      'user_id': '610',
+      'product_id': productId,
+      'user_id': '1760',
     };
     const apiurl = "${SchoolEcommBaseAppUrl.baseAppUrl}productDetail";
     final Uri url = Uri.parse(apiurl);
-    final response = await http.post(url, body:  data );
+    final response = await http.post(url, body: data);
 
     model = ProductDetailListModel.fromJsonMap(jsonDecode(response.body));
     return model;

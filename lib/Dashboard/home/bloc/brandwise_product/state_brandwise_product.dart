@@ -8,10 +8,12 @@ class BrandwiseLoadingState extends BrandWiseState {}
 
 class BrandwiseLoadedState extends BrandWiseState {
   final BrandWiseListModel brandWiseList;
+
   BrandwiseLoadedState({required this.brandWiseList});
 }
 
 class BrandwiseErrorState extends BrandWiseState {
   final String error;
+
   BrandwiseErrorState({required this.error});
 }

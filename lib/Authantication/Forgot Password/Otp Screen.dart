@@ -1,4 +1,5 @@
 import 'dart:async';
+
 // import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -37,7 +38,7 @@ class _OtpPageState extends State<OtpPage> {
   late int _timeoutSeconds;
   late Timer _timer;
   bool _showResendText = false;
-  String? mToken= '';
+  String? mToken = '';
 
   @override
   void initState() {
@@ -85,12 +86,6 @@ class _OtpPageState extends State<OtpPage> {
   //   });
   // }
   //
-
-
-
-
-
-
 
   void _restartTimeout() {
     setState(() {

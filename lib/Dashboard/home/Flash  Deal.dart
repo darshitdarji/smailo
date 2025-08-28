@@ -356,37 +356,36 @@ class _FlashDealState extends State<FlashDeal> {
                                               onTap: () {
                                                 setState(() {
                                                   final cart = state
-                                                      .flashDealModel
-                                                      .flashDealData[
-                                                  index]
-                                                      .isCart ==
+                                                          .flashDealModel
+                                                          .flashDealData[index]
+                                                          .isCart ==
                                                       '1';
 
                                                   if (cart) {
                                                     print("remove");
                                                     BlocProvider.of<
-                                                        AddToCartBloc>(
-                                                        context)
+                                                                AddToCartBloc>(
+                                                            context)
                                                         .add(
                                                       FetchRemoveToCartEvent(
                                                           productId: state
                                                               .flashDealModel
                                                               .flashDealData[
-                                                          index]
+                                                                  index]
                                                               .id
                                                               .toString()),
                                                     );
                                                   } else {
                                                     print("add");
                                                     BlocProvider.of<
-                                                        AddToCartBloc>(
-                                                        context)
+                                                                AddToCartBloc>(
+                                                            context)
                                                         .add(
                                                       FetchAddToCartEvent(
                                                         productId: state
                                                             .flashDealModel
                                                             .flashDealData[
-                                                        index]
+                                                                index]
                                                             .id
                                                             .toString(),
                                                         quantity: '1',
@@ -397,14 +396,12 @@ class _FlashDealState extends State<FlashDeal> {
                                                     if (cart) {
                                                       state
                                                           .flashDealModel
-                                                          .flashDealData[
-                                                      index]
+                                                          .flashDealData[index]
                                                           .isCart = '0';
                                                     } else {
                                                       state
                                                           .flashDealModel
-                                                          .flashDealData[
-                                                      index]
+                                                          .flashDealData[index]
                                                           .isCart = '1';
                                                     }
                                                   });
@@ -413,11 +410,11 @@ class _FlashDealState extends State<FlashDeal> {
                                               child: Icon(
                                                 Icons.shopping_cart,
                                                 color: state
-                                                    .flashDealModel
-                                                    .flashDealData[
-                                                index]
-                                                    .isCart ==
-                                                    '1'
+                                                            .flashDealModel
+                                                            .flashDealData[
+                                                                index]
+                                                            .isCart ==
+                                                        '1'
                                                     ? Colors.blue
                                                     : Colors.black45,
                                                 size: 25,

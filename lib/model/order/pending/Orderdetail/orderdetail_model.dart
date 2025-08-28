@@ -1,12 +1,12 @@
 class PendingOrderDetailListModel {
- final int status;
- final  OrderDetailData orderDetailData;
- final int totalPages;
- final int totalCount;
- final int pageNumber;
- final  bool hasNextPage;
- final bool hasPreviousPage;
- final String message;
+  final int status;
+  final OrderDetailData orderDetailData;
+  final int totalPages;
+  final int totalCount;
+  final int pageNumber;
+  final bool hasNextPage;
+  final bool hasPreviousPage;
+  final String message;
 
   PendingOrderDetailListModel.fromJsonMap(Map<String, dynamic> map)
       : status = map['status'],
@@ -66,7 +66,7 @@ class OrderDetail {
         orderDate = map['order_date'],
         orderItem = List<OrderItem>.from(
           map['orderItem'].map(
-                (x) => OrderItem.fromJsonMap(x),
+            (x) => OrderItem.fromJsonMap(x),
           ),
         ),
         discountMrp = map['discountMRP'],
@@ -123,10 +123,10 @@ class ProductData {
   final String brandName;
   final String favorite;
 
-  ProductData.fromJsonMap(Map<String, dynamic>map)
-      :id= map['id'],
+  ProductData.fromJsonMap(Map<String, dynamic> map)
+      : id = map['id'],
         productName = map['product_name'],
-        superCatId=map['super_cat_id'],
+        superCatId = map['super_cat_id'],
         superSubCatId = map['super_sub_cat_id'],
         categoryId = map['category_id'],
         subCategoryId = map['sub_category_id'],
@@ -135,14 +135,14 @@ class ProductData {
         price = map['price'],
         quantity = map['quantity'],
         description = map['description'],
-        discount =map['discount'],
+        discount = map['discount'],
         discountPrice = map['discount_price'],
         soldBy = map['sold_by'],
         status = map['status'],
-        isFuture= map['is_future'],
+        isFuture = map['is_future'],
         createdAt = map['created_at'],
         updatedAt = map['updated_at'],
-        deletedAt= map['deleted_at'],
-        brandName =map['brand_name'],
+        deletedAt = map['deleted_at'],
+        brandName = map['brand_name'],
         favorite = map['favorite'];
 }

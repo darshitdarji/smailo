@@ -120,7 +120,7 @@ class _PagesState extends State<Pages> {
                   if (currentpage == data.length - 1) {
                     // If on the last page, go back to the previous page
                     dotcontrolle.previousPage(
-                      duration: Duration(seconds:1),
+                      duration: Duration(seconds: 1),
                       curve: Curves.ease,
                     );
                   } else {

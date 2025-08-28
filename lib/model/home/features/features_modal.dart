@@ -3,14 +3,11 @@ class FeaturesListModal {
   final List<FeaturesListdata> featuresListdata;
   final String messege;
 
-  FeaturesListModal.fromJsonMap(Map<String, dynamic>map)
+  FeaturesListModal.fromJsonMap(Map<String, dynamic> map)
       : status = map['status'],
         featuresListdata = List<FeaturesListdata>.from(
-            map['data'].map((x) => FeaturesListdata.fromJsonMap(x))
-        ),
+            map['data'].map((x) => FeaturesListdata.fromJsonMap(x))),
         messege = map['message'];
-
-
 }
 
 class FeaturesListdata {
@@ -33,29 +30,29 @@ class FeaturesListdata {
   final String createdAt;
   final String updatedAt;
   final String deletedAt;
-   String isCart;
+  String isCart;
   final String brandName;
 
-  FeaturesListdata.fromJsonMap(Map<String, dynamic>map)
+  FeaturesListdata.fromJsonMap(Map<String, dynamic> map)
       : id = map['id'],
-        productName= map['product_name'],
-        superCatId=map['super_cat_id'],
+        productName = map['product_name'],
+        superCatId = map['super_cat_id'],
         superSubCatId = map['super_sub_cat_id'],
-        categoryId=map['category_id'],
-        subCategoryId= map['sub_category_id'],
-        productImage= map['product_image'],
-        brandId =map['brand_id'],
-        price= map['price'],
-        quantity=map['quantity'],
-        description= map['description'],
-        discount= map['discount'],
-        discountPrice=map['discount_price'],
-        soldBy= map['sold_by'],
-        status=map['status'],
-        isFuture= map['is_future'],
-        createdAt= map['created_at'],
-        updatedAt=map['updated_at'],
-        deletedAt=map['deleted_at'],
-        isCart =map['is_cart'],
-        brandName= map['brand_name'];
+        categoryId = map['category_id'],
+        subCategoryId = map['sub_category_id'],
+        productImage = map['product_image'],
+        brandId = map['brand_id'],
+        price = map['price'],
+        quantity = map['quantity'],
+        description = map['description'],
+        discount = map['discount'],
+        discountPrice = map['discount_price'],
+        soldBy = map['sold_by'],
+        status = map['status'],
+        isFuture = map['is_future'],
+        createdAt = map['created_at'],
+        updatedAt = map['updated_at'],
+        deletedAt = map['deleted_at'],
+        isCart = map['is_cart'],
+        brandName = map['brand_name'];
 }

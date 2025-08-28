@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 class StandardBloc extends Bloc<StandardEvent, StandardState> {
   StandardBloc() : super(StandardInitialState()) {
-    on<FetchStandardEvent>((event, emit)  async {
+    on<FetchStandardEvent>((event, emit) async {
       emit(StandardLoadingState());
       try {
         StandardListModel model = await fetchDataApi(mediumId: event.mediumId);
@@ -34,7 +34,7 @@ class StandardBloc extends Bloc<StandardEvent, StandardState> {
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}standerd";
     final Uri url = Uri.parse(apiUrl);
     final response = await http.post(url, body: data);
-          model = StandardListModel.fromJsonMap(jsonDecode(response.body));
+    model = StandardListModel.fromJsonMap(jsonDecode(response.body));
     return model;
   }
 }

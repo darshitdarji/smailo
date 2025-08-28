@@ -12,8 +12,6 @@ import 'package:smailo/Dashboard/home/bloc/today_deal/event_today_deal.dart';
 import 'package:smailo/Dashboard/home/bloc/today_deal/state_today_deal.dart';
 import 'bloc/today_deal/bloc_today_deal.dart';
 
-
-
 class TodayDeal extends StatefulWidget {
   const TodayDeal({super.key});
 
@@ -32,7 +30,9 @@ class _TodayDealState extends State<TodayDeal> {
         BlocProvider<AddToCartBloc>(
           create: (context) => AddToCartBloc(),
         ),
-        BlocProvider<HomeCountBloc>(create: (context) => HomeCountBloc(),)
+        BlocProvider<HomeCountBloc>(
+          create: (context) => HomeCountBloc(),
+        )
       ],
       child: const TodayDealPage(),
     );
@@ -97,7 +97,7 @@ class _TodayDealPageState extends State<TodayDealPage> {
                         ),
                         Visibility(
                           visible:
-                          state.homeCountlist.countData.favoriteCount != 0,
+                              state.homeCountlist.countData.favoriteCount != 0,
                           child: Positioned(
                             top: 6,
                             right: 8,
@@ -106,8 +106,8 @@ class _TodayDealPageState extends State<TodayDealPage> {
                                 width: mediaquery.size.width * 0.04,
                                 child: Center(
                                     child: Text(
-                                        state
-                                            .homeCountlist.countData.favoriteCount
+                                        state.homeCountlist.countData
+                                            .favoriteCount
                                             .toString(),
                                         style: TextStyle(
                                             color: Colors.black,
@@ -116,7 +116,7 @@ class _TodayDealPageState extends State<TodayDealPage> {
                                 decoration: BoxDecoration(
                                     color: Colors.yellow,
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(50)))),
+                                        BorderRadius.all(Radius.circular(50)))),
                           ),
                         )
                       ]),
@@ -135,7 +135,8 @@ class _TodayDealPageState extends State<TodayDealPage> {
                                 size: 25,
                               )),
                           Visibility(
-                            visible: state.homeCountlist.countData.cartCount != 0,
+                            visible:
+                                state.homeCountlist.countData.cartCount != 0,
                             child: Positioned(
                               top: 6,
                               right: 8,
@@ -144,7 +145,8 @@ class _TodayDealPageState extends State<TodayDealPage> {
                                   width: mediaquery.size.width * 0.04,
                                   child: Center(
                                       child: Text(
-                                          state.homeCountlist.countData.cartCount
+                                          state
+                                              .homeCountlist.countData.cartCount
                                               .toString(),
                                           style: TextStyle(
                                               color: Colors.black,
@@ -152,8 +154,8 @@ class _TodayDealPageState extends State<TodayDealPage> {
                                               fontSize: 12))),
                                   decoration: BoxDecoration(
                                       color: Colors.yellow,
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(50)))),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(50)))),
                             ),
                           )
                         ],
@@ -168,7 +170,6 @@ class _TodayDealPageState extends State<TodayDealPage> {
                 return Container();
               },
             ),
-
           ],
         ),
         backgroundColor: Colors.white.withOpacity(0.95),
@@ -347,12 +348,12 @@ class _TodayDealPageState extends State<TodayDealPage> {
                                                             context)
                                                         .add(
                                                       FetchRemoveToCartEvent(
-                                                          productId: state
-                                                              .todayDeal
-                                                              .todayDealData[
-                                                                  index]
-                                                              .id
-                                                              .toString(),
+                                                        productId: state
+                                                            .todayDeal
+                                                            .todayDealData[
+                                                                index]
+                                                            .id
+                                                            .toString(),
                                                       ),
                                                     );
                                                   } else {
@@ -376,18 +377,14 @@ class _TodayDealPageState extends State<TodayDealPage> {
                                                   setState(() {
                                                     if (cart) {
                                                       state
-                                                              .todayDeal
-                                                              .todayDealData[
-                                                                  index]
-                                                              .isCart =
-                                                          '0';
+                                                          .todayDeal
+                                                          .todayDealData[index]
+                                                          .isCart = '0';
                                                     } else {
                                                       state
-                                                              .todayDeal
-                                                              .todayDealData[
-                                                                  index]
-                                                              .isCart =
-                                                          '1';
+                                                          .todayDeal
+                                                          .todayDealData[index]
+                                                          .isCart = '1';
                                                     }
                                                   });
                                                 },

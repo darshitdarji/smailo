@@ -37,7 +37,7 @@ class RemoveAddressBloc extends Bloc<RemoveAddressEvent, RemoveAddressState> {
   fetchDataFromApi({required String addressId}) async {
     RemoveAddressListModel model;
     Map data = {
-      'user_id': '610',
+      'user_id': '1760',
       'address_id': addressId,
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}removeAddress";

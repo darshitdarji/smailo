@@ -73,7 +73,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25),),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
                   contentPadding: const EdgeInsets.symmetric(vertical: 15),
                   hintText: "Phone Number",
                   hintStyle: const TextStyle(color: Colors.black26),
@@ -107,8 +108,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 height: mediaQuery.size.height * 0.065,
                 width: mediaQuery.size.width * 0.83,
                 decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(30),),
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(30),
+                ),
                 child: const Center(
                   child: Text(
                     "GET OTP",

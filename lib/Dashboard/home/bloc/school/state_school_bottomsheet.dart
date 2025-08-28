@@ -7,11 +7,13 @@ class SchoolInitialState extends SchoolState {}
 class SchoolLoadingState extends SchoolState {}
 
 class SchoolLoadedState extends SchoolState {
-  final SchoolModel  schoolModel;
-  SchoolLoadedState ({required this.schoolModel});
+  final SchoolModel schoolModel;
+
+  SchoolLoadedState({required this.schoolModel});
 }
 
 class SchoolErrorState extends SchoolState {
   final String error;
+
   SchoolErrorState({required this.error});
 }

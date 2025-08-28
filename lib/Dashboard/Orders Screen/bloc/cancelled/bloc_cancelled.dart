@@ -14,7 +14,6 @@ class CancelledBloc extends Bloc<CancelledEvent, CancelledState> {
         CancelledListModel model = await fetchDataFromApi();
         try {
           if (model.status == 200) {
-
             emit(
               CancelledLoadedState(cancelledList: model),
             );
@@ -36,7 +35,7 @@ class CancelledBloc extends Bloc<CancelledEvent, CancelledState> {
   fetchDataFromApi() async {
     CancelledListModel model;
     Map data = {
-      'user_id': '610',
+      'user_id': '1760',
       'order_type': '5',
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}orderList";

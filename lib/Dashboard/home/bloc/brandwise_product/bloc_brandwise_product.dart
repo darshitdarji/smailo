@@ -22,7 +22,6 @@ class BrandWiseBloc extends Bloc<BrandWiseEvent, BrandWiseState> {
           );
         }
       } catch (error) {
-
         emit(
           BrandwiseErrorState(error: 'An error Occurred'),
         );
@@ -35,7 +34,7 @@ class BrandWiseBloc extends Bloc<BrandWiseEvent, BrandWiseState> {
 
     Map data = {
       'brand_id': brandId,
-      'user_id': '610',
+      'user_id': '1760',
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}brandWiseProduct";
     final Uri url = Uri.parse(apiUrl);

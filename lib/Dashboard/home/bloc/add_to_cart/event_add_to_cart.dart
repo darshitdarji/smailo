@@ -9,6 +9,6 @@ class FetchAddToCartEvent extends AddToCartEvent {
 
 class FetchRemoveToCartEvent extends AddToCartEvent {
   final String productId;
+
   FetchRemoveToCartEvent({required this.productId});
 }
-

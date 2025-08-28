@@ -18,5 +18,5 @@ class FetchEditAddressEvent extends EditAddressEvent {
       required this.city,
       required this.country,
       required this.address,
-      required  this.mobileNo});
+      required this.mobileNo});
 }

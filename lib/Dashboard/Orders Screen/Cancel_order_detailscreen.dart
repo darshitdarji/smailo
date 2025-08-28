@@ -89,7 +89,7 @@ class _CancelOrderDetailPageState extends State<CancelOrderDetailPage> {
       body: BlocBuilder<PendingOrderDetailBloc, PendingOrderDetailState>(
           builder: (context, state) {
         if (state is PendingOrderDetailLoadingState) {
-          return  const Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (state is PendingOrderDetailLoadedState) {
           return SingleChildScrollView(
             child: Padding(

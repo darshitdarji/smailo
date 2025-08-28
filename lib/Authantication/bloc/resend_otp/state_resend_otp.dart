@@ -14,5 +14,6 @@ class ResendOtpLoadedState extends ResendOtpState {
 
 class ResendOtpErrorState extends ResendOtpState {
   final String error;
+
   ResendOtpErrorState({required this.error});
 }

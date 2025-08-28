@@ -64,7 +64,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   bool obscureConformPassword = true;
   bool obscurePassword = true;
 
-  late TextEditingController   phone = TextEditingController();
+  late TextEditingController phone = TextEditingController();
   late TextEditingController name;
   late TextEditingController email;
   late TextEditingController password = TextEditingController();
@@ -80,7 +80,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
       FetchUserProfileEvent(),
     );
   }
-
 
   Future pickImage() async {
     try {
@@ -107,7 +106,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
       print('Failed to pick imageC: $e');
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -182,8 +180,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                 child: this.image != null
                                     ? Image.file(this.image!, fit: BoxFit.fill)
                                     : Image.network(
-                                    state.userList.userData.profileImage,
-                                    fit: BoxFit.fill),
+                                        state.userList.userData.profileImage,
+                                        fit: BoxFit.fill),
                               ),
                             ),
                           ),
@@ -220,7 +218,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     const Text(
                       "Basic information",
                       style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     ),
                     SizedBox(
                       height: mediaqury.size.height * 0.015,
@@ -283,7 +281,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             color: Colors.black12,
                           ),
                           hintText: "   Phone",
-
                         ),
                       ),
                     ),
@@ -392,7 +389,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           suffixIcon: GestureDetector(
                             onTap: () {
                               setState(
-                                    () {
+                                () {
                                   obscurePassword = !obscurePassword;
                                 },
                               );
@@ -444,9 +441,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           suffixIcon: GestureDetector(
                             onTap: () {
                               setState(
-                                    () {
+                                () {
                                   obscureConformPassword =
-                                  !obscureConformPassword;
+                                      !obscureConformPassword;
                                 },
                               );
                             },
@@ -473,19 +470,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     SizedBox(
                       height: mediaqury.size.height * 0.025,
                     ),
-
-
                     Align(
                       alignment: Alignment.topRight,
                       child: GestureDetector(
                         onTap: () {
-
-                              BlocProvider.of<UpdatePasswordBloc>(context).add(
+                          BlocProvider.of<UpdatePasswordBloc>(context).add(
                             FetchUpdatePasswordEvent(
                                 conformPassword: conformPassword.text,
-                                password: password.text),);
-                              BlocProvider.of<EditUserProfileBloc>(context).add(
-                                  FetchUserProfileEvent());
+                                password: password.text),
+                          );
+                          BlocProvider.of<EditUserProfileBloc>(context)
+                              .add(FetchUserProfileEvent());
                         },
                         child: Container(
                           height: mediaqury.size.height * 0.045,

@@ -30,7 +30,7 @@ class FlashDealData {
   final String createdAt;
   final String updatedAt;
   final String deletedAt;
-   String isCart;
+  String isCart;
   final String brandName;
 
   FlashDealData.fromJsonMap(Map<String, dynamic> map)

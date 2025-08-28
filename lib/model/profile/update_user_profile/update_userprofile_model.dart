@@ -5,7 +5,7 @@ class UpdateProfileListModel {
 
   UpdateProfileListModel.fromJsonMap(Map<String, dynamic> map)
       : status = map['status'],
-          updateProfileData = UpdateProfileData.fromJsonMap(map['data']),
+        updateProfileData = UpdateProfileData.fromJsonMap(map['data']),
         message = map['message'];
 }
 

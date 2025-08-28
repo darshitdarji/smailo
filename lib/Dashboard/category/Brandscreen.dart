@@ -268,7 +268,7 @@ class _BrandpageState extends State<Brandpage> {
                             //           : '0'),
                             // );
                           },
-                            child: Container(
+                          child: Container(
                             margin: EdgeInsets.all(5),
                             height: 40,
                             decoration: BoxDecoration(

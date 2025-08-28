@@ -1,5 +1,3 @@
 abstract class CancelledEvent {}
 
-class FetchCancelledEvent extends CancelledEvent {
-
-}
+class FetchCancelledEvent extends CancelledEvent {}

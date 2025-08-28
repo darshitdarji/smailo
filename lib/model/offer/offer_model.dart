@@ -7,7 +7,7 @@ class OfferListModel {
       : status = map['status'],
         offerData = List<OfferData>.from(
           map['data'].map(
-                (x) => OfferData.fromJsonMap(x),
+            (x) => OfferData.fromJsonMap(x),
           ),
         ),
         message = map['message'];
@@ -38,8 +38,7 @@ class OfferData {
   final String updatedAt;
   final String deletedAt;
 
-  OfferData.fromJsonMap(Map<String, dynamic>map)
-
+  OfferData.fromJsonMap(Map<String, dynamic> map)
       : id = map['id'],
         offerName = map['offer_name'],
         offerDescription = map['offer_description'],
@@ -56,13 +55,11 @@ class OfferData {
         productId = map['product_id'],
         brandId = map['brand_id'],
         userId = map['user_id'],
-        totalUse= map['total_use'],
+        totalUse = map['total_use'],
         totalUsed = map['total_used'],
         totalAmount = map['total_amount'],
         status = map['status'],
         createdAt = map['created_at'],
         updatedAt = map['updated_at'],
         deletedAt = map['deleted_at'];
-
-
 }

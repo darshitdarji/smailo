@@ -137,8 +137,8 @@ class _FavouritePageState extends State<FavouritePage> {
                                         .favouriteData[index]
                                         .productData
                                         .productName,
-                                    wishId: state.favouriteList
-                                        .favouriteData[index].id
+                                    wishId: state
+                                        .favouriteList.favouriteData[index].id
                                         .toString(),
                                   );
                                 }).then((value) {
@@ -198,16 +198,17 @@ class _FavouritePageState extends State<FavouritePage> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                  margin:
-                                                      const EdgeInsets.symmetric(
-                                                          horizontal: 5),
+                                                  margin: const EdgeInsets
+                                                      .symmetric(horizontal: 5),
                                                   decoration: BoxDecoration(
                                                     // color: Colors.red,
                                                     borderRadius:
-                                                        BorderRadius.circular(0),
+                                                        BorderRadius.circular(
+                                                            0),
                                                   ),
-                                                  height: mediaquery.size.height *
-                                                      0.13,
+                                                  height:
+                                                      mediaquery.size.height *
+                                                          0.13,
                                                   width: mediaquery.size.width *
                                                       0.22,
                                                   child: ClipRRect(
@@ -217,7 +218,8 @@ class _FavouritePageState extends State<FavouritePage> {
                                                       child: Image.network(
                                                         state
                                                             .favouriteList
-                                                            .favouriteData[index]
+                                                            .favouriteData[
+                                                                index]
                                                             .productData
                                                             .productImage,
                                                         fit: BoxFit.cover,
@@ -230,14 +232,18 @@ class _FavouritePageState extends State<FavouritePage> {
                                                 Expanded(
                                                   child: Column(
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Text(
                                                         state
                                                             .favouriteList
-                                                            .favouriteData[index]
+                                                            .favouriteData[
+                                                                index]
                                                             .productData
-                                                            .productName,overflow: TextOverflow.ellipsis,
+                                                            .productName,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
                                                         style: const TextStyle(
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -246,7 +252,8 @@ class _FavouritePageState extends State<FavouritePage> {
                                                       Text(
                                                         state
                                                             .favouriteList
-                                                            .favouriteData[index]
+                                                            .favouriteData[
+                                                                index]
                                                             .productData
                                                             .brandName,
                                                         style: const TextStyle(
@@ -255,14 +262,15 @@ class _FavouritePageState extends State<FavouritePage> {
                                                         ),
                                                       ),
                                                       SizedBox(
-                                                        height:
-                                                            mediaquery.size.height *
-                                                                0.008,
+                                                        height: mediaquery
+                                                                .size.height *
+                                                            0.008,
                                                       ),
                                                       Row(
                                                         children: [
                                                           const Icon(
-                                                            Icons.currency_rupee,
+                                                            Icons
+                                                                .currency_rupee,
                                                             size: 15,
                                                             color: Colors.blue,
                                                           ),
@@ -275,19 +283,23 @@ class _FavouritePageState extends State<FavouritePage> {
                                                                     .productData
                                                                     .price
                                                                 : ("${state.favouriteList.favouriteData[index].productData.discountPrice}"),
-                                                            style: const TextStyle(
-                                                                color: Colors.blue),
+                                                            style:
+                                                                const TextStyle(
+                                                                    color: Colors
+                                                                        .blue),
                                                           ),
                                                           SizedBox(
                                                             width: mediaquery
-                                                                    .size.width *
+                                                                    .size
+                                                                    .width *
                                                                 0.02,
                                                           ),
                                                           Text(
                                                             discountprice == '0'
                                                                 ? ""
                                                                 : ('₹${state.favouriteList.favouriteData[index].productData.price}'),
-                                                            style: const TextStyle(
+                                                            style:
+                                                                const TextStyle(
                                                               color: Colors.red,
                                                               decoration:
                                                                   TextDecoration
@@ -297,15 +309,18 @@ class _FavouritePageState extends State<FavouritePage> {
                                                           ),
                                                           SizedBox(
                                                             width: mediaquery
-                                                                    .size.width *
+                                                                    .size
+                                                                    .width *
                                                                 0.02,
                                                           ),
                                                           Text(
                                                             discount == '0'
                                                                 ? ""
                                                                 : ("${state.favouriteList.favouriteData[index].productData.discount}% off"),
-                                                            style: const TextStyle(
-                                                              color: Colors.green,
+                                                            style:
+                                                                const TextStyle(
+                                                              color:
+                                                                  Colors.green,
                                                               fontSize: 13,
                                                             ),
                                                           ),
@@ -333,10 +348,8 @@ class _FavouritePageState extends State<FavouritePage> {
                                                         .favouriteData[index]
                                                         .productData
                                                         .productName,
-                                                    wishId: state
-                                                        .favouriteList
-                                                        .favouriteData[index]
-                                                        .id
+                                                    wishId: state.favouriteList
+                                                        .favouriteData[index].id
                                                         .toString(),
                                                   );
                                                 },

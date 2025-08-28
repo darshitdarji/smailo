@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:http/http.dart'as http;
+import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smailo/Dashboard/offers/bloc/event_offers.dart';
 import 'package:smailo/Dashboard/offers/bloc/state_offers.dart';
@@ -35,11 +35,11 @@ class OfferBloc extends Bloc<OfferEvent, OfferState> {
   fetchDataFromApi() async {
     OfferListModel model;
     Map data = {
-      'user_id': '610',
+      'user_id': '1760',
     };
     const apiUrl = "${SchoolEcommBaseAppUrl.baseAppUrl}offerList";
     final Uri url = Uri.parse(apiUrl);
-    final response = await http.post(url,body: data);
+    final response = await http.post(url, body: data);
     model = OfferListModel.fromJsonMap(jsonDecode(response.body));
     return model;
   }

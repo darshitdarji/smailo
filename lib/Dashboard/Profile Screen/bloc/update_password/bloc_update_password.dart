@@ -37,7 +37,7 @@ class UpdatePasswordBloc
       {required String password, required String conformPassword}) async {
     UpdatePasswordListModel model;
     Map data = {
-      'user_id': '610',
+      'user_id': '1760',
       'password': password,
       're_enter_password': conformPassword,
     };

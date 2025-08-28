@@ -5,7 +5,8 @@ class RemoveWishListModel {
 
   RemoveWishListModel.fromJsonMap(Map<String, dynamic> map)
       : status = map['status'],
-        removeWishListModelData = RemoveWishListModelData.fromJsonMap(map['data']),
+        removeWishListModelData =
+            RemoveWishListModelData.fromJsonMap(map['data']),
         message = map['message'];
 }
 
@@ -18,15 +19,12 @@ class RemoveWishListModelData {
   final String createdAt;
   final String updatedAt;
 
-
   RemoveWishListModelData.fromJsonMap(Map<String, dynamic> map)
-      :userId =map["user_id"],
-        productId =map["product_id"],
-        deletedAt =map["deleted_at"],
-        isFavorite =map["is_favorite"],
-        createdAt =map["updated_at"],
-        updatedAt =map["created_at"],
-        id =map["id"];
-
-
+      : userId = map["user_id"],
+        productId = map["product_id"],
+        deletedAt = map["deleted_at"],
+        isFavorite = map["is_favorite"],
+        createdAt = map["updated_at"],
+        updatedAt = map["created_at"],
+        id = map["id"];
 }
